@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Background Information}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}The Setup}{5}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Assignment Description}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Objectives and Student Activities}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Deliverables}{7}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Organization -- TODO --}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Supervisor \& Study Coach}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Stakeholders}{8}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Planning}{9}{section.4}%
+\contentsline {section}{\numberline {5}Methodology}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Sprint Cycle}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Definition of Done}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Development Tools}{11}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Communication and Reporting}{11}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Approach \& Strategy}{11}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Risk Analysis \& Achievability}{12}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Potential Risks}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Achievability}{12}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Appendix}{13}{section.7}%
+\contentsline {section}{\numberline {A}Gantt Chart}{13}{appendix.A}%
