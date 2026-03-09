@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  9 MAR 2026 09:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  4 MAR 2026 13:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Project Plan/project_plan.tex"
-(c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Project Plan/project_plan.tex
+**"c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Learning Report/learning_report.tex"
+(c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Learning Report/learning_report.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -294,27 +294,27 @@ Package caption Info: New subtype `subtable' on input line 238.
 ) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count309
-) (project_plan.aux)
-\openout1 = `project_plan.aux'.
+) (learning_report.aux)
+\openout1 = `learning_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -333,7 +333,7 @@ LaTeX Font Info:    ... okay on input line 54.
 * \oddsidemargin=0.0pt
 * \evensidemargin=0.0pt
 * \topmargin=-37.0pt
-* \headheight=15.0pt
+* \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
 * \footskip=30.0pt
@@ -369,124 +369,55 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 54.
- (project_plan.out) (project_plan.out)
+Package hyperref Info: Link coloring OFF on input line 44.
+ (learning_report.out) (learning_report.out)
 \@outlinefile=\write3
-\openout3 = `project_plan.out'.
+\openout3 = `learning_report.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 69.
+(Font)              <14.4> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 69.
+(Font)              <7> on input line 59.
  [1
 
-{C:/Users/samer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (project_plan.toc
+{C:/Users/samer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (learning_report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 2.
+(Font)              <12> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
+(Font)              <8> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
+(Font)              <6> on input line 3.
 )
 \tf@toc=\write4
-\openout4 = `project_plan.toc'.
+\openout4 = `learning_report.toc'.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.101 \newpage
-               [1] (project_plan.lof)
-\tf@lof=\write5
-\openout5 = `project_plan.lof'.
-
- [2] [3]
-Package acronym Info: Label `acro:GUI' newly defined as it shall be overridden
-although it is yet undefined on input line 131.
-Package acronym Info: Label `acro:QIUP' newly defined as it shall be overridden
-although it is yet undefined on input line 138.
-Package acronym Info: Label `acro:PPLN' newly defined as it shall be overridden
-although it is yet undefined on input line 146.
-Package acronym Info: Label `acro:CMOS' newly defined as it shall be overridden
-although it is yet undefined on input line 149.
-Package acronym Info: Label `acro:SPDC' newly defined as it shall be overridden
-although it is yet undefined on input line 152.
-<images/setup/demonstrator_setup.jpeg, id=182, 1032.85875pt x 662.475pt>
-File: images/setup/demonstrator_setup.jpeg Graphic file (type jpg)
-<use images/setup/demonstrator_setup.jpeg>
-Package pdftex.def Info: images/setup/demonstrator_setup.jpeg  used on input line 159.
-(pdftex.def)             Requested size: 452.9679pt x 290.52959pt.
-<images/setup/setup_schematic.png, id=183, 685.05937pt x 240.14719pt>
-File: images/setup/setup_schematic.png Graphic file (type png)
-<use images/setup/setup_schematic.png>
-Package pdftex.def Info: images/setup/setup_schematic.png  used on input line 163.
-(pdftex.def)             Requested size: 452.9679pt x 158.79076pt.
- [4]
-Package acronym Info: Label `acro:CCD' newly defined as it shall be overridden
-although it is yet undefined on input line 174.
- [5 <./images/setup/demonstrator_setup.jpeg> <./images/setup/setup_schematic.png>] [6]
-Package acronym Info: Label `acro:FFT' newly defined as it shall be overridden
-although it is yet undefined on input line 195.
- [7] [8]
-Package acronym Info: Label `acro:ANT' newly defined as it shall be overridden
-although it is yet undefined on input line 239.
-
-Overfull \hbox (1.41766pt too wide) in paragraph at lines 256--257
-[]\OT1/cmr/m/n/12 Office Workspace: Tech-ni-cal doc-u-men-ta-tion will pri-mar-ily take place in the OTSWO
- []
-
-[9]
-Package acronym Info: Label `acro:SDK' newly defined as it shall be overridden
-although it is yet undefined on input line 273.
- [10]
-<images/scrum-cycle.png, id=239, 526.96875pt x 301.125pt>
-File: images/scrum-cycle.png Graphic file (type png)
-<use images/scrum-cycle.png>
-Package pdftex.def Info: images/scrum-cycle.png  used on input line 292.
-(pdftex.def)             Requested size: 452.9679pt x 258.85216pt.
- [11 <./images/scrum-cycle.png>]
-Package acronym Info: Label `acro:IDE' newly defined as it shall be overridden
-although it is yet undefined on input line 312.
-Package acronym Info: Label `acro:DFT' newly defined as it shall be overridden
-although it is yet undefined on input line 328.
- [12] [13] [14]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 396.
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--399
-[]\OT1/cmr/bx/n/10.95 Hardware In-
- []
-
-<images/gantt.png, id=277, 1032.10594pt x 520.94624pt>
-File: images/gantt.png Graphic file (type png)
-<use images/gantt.png>
-Package pdftex.def Info: images/gantt.png  used on input line 422.
-(pdftex.def)             Requested size: 595.4351pt x 300.55128pt.
-[15]
-Overfull \vbox (21.878pt too high) has occurred while \output is active []
-
- [16 <./images/gantt.png>] (project_plan.bbl) [17] (project_plan.aux)
+l.88 \newpage
+              [1] [2] (learning_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-Package rerunfilecheck Info: File `project_plan.out' has not changed.
-(rerunfilecheck)             Checksum: 14A4944BB5C96CC3E9990D355F4C432E;2688.
+Package rerunfilecheck Info: File `learning_report.out' has not changed.
+(rerunfilecheck)             Checksum: 6308D5E26C029A34425E28A375349D09;1056.
  ) 
 Here is how much of TeX's memory you used:
- 15639 strings out of 467866
- 274724 string characters out of 5418325
- 695250 words of memory out of 5000000
- 44282 multiletter control sequences out of 15000+600000
- 635104 words of font info for 64 fonts, out of 8000000 for 9000
+ 15391 strings out of 467866
+ 270424 string characters out of 5418325
+ 689012 words of memory out of 5000000
+ 44101 multiletter control sequences out of 15000+600000
+ 633196 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,11n,131p,653b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\samer\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on project_plan.pdf (18 pages, 733997 bytes).
+ 83i,6n,131p,608b,539s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on learning_report.pdf (3 pages, 43781 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
- 68 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 PDF objects out of 1000 (max. 8388607)
+ 10 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

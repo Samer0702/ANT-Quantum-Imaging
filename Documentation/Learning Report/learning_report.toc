@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Reflection on used methodology}{2}{section.1}%
+\contentsline {section}{\numberline {2}Self-evaluation on X competences}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Competence 1}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Competence 2}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Competence 3}{2}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Self-analysis}{2}{section.3}%
+\contentsline {section}{\numberline {4}Personal development plan}{2}{section.4}%

@@ -1,0 +1,14 @@
+\contentsline {section}{\numberline {1}Introduction}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Background of the Assignment}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Problem Definition and Objectives}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Scope of Work}{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Approach \& Methodology}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Outline of the Report}{6}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Analyse / Specifications}{7}{section.2}%
+\contentsline {section}{\numberline {3}Functional Design}{8}{section.3}%
+\contentsline {section}{\numberline {4}Technical Design}{9}{section.4}%
+\contentsline {section}{\numberline {5}Realisation}{10}{section.5}%
+\contentsline {section}{\numberline {6}Testing}{11}{section.6}%
+\contentsline {section}{\numberline {7}Conclusions and Recommendations}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Conclusions}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Recommendations}{12}{subsection.7.2}%

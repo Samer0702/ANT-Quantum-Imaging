@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{quantum_delta}
+{Quantum Delta NL}, ``Quantum delta {NL},'' 2024.
+
+\bibitem{lemos2014quantum}
+G.~B. Lemos, V.~Borish, G.~D. Cole, S.~Ramelow, R.~Lapkiewicz, and
+  A.~Zeilinger, ``Quantum imaging with undetected photons,'' {\em Nature},
+  vol.~512, no.~7515, pp.~409--412, 2014.
+
+\bibitem{frigo2005design}
+M.~Frigo and S.~G. Johnson, ``The design and implementation of fftw3,'' {\em
+  Proceedings of the IEEE}, vol.~93, no.~2, pp.~216--231, 2005.
+
+\end{thebibliography}
