@@ -3,7 +3,7 @@ import cv2
 import pyfftw
 import time
 from thorlabs_tsi_sdk.tl_camera import TLCameraSDK
-from pze_control import PiezoController
+from piezo_control import PiezoController
 
 try:
     from CMOS_windows_setup import configure_path

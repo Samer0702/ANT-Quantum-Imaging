@@ -2,7 +2,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 from thorlabs_tsi_sdk.tl_camera import TLCameraSDK
-from pze_control import PiezoController
+from piezo_control import PiezoController
 
 try:
     from CMOS_windows_setup import configure_path
@@ -83,9 +83,17 @@ def run_calibration():
     plt.plot(voltages, intensities, marker='o', linestyle='-', color='b')
     plt.title("Interference Fringe Calibration Scan")
     plt.xlabel("Piezo Voltage (V)")
-    plt.ylabel("Mean Camera Intensity (Center ROI)")
+    plt.ylabel("Mean Camera Intensity")
+    
+    # --- Y-Axis adjustment ---
+    # We grab the current autoscaled limits first
+    current_ymin, current_ymax = plt.ylim()
+    
+    # We enforce that the bottom is AT MOST 20, and the top is AT LEAST 26.
+    # If the data goes down to 18, it will show 18. If it only goes to 22, it will show down to 20.
+    plt.ylim(min(20, current_ymin), max(26, current_ymax))
+    
     plt.grid(True)
-        
     plt.show()
 
 if __name__ == "__main__":

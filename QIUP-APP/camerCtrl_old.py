@@ -79,7 +79,7 @@ class CameraController:
 
         # Software-triggered, single-frame mode (required for step-scan).
         self.camera.frames_per_trigger_zero_for_unlimited = 1
-        self.camera.image_poll_timeout_ms = 200 
+        self.camera.image_poll_timeout_ms = 2000  # 2 s — generous for long exposures
         self.camera.exposure_time_us = 200_000    # 200 ms default
         self.camera.gain = 35 * 10                # ~3.5 dB (SDK units = tenths of dB)
         self.camera.arm(2)
@@ -129,7 +129,8 @@ class CameraController:
             self._fft_output,
             axes=(0,),
             direction="FFTW_FORWARD",
-            flags=("FFTW_MEASURE",),
+            flags=("FFTW_MEASURE",),  # MEASURE > ESTIMATE: slower first run,
+                                      # but faster for every subsequent call.
         )
         self._planned_n_frames = n_frames
 
@@ -174,7 +175,8 @@ class CameraController:
 
         if n_frames < 3:
             raise ValueError(
-                "At least 3 frames are required."
+                "At least 3 frames are required (Nyquist limit for a single "
+                "sinusoidal component)."
             )
 
         # Rebuild the plan only if N has changed.
@@ -250,23 +252,5 @@ class CameraController:
         vis_color = cv2.cvtColor(vis_color, cv2.COLOR_BGR2RGB)
         contrast_color = cv2.cvtColor(contrast_color, cv2.COLOR_BGR2RGB)
         phase_color = cv2.cvtColor(phase_color, cv2.COLOR_BGR2RGB)
-
-        # =================================================================
-        # NEW: Amplitude Masking to remove "Rainbow Static" background
-        # =================================================================
-        # 1. Define the noise threshold. Any pixel with a visibility below 
-        #    this value will be completely blacked out in the phase map.
-        vis_threshold = 0.10  # 10% visibility. Adjust this based on your noise floor!
-
-        # 2. Create a boolean mask. We add a new axis so its shape becomes 
-        #    (H, W, 1), allowing it to broadcast across the 3 RGB color channels.
-        mask_3d = (visibility > vis_threshold)[..., np.newaxis]
-
-        # 3. Apply the mask: keep the original color if True, otherwise set to 0 (Black).
-        phase_color = np.where(mask_3d, phase_color, 0).astype(np.uint8)
-        
-        # Optional: You can also uncomment this to clean up the contrast map!
-        # contrast_color = np.where(mask_3d, contrast_color, 0).astype(np.uint8)
-        # =================================================================
 
         return vis_color, contrast_color, phase_color
