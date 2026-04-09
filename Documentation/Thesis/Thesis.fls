@@ -180,6 +180,9 @@ INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tf
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
 OUTPUT Thesis.toc
+INPUT .\Thesis.bbl
+INPUT .\Thesis.bbl
+INPUT Thesis.bbl
 INPUT Thesis.aux
 INPUT .\Thesis.out
 INPUT .\Thesis.out

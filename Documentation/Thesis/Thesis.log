@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  25 MAR 2026 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  7 APR 2026 16:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -384,17 +384,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {C:/Users/samer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Package acronym Info: Label `acro:QIUP' newly defined as it shall be overridden
-although it is yet undefined on input line 102.
+although it is yet undefined on input line 100.
 Package acronym Info: Label `acro:ANT' newly defined as it shall be overridden
-although it is yet undefined on input line 104.
+although it is yet undefined on input line 102.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.106 \newpage
+l.104 \newpage
                [1]
 Package acronym Info: Label `acro:FFT' newly defined as it shall be overridden
-although it is yet undefined on input line 109.
+although it is yet undefined on input line 107.
  [2] (Thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
@@ -407,11 +407,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout4 = `Thesis.toc'.
 
  [3] [4] [5]
-Overfull \hbox (12.85721pt too wide) in paragraph at lines 155--156
+Package acronym Info: Label `acro:TLC' newly defined as it shall be overridden
+although it is yet undefined on input line 137.
+
+Overfull \hbox (12.85721pt too wide) in paragraph at lines 159--160
 []\OT1/cmr/bx/n/12 Conclusions and Rec-om-men-da-tions \OT1/cmr/m/n/12 -- Sum-ma-rizes key find-ings, eval-u-ates achieve-
  []
 
-[6] [7] [8] [9] [10] [11] [12] [13] [14] (Thesis.aux)
+[6] [7] [8] [9] [10] [11] [12] [13] (Thesis.bbl) [14] [15] (Thesis.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -420,17 +423,17 @@ Package rerunfilecheck Info: File `Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 444C7C46BCBC5F79CAF2730BF5B6C30F;2070.
  ) 
 Here is how much of TeX's memory you used:
- 15476 strings out of 467866
- 271404 string characters out of 5418325
- 692252 words of memory out of 5000000
- 44153 multiletter control sequences out of 15000+600000
+ 15495 strings out of 467866
+ 271751 string characters out of 5418325
+ 693382 words of memory out of 5000000
+ 44165 multiletter control sequences out of 15000+600000
  633543 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,11n,131p,588b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,11n,131p,588b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Thesis.pdf (15 pages, 91133 bytes).
+Output written on Thesis.pdf (16 pages, 95293 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 500000)
+ 205 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

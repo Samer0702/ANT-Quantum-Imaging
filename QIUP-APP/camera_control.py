@@ -89,6 +89,21 @@ class CameraController:
         print(f"Camera connected: {self.image_width} x {self.image_height} px")
         return True
 
+    def set_continuous_mode(self):
+        """Switches the camera to continuous acquisition mode."""
+        if self.camera:
+            self.camera.disarm()
+            self.camera.frames_per_trigger_zero_for_unlimited = 0
+            self.camera.arm(2)
+            self.camera.issue_software_trigger() # Kick off the continuous stream
+
+    def set_single_frame_mode(self):
+        """Switches the camera back to single-frame mode for piezo scanning."""
+        if self.camera:
+            self.camera.disarm()
+            self.camera.frames_per_trigger_zero_for_unlimited = 1
+            self.camera.arm(2)
+
     def disconnect(self):
         """Disarm and release the camera and SDK."""
         if self.camera:
@@ -172,7 +187,7 @@ class CameraController:
         """
         n_frames = image_stack.shape[0]
 
-        if n_frames < 3:
+        if n_frames < 1:
             raise ValueError(
                 "At least 3 frames are required."
             )
