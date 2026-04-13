@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import (
     QToolBar, QAction, QSizePolicy, QMessageBox, QGridLayout
 )
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
-from PyQt5.QtGui import QFont, QImage, QPixmap, QIcon
+from PyQt5.QtGui import QImage, QPixmap, QIcon
 
 from piezo_control import PiezoController
 from camera_control import CameraController
@@ -101,6 +101,7 @@ class AcquisitionWorker(QThread):
             if frame is not None:
                 # Frame successfully captured, store it and advance the counter
                 img = np.copy(frame.image_buffer).reshape(h, w)
+                img = cv2.flip(img, 0)  
                 image_stack[frames_acquired] = img
                 self.frame_acquired_signal.emit(img, v, frames_acquired)
                 
@@ -117,7 +118,7 @@ class AcquisitionWorker(QThread):
         self.piezo_ctrl.set_voltage(self.scan_v_start)
         self.progress_signal.emit("Computing Fourier transform…")
 
-        # --- Added Timing Section ---
+        # --- Timing Section ---
         t_start = time.perf_counter()
         vis, contrast, phase = self.camera_ctrl.process_quantum_image(image_stack)
         t_end = time.perf_counter()
@@ -153,6 +154,7 @@ class LiveFeedWorker(QThread):
                 frame = cam.get_pending_frame_or_null()
                 if frame is not None:
                     img = np.copy(frame.image_buffer).reshape(h, w)
+                    img = cv2.flip(img, 0)  
                     self.frame_ready_signal.emit(img)
                 else:
                     time.sleep(0.01)
@@ -168,7 +170,7 @@ class LiveFeedWorker(QThread):
 
 class LiveProcessingWorker(QThread):
     """
-    Continuously steps the piezo upwards, pushing limits.
+    Continuously steps the piezo upwards, cycling within the selected voltage range.
     Computes the FFT on every new frame to push live Visibility, Contrast, and Phase.
     """
     maps_ready_signal = pyqtSignal(np.ndarray, np.ndarray, np.ndarray)
@@ -198,53 +200,51 @@ class LiveProcessingWorker(QThread):
         w = self.camera_ctrl.image_width
         h = self.camera_ctrl.image_height
 
-        rolling_buffer = np.zeros((self.n_frames, h, w), dtype=np.float32)
+        # Buffer will always store frames strictly sorted by their VOLTAGE step index.
+        # This keeps the phase perfectly monotonic for the FFT (no np.roll needed!)
+        voltage_buffer = np.zeros((self.n_frames, h, w), dtype=np.float32)
         
         dv = self.period_v / self.n_frames
         total_frames_acquired = 0
-        valid_frames_in_buffer = 0
 
         while self.is_running:
             try:
-                current_v = self.scan_v_start + (total_frames_acquired * dv)
+                # 1. Determine which voltage step we are on using modulo arithmetic
+                step_index = total_frames_acquired % self.n_frames
+                current_v = self.scan_v_start + (step_index * dv)
 
-                if current_v > self.piezo_ctrl.MAX_VOLTAGE:
-                    total_frames_acquired = 0
-                    valid_frames_in_buffer = 0 
-                    current_v = self.scan_v_start
-
+                # 2. Move Piezo
                 if not self.piezo_ctrl.set_voltage(current_v):
                     self.error_signal.emit(f"Piezo failed at {current_v:.3f} V.")
                     break
                 
-                if total_frames_acquired == 0 and valid_frames_in_buffer == 0:
-                    time.sleep(self.settling_time + 0.1) 
-                else:
-                    time.sleep(self.settling_time)
+                # 3. Settling Time (Removed the artificial +0.1s buffer)
+                time.sleep(self.settling_time)
 
+                # 4. Trigger & Acquire
                 cam.issue_software_trigger()
                 frame = cam.get_pending_frame_or_null()
 
                 if frame is not None:
                     img = np.copy(frame.image_buffer).reshape(h, w)
+                    img = cv2.flip(img, 0)  
+
                     self.frame_acquired_signal.emit(img, current_v, total_frames_acquired)
 
-                    step_index = valid_frames_in_buffer % self.n_frames
-                    rolling_buffer[step_index] = img
-
-                    valid_frames_in_buffer += 1
+                    # 5. Insert image directly into its specific phase/voltage slot
+                    voltage_buffer[step_index] = img
                     total_frames_acquired += 1
 
-                    if valid_frames_in_buffer >= self.n_frames:
-                        ordered_stack = np.roll(rolling_buffer, shift=-(step_index + 1), axis=0)
-                        vis, contrast, phase = self.camera_ctrl.process_quantum_image(ordered_stack)
+                    # 6. Process if the buffer is fully populated (at least 1 full period)
+                    if total_frames_acquired >= self.n_frames:
+                        # Because we map index to voltage, the stack is already perfectly ordered!
+                        vis, contrast, phase = self.camera_ctrl.process_quantum_image(voltage_buffer)
                         self.maps_ready_signal.emit(vis, contrast, phase)
 
             except Exception as exc:
                 if self.is_running:
                     self.error_signal.emit(str(exc))
                 break
-
 
 # ---------------------------------------------------------------------------
 # Main application window
@@ -273,8 +273,8 @@ class QIUP_APP(QMainWindow):
         self.live_worker: LiveFeedWorker | None = None
         self.live_proc_worker: LiveProcessingWorker | None = None
 
-        self.voltages_data: list[float] = []
-        self.intensities_data: list[float] = []
+        # Use dictionaries to store voltage -> intensity mapping
+        self.voltages_intensities: dict[float, float] = {}
 
         self._setup_ui()
         self._apply_theme()
@@ -318,11 +318,13 @@ class QIUP_APP(QMainWindow):
         self.exposure_spin.setRange(1, 5000)
         self.exposure_spin.setValue(200)
         self.exposure_spin.setSuffix(" ms")
+        self.exposure_spin.valueChanged.connect(self._on_exposure_changed) # Connect live update
 
         self.gain_spin = QSpinBox()
         self.gain_spin.setRange(0, 48)
         self.gain_spin.setValue(35)
         self.gain_spin.setSuffix(" dB")
+        self.gain_spin.valueChanged.connect(self._on_gain_changed) # Connect live update
 
         cam_layout.addRow("Exposure:", self.exposure_spin)
         cam_layout.addRow("Gain:", self.gain_spin)
@@ -357,13 +359,14 @@ class QIUP_APP(QMainWindow):
         roi_group.setLayout(roi_layout)
         panel.addWidget(roi_group)
 
-        # --- Standard Acquisition Settings ---
-        acq_group = QGroupBox("Standard Acquisition")
-        acq_layout = QFormLayout()
+        # --- GLOBAL SCAN PARAMETERS ---
+        params_group = QGroupBox("Global Scan Parameters")
+        params_layout = QFormLayout()
 
         self.frames_spin = QSpinBox()
         self.frames_spin.setRange(3, 1000)
         self.frames_spin.setValue(8)
+        self.frames_spin.setToolTip("Applies to both Single Acquisition and Live Processing buffer.")
 
         self.scan_end_spin = QDoubleSpinBox()
         self.scan_end_spin.setRange(0.01, PiezoController.MAX_VOLTAGE)
@@ -373,53 +376,47 @@ class QIUP_APP(QMainWindow):
         self.scan_end_spin.setSuffix(" V")
 
         self.settling_spin = QSpinBox()
-        self.settling_spin.setRange(1, 1000)
+        self.settling_spin.setRange(0, 1000)  # Changed from 1 to 0 to allow minimum of 0ms
         self.settling_spin.setValue(self._DEFAULT_SETTLING_MS)
         self.settling_spin.setSuffix(" ms")
 
-        acq_layout.addRow("Frames (N):", self.frames_spin)
-        acq_layout.addRow("Fringe Period (V):", self.scan_end_spin)
-        acq_layout.addRow("Settling time:", self.settling_spin)
+        params_layout.addRow("Frames / Buffer (N):", self.frames_spin)
+        params_layout.addRow("Fringe Period (V):", self.scan_end_spin)
+        params_layout.addRow("Settling time:", self.settling_spin)
 
-        btn_row = QHBoxLayout()
-        self.start_btn = QPushButton("Run Acquisition")
+        self.reset_btn = QPushButton("Reset System")
+        self.reset_btn.setMinimumHeight(35)
+        self.reset_btn.clicked.connect(self._reset_system)
+        params_layout.addRow(self.reset_btn)
+
+        params_group.setLayout(params_layout)
+        panel.addWidget(params_group)
+
+        # --- QUANTUM IMAGING CONTROLS ---
+        ops_group = QGroupBox("Hardware Operations")
+        ops_layout = QVBoxLayout()
+        ops_layout.setSpacing(10)
+
+        self.start_btn = QPushButton("Run Single Acquisition")
         self.start_btn.setMinimumHeight(40)
         self.start_btn.setEnabled(False)
         self.start_btn.clicked.connect(self._run_acquisition)
-
-        self.reset_btn = QPushButton("Reset")
-        self.reset_btn.setMinimumHeight(40)
-        self.reset_btn.clicked.connect(self._reset_system)
-
-        btn_row.addWidget(self.start_btn)
-        btn_row.addWidget(self.reset_btn)
-        acq_layout.addRow(btn_row)
-
-        self.status_label = QLabel("Idle")
-        self.status_label.setStyleSheet("color: #888888; font-style: italic;")
-        acq_layout.addRow(self.status_label)
-
-        acq_group.setLayout(acq_layout)
-        panel.addWidget(acq_group)
-
-        # --- Live Quantum Processing Settings ---
-        live_proc_group = QGroupBox("Live Quantum Processing")
-        live_proc_layout = QFormLayout()
-
-        self.live_frames_spin = QSpinBox()
-        self.live_frames_spin.setRange(3, 200)
-        self.live_frames_spin.setValue(8)
-        self.live_frames_spin.setToolTip("Dynamic circular buffer size. Determines phase shift precision.")
 
         self.live_proc_btn = QPushButton("Start Live Processing")
         self.live_proc_btn.setMinimumHeight(40)
         self.live_proc_btn.setEnabled(False)
         self.live_proc_btn.clicked.connect(self._toggle_live_processing)
 
-        live_proc_layout.addRow("Buffer Frames (N):", self.live_frames_spin)
-        live_proc_layout.addRow(self.live_proc_btn)
-        live_proc_group.setLayout(live_proc_layout)
-        panel.addWidget(live_proc_group)
+        ops_layout.addWidget(self.start_btn)
+        ops_layout.addWidget(self.live_proc_btn)
+
+        self.status_label = QLabel("Idle")
+        self.status_label.setAlignment(Qt.AlignCenter)
+        self.status_label.setStyleSheet("color: #888888; font-style: italic; margin-top: 5px;")
+        ops_layout.addWidget(self.status_label)
+
+        ops_group.setLayout(ops_layout)
+        panel.addWidget(ops_group)
 
         panel.addStretch()
         return panel
@@ -458,7 +455,7 @@ class QIUP_APP(QMainWindow):
         self.raw_preview.setAlignment(Qt.AlignCenter)
         self.raw_preview.setProperty("is_image", True)
         
-        # Connect the click event to our new mapping function
+        # Connect the click event to our mapping function
         self.raw_preview.clicked.connect(self._on_preview_clicked)
         
         preview_layout.addWidget(self.raw_preview)
@@ -504,6 +501,27 @@ class QIUP_APP(QMainWindow):
         lbl.setFixedSize(400, 400)
         lbl.setProperty("is_image", True)
         return lbl
+
+    # ------------------------------------------------------------------
+    # Real-Time Camera Hardware Updates
+    # ------------------------------------------------------------------
+
+    def _on_exposure_changed(self, val_ms: int):
+        """Pushes exposure time to the Thorlabs camera immediately upon UI change."""
+        if self.camera is not None and self.camera.camera is not None:
+            try:
+                self.camera.camera.exposure_time_us = val_ms * 1000
+                self.camera.camera.image_poll_timeout_ms = val_ms + 100
+            except Exception as e:
+                self.status_label.setText(f"Warning: Failed to update exposure live ({e})")
+
+    def _on_gain_changed(self, val_db: int):
+        """Pushes gain to the Thorlabs camera immediately upon UI change."""
+        if self.camera is not None and self.camera.camera is not None:
+            try:
+                self.camera.camera.gain = val_db * 10 
+            except Exception as e:
+                self.status_label.setText(f"Warning: Failed to update gain live ({e})")
 
     # ------------------------------------------------------------------
     # ROI Click Handling
@@ -626,14 +644,13 @@ class QIUP_APP(QMainWindow):
         self.live_proc_btn.setEnabled(False)
         self.start_btn.setText("Acquiring…")
         
-        self.voltages_data.clear()
-        self.intensities_data.clear()
+        self.voltages_intensities.clear()
         self.ax.clear()
 
         exp_ms = self.exposure_spin.value()
         self.camera.camera.exposure_time_us = exp_ms * 1000
         self.camera.camera.gain = self.gain_spin.value() * 10
-        self.camera.camera.image_poll_timeout_ms = exp_ms + 500
+        self.camera.camera.image_poll_timeout_ms = exp_ms + 100
 
         period_v = self.scan_end_spin.value() - self._DEFAULT_SCAN_V_START
 
@@ -666,14 +683,13 @@ class QIUP_APP(QMainWindow):
             self.live_proc_btn.setText("Stop Live Processing")
             self.status_label.setText("Live processing running...")
 
-            self.voltages_data.clear()
-            self.intensities_data.clear()
+            self.voltages_intensities.clear()
             self.ax.clear()
 
             exp_ms = self.exposure_spin.value()
             self.camera.camera.exposure_time_us = exp_ms * 1000
             self.camera.camera.gain = self.gain_spin.value() * 10
-            self.camera.camera.image_poll_timeout_ms = exp_ms + 500
+            self.camera.camera.image_poll_timeout_ms = exp_ms + 100
 
             self.camera.set_single_frame_mode()
             period_v = self.scan_end_spin.value() - self._DEFAULT_SCAN_V_START
@@ -681,7 +697,7 @@ class QIUP_APP(QMainWindow):
             self.live_proc_worker = LiveProcessingWorker(
                 camera_ctrl=self.camera,
                 piezo_ctrl=self.piezo,
-                n_frames=self.live_frames_spin.value(),
+                n_frames=self.frames_spin.value(),
                 scan_v_start=self._DEFAULT_SCAN_V_START,
                 period_v=period_v,
                 settling_time=self.settling_spin.value() / 1000.0,
@@ -707,7 +723,7 @@ class QIUP_APP(QMainWindow):
             exp_ms = self.exposure_spin.value()
             self.camera.camera.exposure_time_us = exp_ms * 1000
             self.camera.camera.gain = self.gain_spin.value() * 10
-            self.camera.camera.image_poll_timeout_ms = exp_ms + 500
+            self.camera.camera.image_poll_timeout_ms = exp_ms + 100
 
             self.camera.set_continuous_mode()
 
@@ -736,8 +752,7 @@ class QIUP_APP(QMainWindow):
 
         if self.piezo: self.piezo.set_voltage(0.0)
 
-        self.voltages_data.clear()
-        self.intensities_data.clear()
+        self.voltages_intensities.clear()
         self.ax.clear()
         self.canvas.draw()
 
@@ -808,17 +823,20 @@ class QIUP_APP(QMainWindow):
         roi_data = gray_img[y_min:y_max, x_min:x_max]
         mean_intensity = float(np.mean(roi_data))
 
-        self.voltages_data.append(v)
-        self.intensities_data.append(mean_intensity)
+        # Round voltage to avoid floating point precision issues
+        v_rounded = round(v, 3)
+        
+        # Store or replace the intensity at this voltage
+        self.voltages_intensities[v_rounded] = mean_intensity
 
-        if len(self.voltages_data) > 200:
-            self.voltages_data.pop(0)
-            self.intensities_data.pop(0)
+        # Sort voltages for clean plotting
+        sorted_voltages = sorted(self.voltages_intensities.keys())
+        sorted_intensities = [self.voltages_intensities[v] for v in sorted_voltages]
 
         self.ax.clear()
         self.ax.grid(True, color="#2d2d30", linestyle="--", linewidth=0.5, zorder=0)
         self.ax.scatter(
-            self.voltages_data, self.intensities_data,
+            sorted_voltages, sorted_intensities,
             color="#00ff00", s=50, edgecolors="white", zorder=2,
         )
         self.ax.set_xlabel("Piezo Voltage (V)", fontsize=10, color="#d4d4d4", fontweight="bold")
@@ -833,7 +851,6 @@ class QIUP_APP(QMainWindow):
         self.contrast_img.setPixmap(self._cv_to_pixmap(contrast))
         self.phase_img.setPixmap(self._cv_to_pixmap(phase))
 
-    # --- Updated to display timing info ---
     def _on_acquisition_complete(self):
         proc_time = getattr(self.acq_worker, 'last_proc_time', 0.0)
         msg = f"Acquisition complete. Processing time: {proc_time:.4f} s"
@@ -844,7 +861,6 @@ class QIUP_APP(QMainWindow):
         self.live_btn.setEnabled(True)
         self.live_proc_btn.setEnabled(True)
         self.start_btn.setText("Run Acquisition")
-    # --------------------------------------
 
     @staticmethod
     def _cv_to_pixmap(cv_img: np.ndarray) -> QPixmap:
