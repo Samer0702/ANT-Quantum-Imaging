@@ -31,7 +31,7 @@ class CameraController:
     # --- Configuration ---
     F1_BIN = 1              # FFT bin index of the interference fringe.
                             # Valid when scan covers exactly 1 fringe period.
-    AUTO_DETECT_BIN = False # Set True to find the dominant bin automatically.
+    AUTO_DETECT_BIN = True # Set True to find the dominant bin automatically.
                             # Useful when the scan range is not perfectly
                             # calibrated to one period (slower, but safer).
 

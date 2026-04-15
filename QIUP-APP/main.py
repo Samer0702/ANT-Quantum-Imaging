@@ -2,6 +2,8 @@ import sys
 import time
 import os
 import ctypes
+import json
+import datetime
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -376,7 +378,7 @@ class QIUP_APP(QMainWindow):
         self.scan_end_spin.setSuffix(" V")
 
         self.settling_spin = QSpinBox()
-        self.settling_spin.setRange(0, 1000)  # Changed from 1 to 0 to allow minimum of 0ms
+        self.settling_spin.setRange(0, 1000)  
         self.settling_spin.setValue(self._DEFAULT_SETTLING_MS)
         self.settling_spin.setSuffix(" ms")
 
@@ -417,6 +419,20 @@ class QIUP_APP(QMainWindow):
 
         ops_group.setLayout(ops_layout)
         panel.addWidget(ops_group)
+
+        # --- DATA EXPORT ---
+        export_group = QGroupBox("Save Data")
+        export_layout = QVBoxLayout()
+        export_layout.setSpacing(10)
+
+        self.save_btn = QPushButton("Save Acquisition Data")
+        self.save_btn.setMinimumHeight(40)
+        self.save_btn.setEnabled(False)
+        self.save_btn.clicked.connect(self._save_data)
+        
+        export_layout.addWidget(self.save_btn)
+        export_group.setLayout(export_layout)
+        panel.addWidget(export_group)
 
         panel.addStretch()
         return panel
@@ -501,6 +517,63 @@ class QIUP_APP(QMainWindow):
         lbl.setFixedSize(400, 400)
         lbl.setProperty("is_image", True)
         return lbl
+
+    # ------------------------------------------------------------------
+    # Data Saving Functionality
+    # ------------------------------------------------------------------
+
+    def _save_data(self):
+        """Saves maps, preview, graph, and settings to a date-based folder."""
+        # Standard folder uses just the date, as requested
+        date_str = datetime.date.today().strftime("%Y%m%d")
+        base_folder = f"Acquisition_{date_str}"
+        folder_name = base_folder
+        
+        # Prevent overwriting if multiple acquisitions are saved on the same day
+        counter = 1
+        while os.path.exists(folder_name):
+            folder_name = f"{base_folder}_{counter}"
+            counter += 1
+
+        try:
+            os.makedirs(folder_name, exist_ok=True)
+
+            # 1. Save Settings to JSON
+            settings = {
+                "exposure_ms": self.exposure_spin.value(),
+                "gain_db": self.gain_spin.value(),
+                "n_frames": self.frames_spin.value(),
+                "fringe_period_v": self.scan_end_spin.value(),
+                "settling_ms": self.settling_spin.value(),
+                "roi_center_x": self.roi_x_spin.value(),
+                "roi_center_y": self.roi_y_spin.value(),
+                "roi_box_size": self.roi_size_spin.value(),
+                "processing_time_s": getattr(self.acq_worker, "last_proc_time", 0.0)
+            }
+            with open(os.path.join(folder_name, "settings.json"), "w") as f:
+                json.dump(settings, f, indent=4)
+
+            # 2. Save UI Images
+            label_map = {
+                "visibility_map.png": self.vis_img,
+                "contrast_map.png": self.contrast_img,
+                "phase_map.png": self.phase_img,
+                "last_raw_frame.png": self.raw_preview
+            }
+            for filename, label in label_map.items():
+                pixmap = label.pixmap()
+                if pixmap and not pixmap.isNull():
+                    pixmap.save(os.path.join(folder_name, filename), "PNG")
+
+            # 3. Save Intensity Graph
+            self.fig.savefig(os.path.join(folder_name, "intensity_plot.png"))
+
+            self.status_label.setText(f"Data saved to {folder_name}")
+            self.statusBar().showMessage(f"Data saved successfully to {folder_name}")
+            QMessageBox.information(self, "Data Saved", f"Successfully saved to:\n{folder_name}")
+
+        except Exception as e:
+            QMessageBox.critical(self, "Save Error", f"Failed to save data: {str(e)}")
 
     # ------------------------------------------------------------------
     # Real-Time Camera Hardware Updates
@@ -631,6 +704,7 @@ class QIUP_APP(QMainWindow):
         self.start_btn.setEnabled(False)
         self.live_btn.setEnabled(False)
         self.live_proc_btn.setEnabled(False)
+        self.save_btn.setEnabled(False)
         self.status_label.setText("Idle")
         self.statusBar().showMessage("Hardware disconnected.")
 
@@ -642,6 +716,7 @@ class QIUP_APP(QMainWindow):
         self.start_btn.setEnabled(False)
         self.live_btn.setEnabled(False)
         self.live_proc_btn.setEnabled(False)
+        self.save_btn.setEnabled(False)
         self.start_btn.setText("Acquiring…")
         
         self.voltages_intensities.clear()
@@ -680,6 +755,7 @@ class QIUP_APP(QMainWindow):
         else:
             self.start_btn.setEnabled(False)
             self.live_btn.setEnabled(False)
+            self.save_btn.setEnabled(False)
             self.live_proc_btn.setText("Stop Live Processing")
             self.status_label.setText("Live processing running...")
 
@@ -717,6 +793,7 @@ class QIUP_APP(QMainWindow):
         else:
             self.start_btn.setEnabled(False)
             self.live_proc_btn.setEnabled(False)
+            self.save_btn.setEnabled(False)
             self.live_btn.setText("Stop Raw Feed")
             self.status_label.setText("Raw feed running...")
 
@@ -768,6 +845,7 @@ class QIUP_APP(QMainWindow):
             self.start_btn.setEnabled(True)
             self.live_btn.setEnabled(True)
             self.live_proc_btn.setEnabled(True)
+            self.save_btn.setEnabled(False)
             self.start_btn.setText("Run Acquisition")
             self.live_btn.setText("Start Raw Feed")
             self.live_proc_btn.setText("Start Live Processing")
@@ -835,9 +913,15 @@ class QIUP_APP(QMainWindow):
 
         self.ax.clear()
         self.ax.grid(True, color="#2d2d30", linestyle="--", linewidth=0.5, zorder=0)
-        self.ax.scatter(
+        self.ax.plot(
             sorted_voltages, sorted_intensities,
-            color="#00ff00", s=50, edgecolors="white", zorder=2,
+            color="#0000ff",        # Line and dot color
+            linestyle="-",            # Solid line connecting the dots
+            linewidth=2,              # Thickness of the line
+            marker="o",               # Circle markers for the data points
+            markersize=7,             # Size of the dots
+            markeredgecolor="white",  # White border around the dots
+            zorder=2
         )
         self.ax.set_xlabel("Piezo Voltage (V)", fontsize=10, color="#d4d4d4", fontweight="bold")
         self.ax.set_ylabel("ROI Mean Intensity", fontsize=10, color="#d4d4d4", fontweight="bold")
@@ -852,7 +936,7 @@ class QIUP_APP(QMainWindow):
         self.phase_img.setPixmap(self._cv_to_pixmap(phase))
 
     def _on_acquisition_complete(self):
-        proc_time = getattr(self.acq_worker, 'last_proc_time', 0.0)
+        proc_time = getattr(self.acq_worker, "last_proc_time", 0.0)
         msg = f"Acquisition complete. Processing time: {proc_time:.4f} s"
         
         self.status_label.setText(msg)
@@ -860,6 +944,7 @@ class QIUP_APP(QMainWindow):
         self.start_btn.setEnabled(True)
         self.live_btn.setEnabled(True)
         self.live_proc_btn.setEnabled(True)
+        self.save_btn.setEnabled(True) # Only enable save here
         self.start_btn.setText("Run Acquisition")
 
     @staticmethod

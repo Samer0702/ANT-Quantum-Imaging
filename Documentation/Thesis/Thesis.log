@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  7 APR 2026 16:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  15 APR 2026 09:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -409,12 +409,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [3] [4] [5]
 Package acronym Info: Label `acro:TLC' newly defined as it shall be overridden
 although it is yet undefined on input line 137.
-
-Overfull \hbox (12.85721pt too wide) in paragraph at lines 159--160
+ [6]
+Overfull \hbox (12.85721pt too wide) in paragraph at lines 163--164
 []\OT1/cmr/bx/n/12 Conclusions and Rec-om-men-da-tions \OT1/cmr/m/n/12 -- Sum-ma-rizes key find-ings, eval-u-ates achieve-
  []
 
-[6] [7] [8] [9] [10] [11] [12] [13] (Thesis.bbl) [14] [15] (Thesis.aux)
+[7] [8] [9] [10] [11] [12] [13] (Thesis.bbl) [14] [15] (Thesis.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -431,9 +431,9 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  83i,11n,131p,588b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Thesis.pdf (16 pages, 95293 bytes).
+Output written on Thesis.pdf (16 pages, 96404 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
+ 207 PDF objects out of 1000 (max. 8388607)
  46 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
