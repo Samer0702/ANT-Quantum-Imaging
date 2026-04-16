@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  15 APR 2026 09:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  16 APR 2026 13:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -408,32 +408,49 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [3] [4] [5]
 Package acronym Info: Label `acro:TLC' newly defined as it shall be overridden
-although it is yet undefined on input line 137.
+although it is yet undefined on input line 139.
+Package acronym Info: Label `acro:PPLN' newly defined as it shall be overridden
+although it is yet undefined on input line 154.
+Package acronym Info: Label `acro:CMOS' newly defined as it shall be overridden
+although it is yet undefined on input line 157.
+Package acronym Info: Label `acro:SPDC' newly defined as it shall be overridden
+although it is yet undefined on input line 160.
+<images/setup/demonstrator_setup.jpeg, id=162, 1032.85875pt x 662.475pt>
+File: images/setup/demonstrator_setup.jpeg Graphic file (type jpg)
+<use images/setup/demonstrator_setup.jpeg>
+Package pdftex.def Info: images/setup/demonstrator_setup.jpeg  used on input line 165.
+(pdftex.def)             Requested size: 452.9679pt x 290.52959pt.
+<images/setup/setup_schematic.png, id=163, 685.05937pt x 240.14719pt>
+File: images/setup/setup_schematic.png Graphic file (type png)
+<use images/setup/setup_schematic.png>
+Package pdftex.def Info: images/setup/setup_schematic.png  used on input line 169.
+(pdftex.def)             Requested size: 452.9679pt x 158.79076pt.
  [6]
-Overfull \hbox (12.85721pt too wide) in paragraph at lines 163--164
-[]\OT1/cmr/bx/n/12 Conclusions and Rec-om-men-da-tions \OT1/cmr/m/n/12 -- Sum-ma-rizes key find-ings, eval-u-ates achieve-
- []
-
-[7] [8] [9] [10] [11] [12] [13] (Thesis.bbl) [14] [15] (Thesis.aux)
+Package acronym Info: Label `acro:CCD' newly defined as it shall be overridden
+although it is yet undefined on input line 179.
+ [7 <./images/setup/demonstrator_setup.jpeg> <./images/setup/setup_schematic.png>] [8]
+Package acronym Info: Label `acro:GUI' newly defined as it shall be overridden
+although it is yet undefined on input line 210.
+ [9] [10] [11] [12] [13] [14] [15] [16] [17] (Thesis.bbl) [18] [19] (Thesis.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 444C7C46BCBC5F79CAF2730BF5B6C30F;2070.
+(rerunfilecheck)             Checksum: 7175556EBE3502EFAFB704328551726D;2176.
  ) 
 Here is how much of TeX's memory you used:
- 15495 strings out of 467866
- 271751 string characters out of 5418325
- 693382 words of memory out of 5000000
- 44165 multiletter control sequences out of 15000+600000
- 633543 words of font info for 59 fonts, out of 8000000 for 9000
+ 15599 strings out of 467866
+ 273650 string characters out of 5418325
+ 695085 words of memory out of 5000000
+ 44243 multiletter control sequences out of 15000+600000
+ 634180 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,11n,131p,588b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Thesis.pdf (16 pages, 96404 bytes).
+ 83i,12n,131p,604b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\samer\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Thesis.pdf (20 pages, 558595 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 318 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

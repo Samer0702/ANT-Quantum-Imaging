@@ -1,19 +1,22 @@
 # Fdb version 4
-["bibtex Thesis"] 1776239404.46461 "Thesis.aux" "Thesis.bbl" "Thesis" 1776239406.56083 0
-  "./references.bib" 1775570797 501 97714dfe8d1727689509304ef425064f ""
+["bibtex Thesis"] 1776337891.95145 "Thesis.aux" "Thesis.bbl" "Thesis" 1776338080.76399 0
+  "./references.bib" 1776330405 3642 485fe09ed291c05686c827afed91eede ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "Thesis.aux" 1776239405 2837 10f113d72eb41f5b188aca942744f261 "pdflatex"
+  "Thesis.aux" 1776338079 4956 2af2278f4f5eed9fdc485e2f56a49837 "pdflatex"
   (generated)
   "Thesis.bbl"
   "Thesis.blg"
   (rewritten before read)
-["pdflatex"] 1776239405.01239 "c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex" "Thesis.pdf" "Thesis" 1776239406.56141 0
-  "C:/Users/samer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1771493610 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+["pdflatex"] 1776338078.61573 "c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex" "Thesis.pdf" "Thesis" 1776338080.76472 0
+  "C:/Users/samer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1776253704 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+  "C:/Users/samer/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1771001806 14064 d9655cf0fa23253060c25b10fbdcac85 ""
   "C:/Users/samer/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1771001711 13333862 8714899a428510dd8b14214a5dc5cd31 ""
+  "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi12.tfm" 1136765053 1524 4414a8315f39513458b80dfc63bff03a ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136765053 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi8.tfm" 1136765053 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr10.tfm" 1136765053 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr17.tfm" 1136765053 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr6.tfm" 1136765053 1300 b62933e007d01cfd073f79b963c01526 ""
@@ -23,6 +26,7 @@
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmti12.tfm" 1136765053 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
+  "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1247596667 36118 fad905eba93cff5bce1e185fe980a177 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -90,12 +94,14 @@
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/samer/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
-  "Thesis.aux" 1776239405 2837 10f113d72eb41f5b188aca942744f261 "pdflatex"
-  "Thesis.bbl" 1776239404 131 cd6bd5e1f6d97496e0a163086e15214e "bibtex Thesis"
-  "Thesis.out" 1776239405 2070 444c7c46bcbc5f79caf2730bf5b6c30f "pdflatex"
-  "Thesis.tex" 1776239400 7185 1b77a4e638cb557fe301fc1dc24501ce ""
-  "Thesis.toc" 1776239405 1122 8707b5ac160e3dc681bae57523a78f53 "pdflatex"
-  "c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex" 1776239400 7185 1b77a4e638cb557fe301fc1dc24501ce ""
+  "Thesis.aux" 1776338079 4956 2af2278f4f5eed9fdc485e2f56a49837 "pdflatex"
+  "Thesis.bbl" 1776337892 1302 3ada4a1808b542ba0ad4977a4b9570e7 "bibtex Thesis"
+  "Thesis.out" 1776338079 2176 7175556ebe3502efafb704328551726d "pdflatex"
+  "Thesis.tex" 1776338077 17473 d7af2b6254910a055e18fd181f7e19ab ""
+  "Thesis.toc" 1776338079 1201 7a10d1557cf1e12d14123142c1005ce1 "pdflatex"
+  "c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex" 1776338077 17473 d7af2b6254910a055e18fd181f7e19ab ""
+  "images/setup/demonstrator_setup.jpeg" 1771000747 284640 4a017f506987d513ef20d19ddd59ee97 ""
+  "images/setup/setup_schematic.png" 1771000747 133560 ac6a0e02ef53ce13ed3f2ff85e97b907 ""
   (generated)
   "Thesis.aux"
   "Thesis.log"

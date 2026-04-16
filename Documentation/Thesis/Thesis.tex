@@ -120,6 +120,14 @@ Additionally, a user-friendly interface was developed to allow researchers and p
     \acro{ANT}{Applied Nanotechnology}
     \acro{FFT}{Fast Fourier Transform}
     \acro{TLC}{Talent \& Learning Center}
+    \acro{PPLN}{Periodically Poled Lithium Niobate}
+    \acro{CMOS}{Complementary Metal-Oxide-Semiconductor}
+    \acro{SPDC}{Spontaneous Parametric Down-Conversion}
+    \acro{CCD}{Charged Coupled Device}
+    \acro{GUI}{Graphical User Interface}
+%    \acro{FFTW}{Fastest Fourier Transform in the West}
+%    \acro{CPU}{Central Processing Unit}
+%    \acro{SIMD}{Single Instruction, Multiple Data}
 \end{acronym}
 
 
@@ -128,6 +136,7 @@ Additionally, a user-friendly interface was developed to allow researchers and p
 
 \newpage
 \section{Introduction}
+This chapter provides an introduction to the project, explains the background and contect of the assignment and also describes the setup of the demonstrational platform for \ac{QIUP} at the \ac{TLC} lab within the \ac{ANT} research group.
 
 \subsection{Background of the Assignment}
     As part of the Quantum Delta program, this project aims to accelerate the development and adoption of quantum technologies \cite{quantum_delta}.
@@ -136,32 +145,130 @@ Additionally, a user-friendly interface was developed to allow researchers and p
 
     The demonstrational setup for \ac{QIUP} at the \ac{TLC} lab within the \ac{ANT} research group provides a platform for exploring and enhancing this technology.
 
+\subsection{The Setup}
+    The experimental implementation of the quantum imager is shown in Figure \ref{fig:demonstrator}. 
+    The system consists of:
+
+    \begin{itemize}
+    \item Continuous-wave pump laser
+    \item \ac{PPLN} nonlinear crystal
+    \item Dichroic beam splitter
+    \item Piezoelectric-stage connected with a mirror
+    \item Thorlabs Zelux \ac{CMOS} camera
+    \end{itemize}
+
+    Inside the \ac{PPLN} crystal, \ac{SPDC} splits pump photons from a continuous-wave laser with frequency of 532 nm into signal (visible) photons with a frequency of 810 nm and idler (infrared) photons with a frequency of 1550 nm (telecommunication). The idler interacts with the object, while the signal does not. Upon recombination, interference occurs and is recorded by the \ac{CMOS} camera.
+
+    \begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{1\linewidth}
+        \includegraphics[width=\linewidth]{images/setup/demonstrator_setup.jpeg}
+        \caption{Top-Down view on demonstrational setup at Saxion.}
+    \end{subfigure}
+    \begin{subfigure}[b]{1\linewidth}
+        \includegraphics[width=\linewidth]{images/setup/setup_schematic.png}
+        \caption{Schematic of demonstrational setups functionality.}
+    \end{subfigure}
+    \caption{Demonstrational Setup and Schematic.}
+    \label{fig:demonstrator}
+    \end{figure}
+
+    The system relies on the principle of induced coherence, utilizing a nonlinear interferometer.
+
+    As detailed in the schematic (Figure \ref{fig:demonstrator}b), a continuous wave pump laser is directed into a nonlinear crystal specifically, a \ac{PPLN} crystal. Through \ac{SPDC}, the pump photon splits into a signal photon (visible spectrum) and an idler photon (infrared). A dichroic beam splitter separates these paths: the visible signal is reflected by a reference mirror (Mirror 1), while the infrared idler interacts with the target object before being reflected by Mirror 2.
+    The idler photons that pass through the object contain spatial information about its absorption or phase profile. When the idler and signal beams recombine at the crystal, quantum interference modulates the intensity of the signal beam based on the idler's path information. Consequently, the image of the object which was only "seen" by the infrared light is transferred to the visible spectrum and detected by the \ac{CCD} camera.
+    The physical realization of this schematic is shown in Figure \ref{fig:demonstrator}a. The setup is constructed on an optical breadboard to ensure stability. The pump source directs the beam through conditioning optics towards the central crystal mount. The detection module utilizes a Thorlabs Zelux \ac{CMOS} camera to capture the interference patterns. 
+
+
 \subsection{Problem Definition and Objectives}
+
+    \subsubsection*{Problem Definition}
     The experimental setup for \ac{QIUP} serves as a powerful proof-of-concept for mid-infrared imaging. 
     However, the current setup has limitations in terms of image quality and user accessibility.
-    There are two main software tools by Thorlabs that are used to control the setup and process the images, Thorcam and Kinesis, but they are not optimized for \ac{QIUP} applications or any further image processing.
+    There are two main software tools by Thorlabs that are used to control the setup and process the images, Thorcam \cite{ThorlabsThorCam} and Kinesis \cite{ThorlabsKinesis}, which are used for camera and piezoelectric actuator control, but they are not optimized for \ac{QIUP} applications or any further image processing.
+    Using this approach is rather unintuitive and requires a lot of manual work to only get gray scale images, which do not have the best quality.
 
+    \subsubsection*{Objectives}
+    The main objective of this project is to transform the current laboratory setup into a robust, automated, and user-friendly demonstrator platform for \ac{QIUP} technology demonstration, which can be divided into the following sub-objectives:
+        \begin{enumerate}
+            \item \textbf{Advanced Image Processing:} Captured images will be processed using advanced techniques, such as \ac{FFT}, to enhance image quality and extract more detailed information like visibility, contrast and phase from the raw data.
+            \item \textbf{Hardware Automation System:} The current use of multiple software tools for controlling the hardware components will be streamlined into a single, cohesive automation system that can manage all aspects of the \ac{QIUP} setup, including camera control, piezoelectric actuators, data acquisition and image processing.
+            \item \textbf{User Interface Development:} A user-friendly interface will be developed to allow researchers and practitioners to easily interact with the \ac{QIUP} system, facilitating the adoption and application of this cutting-edge technology in various fields. The interface will provide intuitive controls for operating the hardware, visualizing the processed images, and accessing the key metrics visibility and contrast phase.
+        \end{enumerate}
 
 \subsection{Scope of Work}
+    To consider this project successful, the expected technical results have been categorized using the MoSCoW method:
+
+    \textbf{Must Have:}
+    \begin{itemize}
+        \item Hardware Automation System: A robust Python-based control script capable of communicating with and reliably driving both the Thorlabs \ac{CMOS} camera and the piezoelectric stage.
+        \item Image Processing Core: A functional \ac{FFT}-based algorithm capable of near real-time reconstruction of visibility, contrast, and phase images from the raw sensor data.
+    \end{itemize}
+
+    \textbf{Should Have:}
+    \begin{itemize}
+        \item Functional \ac{GUI}: An intuitive graphical user interface that allows the operator to control the hardware, acquire live images, and display the reconstructed quantum interference patterns.
+        \item Performance Optimization: Validated and optimized code execution that ensures the imaging performance is fast and smooth enough for live audience demonstrations.
+        \item Advanced camera settings: The ability to adjust camera settings such as exposure time, gain, and frame rate through the software interface to optimize image quality under different conditions.
+    \end{itemize}
+
+    \textbf{Could Have:}
+    \begin{itemize}
+        \item Advanced \ac{GUI} Capabilities: Additional features in the software, such as one-click calibration presets, advanced data visualization tweaks, or the ability to export/upload acquired data.
+        \item New Samples: For demonsstration purposes, new samples (transparent or opaque) with creative visualizations could be introduced to better showcase the capabilities of \ac{QIUP} technology . 
+    \end{itemize}
+
+    \textbf{Won't Have:}
+    \begin{itemize}
+        \item Hardware Upgrades: The physical integration of new hardware components not present in the current setup.
+    \end{itemize}
 
 \subsection{Approach \& Methodology}
 
-\subsection{Outline of the Report}
-\begin{enumerate}
-    \item \textbf{Introduction} -- Provides background on quantum imaging technology, defines the problem statement, outlines project objectives, and presents the methodology and scope of work.
+    This project combines software development with experimental physics validation. To manage the iterative nature of development alongside research and hardware integration, the project utilizes the Scrum framework. This allows for flexibility while ensuring continuous delivery of features and frequent validation against the physical setup.
+
+    \subsubsection*{Development Process}
+    The project is divided into sprints lasting 1--4 weeks. This duration provides a balance between sufficient development time and frequent feedback loops. At the end of each sprint, the results are reviewed and the subsequent sprint is adjusted based on the progress of the \ac{QIUP} system integration.
+
+
+    \subsubsection*{System Architecture and Tools}
+    The software is developed as a modular system using the following tools:
+    \begin{itemize}
+        \item \textbf{Language \& IDE:} Python is used for the entire system development within the Visual Studio Code environment.
+        \item \textbf{Hardware Control:} Integration with the Thorlabs piezoelectric stage with corresponding Strain Gauge Meter (KPZ101/KSG101) and \ac{CMOS} camera is handled via the Kinesis .NET API and ThorCam SDK.
+        \item \textbf{Data Management:} Project assets are saved in a secure directory on the \ac{ANT} internal network, ensuring compliance, data integrity, and unified access.
+    \end{itemize}
+
+    \subsubsection*{FFT-Based Image Processing}
+    For a \ac{QIUP} demonstrator, the most important information is not found in a single static image, but rather in how the image changes. 
+    Because the system utilizes an interferometer with a scanning piezoelectric stage, we expect a very specific physical effect: as the optical path length changes, the light intensity at any given point will oscillate sinusoidally, creating moving interference fringes. \cite{xie2018surface}
+
+    To capture and translate these interferometric effects into a clear image, this project implements a pixel-wise \ac{FFT} approach. 
+    Rather than analyzing the spatial patterns of a single frame, the software treats every individual pixel on the camera as an independent sensor. 
+    It tracks how the brightness of each pixel changes over a sequence of phase-shifted frames, creating a time-domain signal. 
+
+    Applying an \ac{FFT} to this pixel-wise signal is highly advantageous for several signal-processing and experimental reasons \cite{kutas2021quantum, takeda1982fourier}:
+    \begin{itemize}
+        \item \textbf{Targeted Signal Extraction:} Since the piezoelectric stage moves at a known, controlled rate, the expected interference creates a specific "modulation frequency" \cite{xie2018surface}. The \ac{FFT} isolates this exact frequency, allowing the software to ignore all other irrelevant light variations.
+        \item \textbf{Inherent Noise Filtering:} In a laboratory setup, images are plagued by constant background light and high-frequency electronic camera noise. The \ac{FFT} naturally separates these: constant background light is pushed to the 0~Hz (DC) bin, and random flicker is scattered across higher frequencies, leaving the isolated interference signal incredibly clean \cite{pearce2023practical}.
+    \end{itemize}
     
-    \item \textbf{Analyse/Specifications} -- Details the requirements analysis, system specifications, and constraints for the enhanced image processing and user interface development.
-    
-    \item \textbf{Functional Design} -- Describes the functional architecture, user workflows, and feature specifications for the image processing algorithms and UI components.
-    
-    \item \textbf{Technical Design} -- Presents the technical implementation approach, software architecture, technology stack, and design patterns used for the project.
-    
-    \item \textbf{Realisation} -- Documents the actual implementation of the system, including code development, integration, and deployment of the quantum imaging software.
-    
-    \item \textbf{Testing} -- Covers testing strategies, test cases, results, and validation of the image processing quality and user interface functionality.
-    
-    \item \textbf{Conclusions and Recommendations} -- Summarizes key findings, evaluates achievement of objectives, and provides recommendations for future improvements and research directions.
-\end{enumerate}
+    \subsection{Outline of the Report}
+    \begin{enumerate}
+        \item \textbf{Introduction:} Provides background on quantum imaging technology, defines the problem statement, outlines project objectives, and presents the methodology and scope of work.
+        
+        \item \textbf{Analyse/Specifications:} Details the requirements analysis, system specifications, and constraints for the enhanced image processing and user interface development.
+        
+        \item \textbf{Functional Design:} Describes the functional architecture, user workflows, and feature specifications for the image processing algorithms and UI components.
+        
+        \item \textbf{Technical Design:} Presents the technical implementation approach, software architecture, technology stack, and design patterns used for the project.
+        
+        \item \textbf{Realisation:} Documents the actual implementation of the system, including code development, integration, and deployment of the quantum imaging software.
+        
+        \item \textbf{Testing:} Covers testing strategies, test cases, results, and validation of the image processing quality and user interface functionality.
+        
+        \item \textbf{Conclusions \& Recommendations:} Summarizes key findings, evaluates achievement of objectives, and provides recommendations for future improvements and research directions.
+    \end{enumerate}
 
 \newpage
 \section{Analyse / Specifications}
@@ -186,7 +293,6 @@ Additionally, a user-friendly interface was developed to allow researchers and p
 \subsection{Recommendations}
 
 \newpage
-\section*{References}
 \bibliographystyle{ieeetr}
 \bibliography{references}
 \newpage

@@ -3,4 +3,32 @@
 \bibitem{quantum_delta}
 {Quantum Delta NL}, ``Quantum delta {NL},'' 2024.
 
+\bibitem{ThorlabsThorCam}
+{Thorlabs, Inc.}, ``{ThorCam™ Software User Guide},'' 2024.
+\newblock Accessed: 2026-04-15.
+
+\bibitem{ThorlabsKinesis}
+{Thorlabs, Inc.}, ``{Kinesis\textregistered{} Software and API},'' 2024.
+\newblock Accessed: 2026-04-15.
+
+\bibitem{xie2018surface}
+Z.~Xie, Y.~Tang, Y.~Zhou, and Q.~Deng, ``Surface and thickness measurement of
+  transparent thin-film layers utilizing modulation-based
+  structured-illumination microscopy,'' {\em Optics Express}, 2018.
+
+\bibitem{kutas2021quantum}
+M.~Kutas, B.~Haase, J.~Klier, D.~Molter, and G.~von Freymann,
+  ``Quantum-inspired terahertz spectroscopy with visible photons,'' {\em
+  Optica}, 2021.
+
+\bibitem{takeda1982fourier}
+M.~Takeda, H.~Ina, and S.~Kobayashi, ``Fourier-transform method of
+  fringe-pattern analysis for computer-based topography and interferometry,''
+  {\em Journal of the Optical Society of America}, 1982.
+
+\bibitem{pearce2023practical}
+E.~Pearce, N.~R. Gemmell, J.~Fl{\'o}rez, J.~Ding, R.~F. Oulton, A.~S. Clark,
+  and C.~C. Phillips, ``Practical quantum imaging with undetected photons,''
+  {\em Optics Continuum}, vol.~2, no.~11, pp.~2386--2398, 2023.
+
 \end{thebibliography}
