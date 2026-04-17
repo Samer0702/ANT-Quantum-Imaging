@@ -47,6 +47,10 @@ class CameraController:
         self._fft_input = None
         self._fft_output = None
         self._planned_n_frames = 0
+        
+        # --- Moving Average properties ---
+        self.use_moving_average = False
+        self.ma_kernel_size = 3
 
     # ------------------------------------------------------------------
     # Hardware lifecycle

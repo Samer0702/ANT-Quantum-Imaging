@@ -11,7 +11,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QGroupBox, QFormLayout, QSpinBox, QDoubleSpinBox,
-    QToolBar, QAction, QSizePolicy, QMessageBox, QGridLayout
+    QToolBar, QAction, QSizePolicy, QMessageBox, QGridLayout, QCheckBox
 )
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from PyQt5.QtGui import QImage, QPixmap, QIcon
@@ -104,6 +104,14 @@ class AcquisitionWorker(QThread):
                 # Frame successfully captured, store it and advance the counter
                 img = np.copy(frame.image_buffer).reshape(h, w)
                 img = cv2.flip(img, 0)  
+                
+                # --- APPLY MOVING AVERAGE ---
+                if self.camera_ctrl.use_moving_average:
+                    k = self.camera_ctrl.ma_kernel_size
+                    k = k if k % 2 != 0 else k + 1
+                    img = cv2.blur(img, (k, k))
+                # --------------------------
+
                 image_stack[frames_acquired] = img
                 self.frame_acquired_signal.emit(img, v, frames_acquired)
                 
@@ -157,6 +165,14 @@ class LiveFeedWorker(QThread):
                 if frame is not None:
                     img = np.copy(frame.image_buffer).reshape(h, w)
                     img = cv2.flip(img, 0)  
+                    
+                    # --- APPLY MOVING AVERAGE ---
+                    if self.camera_ctrl.use_moving_average:
+                        k = self.camera_ctrl.ma_kernel_size
+                        k = k if k % 2 != 0 else k + 1
+                        img = cv2.blur(img, (k, k))
+                    # --------------------------
+
                     self.frame_ready_signal.emit(img)
                 else:
                     time.sleep(0.01)
@@ -230,6 +246,13 @@ class LiveProcessingWorker(QThread):
                 if frame is not None:
                     img = np.copy(frame.image_buffer).reshape(h, w)
                     img = cv2.flip(img, 0)  
+
+                    # --- APPLY MOVING AVERAGE ---
+                    if self.camera_ctrl.use_moving_average:
+                        k = self.camera_ctrl.ma_kernel_size
+                        k = k if k % 2 != 0 else k + 1
+                        img = cv2.blur(img, (k, k))
+                    # --------------------------
 
                     self.frame_acquired_signal.emit(img, current_v, total_frames_acquired)
 
@@ -332,6 +355,27 @@ class QIUP_APP(QMainWindow):
         cam_layout.addRow("Gain:", self.gain_spin)
         cam_group.setLayout(cam_layout)
         panel.addWidget(cam_group)
+
+        # --- Moving average toggle ---
+        proc_group = QGroupBox("Processing Options")
+        proc_layout = QFormLayout()
+
+        self.ma_checkbox = QCheckBox("Use Moving Average Filter")
+        self.ma_checkbox.toggled.connect(self._on_ma_toggled)
+
+        self.ma_size_spin = QSpinBox()
+        self.ma_size_spin.setSingleStep(2) # Only allow odd numbers
+        self.ma_size_spin.setRange(3, 101)
+        self.ma_size_spin.setValue(3)
+        self.ma_size_spin.setSuffix(" px")
+        self.ma_size_spin.setEnabled(False)
+        self.ma_size_spin.valueChanged.connect(self._on_ma_size_changed)
+
+        proc_layout.addRow(self.ma_checkbox)
+        proc_layout.addRow("Window Size:", self.ma_size_spin)
+
+        proc_group.setLayout(proc_layout)
+        panel.addWidget(proc_group)
 
         # --- ROI Settings ---
         roi_group = QGroupBox("Plot ROI Settings")
@@ -867,6 +911,25 @@ class QIUP_APP(QMainWindow):
             self.live_proc_worker.is_running = False
             self.live_proc_worker.wait()
             self.live_proc_worker = None
+
+    # ------------------------------------------------------------------
+    # Image Processing UI Slots
+    # ------------------------------------------------------------------
+
+    def _on_ma_toggled(self, checked: bool):
+        self.ma_size_spin.setEnabled(checked)
+        if self.camera is not None:
+            self.camera.use_moving_average = checked
+
+    def _on_ma_size_changed(self, val: int):
+        if val % 2 == 0:
+            val += 1
+            self.ma_size_spin.blockSignals(True)
+            self.ma_size_spin.setValue(val)
+            self.ma_size_spin.blockSignals(False)
+            
+        if self.camera is not None:
+            self.camera.ma_kernel_size = val
 
     # ------------------------------------------------------------------
     # UI update slots
