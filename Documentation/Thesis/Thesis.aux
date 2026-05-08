@@ -26,6 +26,8 @@
 \newacro{SPDC}[\AC@hyperlink{SPDC}{SPDC}]{Spontaneous Parametric Down-Conversion}
 \newacro{CCD}[\AC@hyperlink{CCD}{CCD}]{Charged Coupled Device}
 \newacro{GUI}[\AC@hyperlink{GUI}{GUI}]{Graphical User Interface}
+\newacro{KPZ101}[\AC@hyperlink{KPZ101}{KPZ101}]{KCube Piezo Controller}
+\newacro{KSG101}[\AC@hyperlink{KSG101}{KSG101}]{KCube Strain Gauge Meter}
 \citation{quantum_delta}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{6}{section.1}\protected@file@percent }
 \acronymused{QIUP}
@@ -64,6 +66,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Problem Definition and Objectives}{8}{subsection.1.3}\protected@file@percent }
 \acronymused{QIUP}
 \acronymused{QIUP}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Old Showcase of the QIUP Setup.}}{8}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:old_showcase}{{2}{8}{Old Showcase of the QIUP Setup}{figure.caption.10}{}}
 \acronymused{QIUP}
 \acronymused{FFT}
 \acronymused{QIUP}
@@ -72,40 +76,78 @@
 \acronymused{CMOS}
 \acronymused{FFT}
 \AC@undonewlabel{acro:GUI}
-\newlabel{acro:GUI}{{1.4}{9}{Scope of Work}{section*.10}{}}
+\newlabel{acro:GUI}{{1.4}{9}{Scope of Work}{section*.11}{}}
 \acronymused{GUI}
 \acronymused{GUI}
 \acronymused{QIUP}
-\citation{xie2018surface}
-\citation{kutas2021quantum}
-\citation{takeda1982fourier}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Approach \& Methodology}{10}{subsection.1.5}\protected@file@percent }
 \acronymused{QIUP}
+\citation{xie2018surface}
 \acronymused{CMOS}
 \acronymused{ANT}
 \acronymused{QIUP}
 \acronymused{FFT}
-\citation{xie2018surface}
-\citation{pearce2023practical}
-\acronymused{FFT}
-\acronymused{FFT}
-\acronymused{FFT}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Outline of the Report}{11}{subsection.1.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Analyse / Specifications}{12}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Functional Design}{13}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Technical Design}{14}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Realisation}{15}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Testing}{16}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions and Recommendations}{17}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Conclusions}{17}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Recommendations}{17}{subsection.7.2}\protected@file@percent }
+\citation{NonlinearInterferometry}
+\citation{lemos2014quantum}
+\citation{NonlinearInterferometry}
+\citation{NonlinearInterferometry}
+\citation{NonlinearInterferometry}
+\citation{lemos2014quantum}
+\citation{lemos2014quantum}
+\citation{NonlinearInterferometry}
+\citation{pearce2023practical}
+\citation{NonlinearInterferometry}
+\citation{NonlinearInterferometry}
+\citation{lemos2014quantum}
+\citation{kutas2021quantum}
+\citation{pearce2023practical}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Analysis / Specifications}{13}{section.2}\protected@file@percent }
+\acronymused{QIUP}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Physical Specifications}{13}{subsection.2.1}\protected@file@percent }
+\acronymused{QIUP}
+\acronymused{QIUP}
+\acronymused{SPDC}
+\acronymused{PPLN}
+\acronymused{CMOS}
+\acronymused{QIUP}
+\acronymused{QIUP}
+\acronymused{FFT}
+\acronymused{CMOS}
+\acronymused{FFT}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Hardware Specifications}{14}{subsection.2.2}\protected@file@percent }
+\acronymused{QIUP}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Piezoelectric Stage}{14}{subsubsection.2.2.1}\protected@file@percent }
+\AC@undonewlabel{acro:KPZ101}
+\newlabel{acro:KPZ101}{{2.2.1}{14}{Piezoelectric Stage}{section*.12}{}}
+\acronymused{KPZ101}
+\acronymused{KPZ101}
+\AC@undonewlabel{acro:KSG101}
+\newlabel{acro:KSG101}{{2.2.1}{14}{Piezoelectric Stage}{section*.13}{}}
+\acronymused{KSG101}
+\acronymused{KSG101}
+\acronymused{KSG101}
+\acronymused{QIUP}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}CMOS Camera}{15}{subsubsection.2.2.2}\protected@file@percent }
+\acronymused{CMOS}
+\acronymused{QIUP}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Software Specifications}{15}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Requirements}{15}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Functional Design}{16}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Technical Design}{17}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Realisation}{18}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Testing}{19}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions and Recommendations}{20}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Conclusions}{20}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Recommendations}{20}{subsection.7.2}\protected@file@percent }
 \bibstyle{ieeetr}
 \bibdata{references}
 \bibcite{quantum_delta}{1}
 \bibcite{ThorlabsThorCam}{2}
 \bibcite{ThorlabsKinesis}{3}
 \bibcite{xie2018surface}{4}
-\bibcite{kutas2021quantum}{5}
-\bibcite{takeda1982fourier}{6}
+\bibcite{NonlinearInterferometry}{5}
+\bibcite{lemos2014quantum}{6}
 \bibcite{pearce2023practical}{7}
-\gdef \@abspage@last{20}
+\bibcite{kutas2021quantum}{8}
+\gdef \@abspage@last{23}

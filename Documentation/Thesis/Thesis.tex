@@ -125,6 +125,8 @@ Additionally, a user-friendly interface was developed to allow researchers and p
     \acro{SPDC}{Spontaneous Parametric Down-Conversion}
     \acro{CCD}{Charged Coupled Device}
     \acro{GUI}{Graphical User Interface}
+    \acro{KPZ101}{KCube Piezo Controller}
+    \acro{KSG101}{KCube Strain Gauge Meter}
 %    \acro{FFTW}{Fastest Fourier Transform in the West}
 %    \acro{CPU}{Central Processing Unit}
 %    \acro{SIMD}{Single Instruction, Multiple Data}
@@ -133,10 +135,12 @@ Additionally, a user-friendly interface was developed to allow researchers and p
 
 \newpage
 \section*{List of Figures and Tables}
+\listoffigures
+\listoftables
 
 \newpage
 \section{Introduction}
-This chapter provides an introduction to the project, explains the background and contect of the assignment and also describes the setup of the demonstrational platform for \ac{QIUP} at the \ac{TLC} lab within the \ac{ANT} research group.
+This chapter provides an introduction to the project, explains the background and context of the assignment and also describes the setup of the demonstrational platform for \ac{QIUP} at the \ac{TLC} lab within the \ac{ANT} research group.
 
 \subsection{Background of the Assignment}
     As part of the Quantum Delta program, this project aims to accelerate the development and adoption of quantum technologies \cite{quantum_delta}.
@@ -185,8 +189,17 @@ This chapter provides an introduction to the project, explains the background an
     \subsubsection*{Problem Definition}
     The experimental setup for \ac{QIUP} serves as a powerful proof-of-concept for mid-infrared imaging. 
     However, the current setup has limitations in terms of image quality and user accessibility.
-    There are two main software tools by Thorlabs that are used to control the setup and process the images, Thorcam \cite{ThorlabsThorCam} and Kinesis \cite{ThorlabsKinesis}, which are used for camera and piezoelectric actuator control, but they are not optimized for \ac{QIUP} applications or any further image processing.
-    Using this approach is rather unintuitive and requires a lot of manual work to only get gray scale images, which do not have the best quality.
+    There are two main software tools by Thorlabs that are used to control the setup and process the images, Thorcam \cite{ThorlabsThorCam} (left part of the figure \ref{fig:old_showcase}) and Kinesis \cite{ThorlabsKinesis} (right part of the figure \ref{fig:old_showcase}), which are used for camera and piezoelectric actuator control, but they are not optimized for \ac{QIUP} applications or any image processing.
+    Using this approach is rather unintuitive and requires a lot of manual work to only get gray scale images, which do not have the best quality as illustrated in Figure \ref{fig:old_showcase}.
+
+    \begin{figure}[H]
+    \centering
+        \includegraphics[width=\linewidth]{images/old_showcase.png}
+        \caption{Old Showcase of the QIUP Setup.}
+        \label{fig:old_showcase}
+    \end{figure}
+
+    
 
     \subsubsection*{Objectives}
     The main objective of this project is to transform the current laboratory setup into a robust, automated, and user-friendly demonstrator platform for \ac{QIUP} technology demonstration, which can be divided into the following sub-objectives:
@@ -246,18 +259,12 @@ This chapter provides an introduction to the project, explains the background an
     To capture and translate these interferometric effects into a clear image, this project implements a pixel-wise \ac{FFT} approach. 
     Rather than analyzing the spatial patterns of a single frame, the software treats every individual pixel on the camera as an independent sensor. 
     It tracks how the brightness of each pixel changes over a sequence of phase-shifted frames, creating a time-domain signal. 
-
-    Applying an \ac{FFT} to this pixel-wise signal is highly advantageous for several signal-processing and experimental reasons \cite{kutas2021quantum, takeda1982fourier}:
-    \begin{itemize}
-        \item \textbf{Targeted Signal Extraction:} Since the piezoelectric stage moves at a known, controlled rate, the expected interference creates a specific "modulation frequency" \cite{xie2018surface}. The \ac{FFT} isolates this exact frequency, allowing the software to ignore all other irrelevant light variations.
-        \item \textbf{Inherent Noise Filtering:} In a laboratory setup, images are plagued by constant background light and high-frequency electronic camera noise. The \ac{FFT} naturally separates these: constant background light is pushed to the 0~Hz (DC) bin, and random flicker is scattered across higher frequencies, leaving the isolated interference signal incredibly clean \cite{pearce2023practical}.
-    \end{itemize}
     
     \subsection{Outline of the Report}
     \begin{enumerate}
         \item \textbf{Introduction:} Provides background on quantum imaging technology, defines the problem statement, outlines project objectives, and presents the methodology and scope of work.
         
-        \item \textbf{Analyse/Specifications:} Details the requirements analysis, system specifications, and constraints for the enhanced image processing and user interface development.
+        \item \textbf{Analysis / Specifications:} Details the requirements analysis, system specifications, and constraints for the enhanced image processing and user interface development.
         
         \item \textbf{Functional Design:} Describes the functional architecture, user workflows, and feature specifications for the image processing algorithms and UI components.
         
@@ -271,7 +278,77 @@ This chapter provides an introduction to the project, explains the background an
     \end{enumerate}
 
 \newpage
-\section{Analyse / Specifications}
+\section{Analysis / Specifications}
+    In this chapter, the requirements for the \ac{QIUP} project will be analyzed. 
+    Additionally to the requirements, the constraints will be discussed and specified
+
+    \subsection{Physical Specifications}
+    To grasp how this demonstrational setup works, it is crucial to understand the underlying physical principles and components that enable \ac{QIUP} technology.
+        
+    \textbf{Nonlinear Interferometry} \\
+        To understand how \ac{QIUP} works, it is essential to first understand whats behind it: the nonlinear interferometer. 
+        In classical optics, a standard interferometer uses mirrors and beam splitters to divide a single beam of light, send the halves along different paths, and recombine them to measure interference patterns. 
+        A nonlinear interferometer, however, replaces standard beam splitters with nonlinear crystals to exploit the quantum properties of light \cite{NonlinearInterferometry}.
+        
+    \textbf{Spontaneous Parametric Down-Conversion}\\
+        The core of this system is a quantum optical process called \ac{SPDC} \cite{lemos2014quantum}. 
+        When a high-energy laser (the laser pump) illuminates a specialized nonlinear crystal in our case the \ac{PPLN} crystal, a photon will spontaneously split into a pair of photons at different wavelengths \cite{NonlinearInterferometry}. 
+        These two newly created photons are called the signal photon and the idler photon. 
+        In the context of this demonstrator, the signal photon is in the visible spectrum (detected by the \ac{CMOS} camera), while the idler photon is in the infrared spectrum (which will interact with the object).
+        
+    \textbf{Induced Coherence and "Which-Way" Information}\\
+        The foundational principle behind \ac{QIUP} is a phenomenon known as ``induced coherence without induced emission'' \cite{NonlinearInterferometry}. 
+        Imagine an optical setup configured so that a signal-idler photon pair could be created in a first crystal or a second identical crystal. 
+        The system is precisely aligned so that the path of the idler photon from the first crystal overlaps perfectly with the emission path of the idler from the second crystal.
+        
+    \textbf{Indistinguishability and Interference:} Quantum interference is observed at the camera only if the path taken by the photon is fundamentally unknown \cite{NonlinearInterferometry, lemos2014quantum}. 
+        In \ac{QIUP}, the alternating fringe pattern extracted via \ac{FFT} exists because the signal photon's origin is undefined.
+        By perfectly overlapping the infrared idler and signal beams, the setup intentionally erases the ``which-way'' (or welcher-weg) information regarding where the photon pair was generated \cite{lemos2014quantum, NonlinearInterferometry}. 
+        This forced spatial indistinguishability induces coherence between the visible signal photons, enabling them to interfere even though they never interacted with the sample \cite{pearce2023practical, NonlinearInterferometry}. 
+    
+    \textbf{Extracting the Image}\\
+        To turn this quantum phenomenon into an imaging system, the sample is placed in the path of the idler photon. The transmission and phase properties of the object directly control the visibility of the interference fringes seen in the signal beam \cite{NonlinearInterferometry}. 
+        The infrared idler photon gathers the physical information about the object, but it is entirely discarded and never reaches a detector \cite{lemos2014quantum}. 
+        Meanwhile, the visible signal photon never interacts with the object, yet its interference pattern, captured by the \ac{CMOS} camera and processed via \ac{FFT}, contains the complete image \cite{kutas2021quantum, pearce2023practical}.
+                    
+    \subsection{Hardware Specifications}
+
+        The demonstrational setup has several programmable hardware components that are essential for the operation of the \ac{QIUP} system.
+
+        \subsubsection{Piezoelectric Stage} 
+        To utlilize the principle of induced coherence, the setup relies on a piezoelectric stage to precisely control the optical path length of the signal beam in µm.
+        This is necessary to create the phase shifts required for the interference pattern to emerge and be captured by the camera.
+        
+        The piezoelectric stage consists of two components:
+        \begin{itemize}
+            \item \ac{KPZ101}: \\
+                With the \ac{KPZ101} we are able to control the position of the piezoelectric stage with high precision, allowing for accurate phase scanning and modulation of the interference pattern.
+                This is possible by applying voltage to the piezoelectric actuator, which causes it to expand or contract, thus changing the optical path length of the signal beam.
+
+            \item \ac{KSG101} \\
+                The \ac{KSG101} is a strain gauge meter that provides feedback on the position of the piezoelectric stage, ensuring precise control and stability during the phase scanning process, which is needed because we need to have exactly one phase cycle otherwise we encounter spectral leakage.
+        \end{itemize}
+
+        \textbf{Open \& Closed loop mode} \\
+        The piezoelectric stage can operate in both open-loop and closed-loop modes. 
+        In open-loop mode, the position of the stage is controlled solely by the input voltage, without any feedback. 
+        In closed-loop mode, the system uses feedback from the \ac{KSG101} to adjust the voltage and maintain a precise position, which is crucial for achieving stable and accurate phase modulation in the \ac{QIUP} setup.
+
+        \subsubsection{CMOS Camera}
+
+        The Thorlabs Zelux \ac{CMOS} camera is used as the detector in the \ac{QIUP} setup to capture signal photons, which contain the image information retrieved by the idler photons.
+    
+    \subsection{Software Specifications}
+
+        \textbf{Programming Language} \\
+
+        \textbf{Software Development Kits} \\
+
+        \textbf{Libraries} \\
+
+    \subsection{Requirements}
+        \subsubsection*{User Requirements}
+        \subsubsection*{System Requirements}
 
 \newpage
 \section{Functional Design}

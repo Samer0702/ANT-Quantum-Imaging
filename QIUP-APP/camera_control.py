@@ -163,13 +163,18 @@ class CameraController:
         If AUTO_DETECT_BIN is False the class constant F1_BIN is returned
         directly (fastest path, requires a correctly calibrated scan range).
         """
+        
         if not self.AUTO_DETECT_BIN:
             return self.F1_BIN
 
-        # Compute mean spectral magnitude per bin (exclude DC at index 0).
-        mean_magnitudes = np.abs(self._fft_output[1:n_frames // 2]).mean(axis=(1, 2))
-        return int(mean_magnitudes.argmax()) + 1  # +1 because we sliced from index 1
+        limit = n_frames // 2
+        if limit <= 1:
+            return 1
 
+        mean_magnitudes = np.abs(self._fft_output[1:limit]).mean(axis=(1, 2))
+        return int(mean_magnitudes.argmax()) + 1
+    
+    
     # ------------------------------------------------------------------
     # Core processing
     # ------------------------------------------------------------------
@@ -243,49 +248,78 @@ class CameraController:
         contrast: np.ndarray,
         phase: np.ndarray,
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        """
-        Convert the three raw float maps to 8-bit RGB images for display.
-
-        Colormap choices:
-            Visibility → Viridis   (perceptually uniform, 0-1 range expected)
-            Contrast   → Plasma    (normalised to its own min/max per frame)
-            Phase      → Twilight  (circular colormap, correct for ±π wrapping)
-        """
-        # Visibility: physical range 0–1, clip before scaling.
+        
+        # 1. Standard 8-bit conversions
         vis_8bit = np.clip(visibility * 255.0, 0, 255).astype(np.uint8)
         vis_color = cv2.applyColorMap(vis_8bit, cv2.COLORMAP_VIRIDIS)
 
-        # Contrast: arbitrary units — normalise relative to the frame's own range.
-        contrast_8bit = cv2.normalize(
-            contrast, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U
-        )
+        contrast_8bit = cv2.normalize(contrast, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
         contrast_color = cv2.applyColorMap(contrast_8bit, cv2.COLORMAP_PLASMA)
 
-        # Phase: maps (-π, π] → (0, 255].
         phase_8bit = ((phase + np.pi) / (2.0 * np.pi) * 255.0).astype(np.uint8)
         phase_color = cv2.applyColorMap(phase_8bit, cv2.COLORMAP_TWILIGHT)
 
-        # OpenCV produces BGR; convert to RGB for PyQt5 display.
+        # Convert BGR to RGB
         vis_color = cv2.cvtColor(vis_color, cv2.COLOR_BGR2RGB)
         contrast_color = cv2.cvtColor(contrast_color, cv2.COLOR_BGR2RGB)
         phase_color = cv2.cvtColor(phase_color, cv2.COLOR_BGR2RGB)
 
-        # =================================================================
-        # NEW: Amplitude Masking to remove "Rainbow Static" background
-        # =================================================================
-        # 1. Define the noise threshold. Any pixel with a visibility below 
-        #    this value will be completely blacked out in the phase map.
-        vis_threshold = 0.10  # 10% visibility. Adjust this based on your noise floor!
-
-        # 2. Create a boolean mask. We add a new axis so its shape becomes 
-        #    (H, W, 1), allowing it to broadcast across the 3 RGB color channels.
+        # Apply the Amplitude Masking for Phase
+        vis_threshold = 0.10
         mask_3d = (visibility > vis_threshold)[..., np.newaxis]
-
-        # 3. Apply the mask: keep the original color if True, otherwise set to 0 (Black).
         phase_color = np.where(mask_3d, phase_color, 0).astype(np.uint8)
-        
-        # Optional: You can also uncomment this to clean up the contrast map!
-        # contrast_color = np.where(mask_3d, contrast_color, 0).astype(np.uint8)
-        # =================================================================
 
-        return vis_color, contrast_color, phase_color
+        v_min, v_max = np.min(visibility), np.max(visibility)
+        # 2. Add Colorbars to each image
+        vis_with_scale = self._add_colorbar(vis_color, cv2.COLORMAP_VIRIDIS, f"{v_min:.1f}", f"{v_max:.1f}", "Visibility")
+        
+        # For contrast, we use the local min/max text
+        c_min, c_max = np.min(contrast), np.max(contrast)
+        contrast_with_scale = self._add_colorbar(contrast_color, cv2.COLORMAP_PLASMA, f"{c_min:.1f}", f"{c_max:.1f}", "Contrast")
+        
+        phase_with_scale = self._add_colorbar(phase_color, cv2.COLORMAP_TWILIGHT, "-pi", "pi", "Phase")
+
+        return vis_with_scale, contrast_with_scale, phase_with_scale
+
+    def _add_colorbar(self, image, colormap_type, label_min, label_max, title):
+        """
+        Helper to append a vertical colorbar with labels to the right of an image.
+        """
+        h, w, _ = image.shape
+        cb_width = 80  # Width of the color strip
+        padding = 40   # Extra space for text labels
+        
+        # Create a vertical gradient from 255 (top) to 0 (bottom)
+        gradient = np.linspace(255, 0, h).astype(np.uint8).reshape(h, 1)
+        gradient_strip = np.repeat(gradient, cb_width, axis=1)
+        
+        # Apply the same colormap and convert to RGB
+        color_strip = cv2.applyColorMap(gradient_strip, colormap_type)
+        color_strip = cv2.cvtColor(color_strip, cv2.COLOR_BGR2RGB)
+        
+        # Create a canvas to hold image + colorbar + text padding
+        canvas = np.zeros((h, w + cb_width + padding, 3), dtype=np.uint8)
+        canvas[:, :w] = image
+        canvas[:, w:w+cb_width] = color_strip
+        
+        # Add Text Labels using OpenCV
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 0.5
+        thickness = 1
+        outline_thickness = 3
+        white = (255, 255, 255)
+        black = (0, 0, 0)
+
+        # Positions for labels
+        pos_max = (w + cb_width + 5, 20)
+        pos_min = (w + cb_width + 5, h - 10)
+        pos_title = (w + 5, 15)
+
+        # Draw labels with outlines
+        for pos, text in [(pos_max, label_max), (pos_min, label_min), (pos_title, title)]:
+            # 1. Draw the Black Outline
+            cv2.putText(canvas, text, pos, font, font_scale, black, outline_thickness, cv2.LINE_AA)
+            # 2. Draw the White Text on top
+            cv2.putText(canvas, text, pos, font, font_scale, white, thickness, cv2.LINE_AA)
+
+        return canvas

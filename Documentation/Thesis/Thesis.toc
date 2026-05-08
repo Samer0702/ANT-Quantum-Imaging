@@ -5,11 +5,17 @@
 \contentsline {subsection}{\numberline {1.4}Scope of Work}{9}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Approach \& Methodology}{10}{subsection.1.5}%
 \contentsline {subsection}{\numberline {1.6}Outline of the Report}{11}{subsection.1.6}%
-\contentsline {section}{\numberline {2}Analyse / Specifications}{12}{section.2}%
-\contentsline {section}{\numberline {3}Functional Design}{13}{section.3}%
-\contentsline {section}{\numberline {4}Technical Design}{14}{section.4}%
-\contentsline {section}{\numberline {5}Realisation}{15}{section.5}%
-\contentsline {section}{\numberline {6}Testing}{16}{section.6}%
-\contentsline {section}{\numberline {7}Conclusions and Recommendations}{17}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Conclusions}{17}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Recommendations}{17}{subsection.7.2}%
+\contentsline {section}{\numberline {2}Analysis / Specifications}{13}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Physical Specifications}{13}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Hardware Specifications}{14}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Piezoelectric Stage}{14}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}CMOS Camera}{15}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Software Specifications}{15}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Requirements}{15}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Functional Design}{16}{section.3}%
+\contentsline {section}{\numberline {4}Technical Design}{17}{section.4}%
+\contentsline {section}{\numberline {5}Realisation}{18}{section.5}%
+\contentsline {section}{\numberline {6}Testing}{19}{section.6}%
+\contentsline {section}{\numberline {7}Conclusions and Recommendations}{20}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Conclusions}{20}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Recommendations}{20}{subsection.7.2}%
