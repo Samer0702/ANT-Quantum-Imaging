@@ -1,0 +1,21 @@
+{
+    "exposure_ms": 200,
+    "gain_db": 35,
+    "n_frames": 8,
+    "total_range_um": 0.81,
+    "settling_ms": 10,
+    "roi_center_x": 580,
+    "roi_center_y": 538,
+    "roi_box_size": 50,
+    "processing_time_s": 0.1453070999996271,
+    "moving_average": true,
+    "ma_kernel_size": 5,
+    "scale_factors_pct": {
+        "v_min_pct": 0.0,
+        "v_max_pct": 1.0,
+        "c_min_pct": 0.0,
+        "c_max_pct": 1.0,
+        "p_min_pct": 0.0,
+        "p_max_pct": 1.0
+    }
+}
