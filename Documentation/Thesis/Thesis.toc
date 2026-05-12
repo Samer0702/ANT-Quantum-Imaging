@@ -8,14 +8,12 @@
 \contentsline {section}{\numberline {2}Analysis / Specifications}{13}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Physical Specifications}{13}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Hardware Specifications}{14}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Piezoelectric Stage}{14}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}CMOS Camera}{15}{subsubsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.3}Software Specifications}{15}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Requirements}{15}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Functional Design}{16}{section.3}%
-\contentsline {section}{\numberline {4}Technical Design}{17}{section.4}%
-\contentsline {section}{\numberline {5}Realisation}{18}{section.5}%
-\contentsline {section}{\numberline {6}Testing}{19}{section.6}%
-\contentsline {section}{\numberline {7}Conclusions and Recommendations}{20}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Conclusions}{20}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Recommendations}{20}{subsection.7.2}%
+\contentsline {subsection}{\numberline {2.3}Software Specifications}{16}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Requirements}{17}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Functional Design}{20}{section.3}%
+\contentsline {section}{\numberline {4}Technical Design}{21}{section.4}%
+\contentsline {section}{\numberline {5}Realisation}{22}{section.5}%
+\contentsline {section}{\numberline {6}Testing}{23}{section.6}%
+\contentsline {section}{\numberline {7}Conclusions and Recommendations}{24}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Conclusions}{24}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Recommendations}{24}{subsection.7.2}%

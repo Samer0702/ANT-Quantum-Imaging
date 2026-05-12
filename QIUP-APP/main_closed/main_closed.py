@@ -1,5 +1,4 @@
 import sys
-import time
 import os
 import ctypes
 import json
@@ -14,291 +13,24 @@ from PyQt5.QtWidgets import (
     QToolBar, QAction, QSizePolicy, QMessageBox, QCheckBox, QTabWidget, QFileDialog,
     QSlider, QSplitter, QMenu, QWidgetAction, QToolButton
 )
-from PyQt5.QtCore import Qt, QThread, pyqtSignal
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap, QIcon
 
-from piezo_version_4 import PiezoController
-from camera_version_4 import CameraController 
-
-
-# ---------------------------------------------------------------------------
-# Custom UI Components
-# ---------------------------------------------------------------------------
-
-class ClickableLabel(QLabel):
-    clicked = pyqtSignal(int, int)
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.clicked.emit(event.pos().x(), event.pos().y())
-        super().mousePressEvent(event)
-
-
-class ScalableImageLabel(QLabel):
-    double_clicked = pyqtSignal()
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._original_pixmap = None
-        self.setAlignment(Qt.AlignCenter)
-        self.setMinimumSize(500, 500)
-        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
-    def setPixmap(self, pixmap):
-        self._original_pixmap = pixmap
-        self._rescale()
-
-    def _rescale(self):
-        if self._original_pixmap and not self._original_pixmap.isNull():
-            scaled = self._original_pixmap.scaled(
-                self.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation
-            )
-            super().setPixmap(scaled)
-        elif self._original_pixmap is None:
-            super().setPixmap(QPixmap())
-
-    def resizeEvent(self, event):
-        self._rescale()
-        super().resizeEvent(event)
-
-    def original_pixmap(self):
-        return self._original_pixmap
-
-    def mouseDoubleClickEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.double_clicked.emit()
-        super().mouseDoubleClickEvent(event)
-
-
-# ---------------------------------------------------------------------------
-# Background Thread 1: Single Acquisition
-# ---------------------------------------------------------------------------
-
-class AcquisitionWorker(QThread):
-    finished_signal = pyqtSignal(object, object, object)
-    error_signal = pyqtSignal(str)
-    progress_signal = pyqtSignal(str)
-    frame_acquired_signal = pyqtSignal(np.ndarray, float, int)
-
-    def __init__(
-        self,
-        camera_ctrl: CameraController,
-        piezo_ctrl: PiezoController,
-        n_frames: int,
-        start_um: float,
-        step_um: float,
-        settling_time: float,
-        scale_factors: dict
-    ):
-        super().__init__()
-        self.camera_ctrl = camera_ctrl
-        self.piezo_ctrl = piezo_ctrl
-        self.n_frames = n_frames
-        self.start_um = start_um
-        self.step_um = step_um
-        self.settling_time = settling_time
-        
-        self.scale_factors = scale_factors
-        self.is_running = True
-        self.last_proc_time = 0.0
-
-    def run(self):
-        try:
-            self._run_scan()
-        except Exception as exc:
-            self.error_signal.emit(str(exc))
-
-    def _run_scan(self):
-        self.progress_signal.emit("Starting acquisition…")
-        h = self.camera_ctrl.image_height
-        w = self.camera_ctrl.image_width
-        image_stack = np.zeros((self.n_frames, h, w), dtype=np.float32)
-        frames_acquired = 0
-
-        while frames_acquired < self.n_frames and self.is_running:
-            target_um = self.start_um + (frames_acquired * self.step_um)
-            if not self.piezo_ctrl.move_to_um(target_um):
-                self.error_signal.emit(f"Piezo failed to move to {target_um:.3f} µm.")
-                return
-            
-            time.sleep(self.settling_time)
-            
-            self.camera_ctrl.camera.issue_software_trigger()
-            frame = self.camera_ctrl.camera.get_pending_frame_or_null()
-            
-            if frame is not None:
-                img = np.copy(frame.image_buffer).reshape(h, w)
-                img = cv2.flip(img, 0)
-                
-                if self.camera_ctrl.use_moving_average:
-                    k = self.camera_ctrl.ma_kernel_size
-                    k = k if k % 2 != 0 else k + 1
-                    img = cv2.blur(img, (k, k))
-                
-                image_stack[frames_acquired] = img
-                
-                # Fetch actual displacement for graph
-                actual_um = self.piezo_ctrl.get_displacement()
-                pos_to_record = actual_um if actual_um is not None else target_um
-                
-                self.frame_acquired_signal.emit(img, pos_to_record, frames_acquired)
-                frames_acquired += 1
-                self.progress_signal.emit(f"Frame {frames_acquired} / {self.n_frames}")
-            else:
-                time.sleep(0.01)
-
-        if not self.is_running:
-            self.progress_signal.emit("Acquisition aborted.")
-            return
-
-        # Return to start
-        self.piezo_ctrl.move_to_um(self.start_um)
-        
-        self.progress_signal.emit("Computing Fourier transform…")
-        t_start = time.perf_counter()
-        
-        vis, contrast, phase = self.camera_ctrl.process_quantum_image(
-            image_stack, scale_factors=self.scale_factors
-        )
-        
-        t_end = time.perf_counter()
-        self.last_proc_time = t_end - t_start
-        self.finished_signal.emit(vis, contrast, phase)
-
-
-# ---------------------------------------------------------------------------
-# Background Thread 2: Raw Live Feed
-# ---------------------------------------------------------------------------
-
-class LiveFeedWorker(QThread):
-    frame_ready_signal = pyqtSignal(np.ndarray)
-    error_signal = pyqtSignal(str)
-
-    def __init__(self, camera_ctrl: CameraController):
-        super().__init__()
-        self.camera_ctrl = camera_ctrl
-        self.is_running = True
-
-    def run(self):
-        cam = self.camera_ctrl.camera
-        w = self.camera_ctrl.image_width
-        h = self.camera_ctrl.image_height
-        
-        while self.is_running:
-            try:
-                frame = cam.get_pending_frame_or_null()
-                if frame is not None:
-                    img = np.copy(frame.image_buffer).reshape(h, w)
-                    img = cv2.flip(img, 0)
-                    
-                    if self.camera_ctrl.use_moving_average:
-                        k = self.camera_ctrl.ma_kernel_size
-                        k = k if k % 2 != 0 else k + 1
-                        img = cv2.blur(img, (k, k))
-                    
-                    img = cv2.GaussianBlur(img, (5, 5), 0)
-                    self.frame_ready_signal.emit(img)
-                else:
-                    time.sleep(0.01)
-            except Exception as exc:
-                if self.is_running:
-                    self.error_signal.emit(str(exc))
-                break
-
-
-# ---------------------------------------------------------------------------
-# Background Thread 3: Live Quantum Processing
-# ---------------------------------------------------------------------------
-
-class LiveProcessingWorker(QThread):
-    maps_ready_signal = pyqtSignal(np.ndarray, np.ndarray, np.ndarray)
-    frame_acquired_signal = pyqtSignal(np.ndarray, float, int)
-    error_signal = pyqtSignal(str)
-
-    def __init__(
-        self,
-        camera_ctrl: CameraController,
-        piezo_ctrl: PiezoController,
-        n_frames: int,
-        start_um: float,
-        step_um: float,
-        settling_time: float,
-        scale_factors: dict
-    ):
-        super().__init__()
-        self.camera_ctrl = camera_ctrl
-        self.piezo_ctrl = piezo_ctrl
-        self.n_frames = n_frames
-        self.start_um = start_um
-        self.step_um = step_um
-        self.settling_time = settling_time
-        self.scale_factors = scale_factors
-        self.is_running = True
-
-    def run(self):
-        cam = self.camera_ctrl.camera
-        w = self.camera_ctrl.image_width
-        h = self.camera_ctrl.image_height
-        
-        voltage_buffer = np.zeros((self.n_frames, h, w), dtype=np.float32)
-        total_frames_acquired = 0
-
-        while self.is_running:
-            try:
-                step_index = total_frames_acquired % self.n_frames
-                target_um = self.start_um + (step_index * self.step_um)
-                
-                if not self.piezo_ctrl.move_to_um(target_um):
-                    self.error_signal.emit(f"Piezo failed at {target_um:.3f} µm.")
-                    break
-                
-                time.sleep(self.settling_time)
-                
-                cam.issue_software_trigger()
-                frame = cam.get_pending_frame_or_null()
-                
-                if frame is not None:
-                    img = np.copy(frame.image_buffer).reshape(h, w)
-                    img = cv2.flip(img, 0)
-                    
-                    if self.camera_ctrl.use_moving_average:
-                        k = self.camera_ctrl.ma_kernel_size
-                        k = k if k % 2 != 0 else k + 1
-                        img = cv2.blur(img, (k, k))
-                    
-                    actual_um = self.piezo_ctrl.get_displacement()
-                    pos_to_record = actual_um if actual_um is not None else target_um
-                    
-                    self.frame_acquired_signal.emit(img, pos_to_record, total_frames_acquired)
-                    
-                    voltage_buffer[step_index] = img
-                    total_frames_acquired += 1
-                    
-                    if total_frames_acquired >= self.n_frames:
-                        vis, contrast, phase = self.camera_ctrl.process_quantum_image(
-                            voltage_buffer, scale_factors=self.scale_factors
-                        )
-                        self.maps_ready_signal.emit(vis, contrast, phase)
-                        
-            except Exception as exc:
-                if self.is_running:
-                    self.error_signal.emit(str(exc))
-                break
-
-
-# ---------------------------------------------------------------------------
-# Main Application Window
-# ---------------------------------------------------------------------------
+from piezo_control_closed import PiezoController
+from camera_control import CameraController 
+from ui_components import ClickableLabel, ScalableImageLabel
+from acquisition_workers import SingleAcquisitionWorker, LiveFeedWorker, LiveProcessingWorker
 
 class QIUP_APP(QMainWindow):
 
     _DEFAULT_START_UM = 0.0
-    _DEFAULT_TOTAL_UM = 0.405
+    _DEFAULT_TOTAL_UM = 0.775   
     _DEFAULT_SETTLING_MS = 10
 
     def __init__(self):
         super().__init__()
-        self.base_dir = os.path.dirname(os.path.abspath(__file__))
+        # Adjusted pathing as discussed previously
+        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.logo_path = os.path.join(self.base_dir, "logo", "Logo_ANT.png")
 
         self.setWindowTitle("NANO: QIUP Dashboard")
@@ -308,18 +40,16 @@ class QIUP_APP(QMainWindow):
         self.piezo: PiezoController | None = None
         self.camera: CameraController | None = None
 
-        self.acq_worker: AcquisitionWorker | None = None
+        self.acq_worker: SingleAcquisitionWorker | None = None
         self.live_worker: LiveFeedWorker | None = None
         self.live_proc_worker: LiveProcessingWorker | None = None
 
-        # UPDATED: Dictionary mapped by Step Index (int) -> (Position, Intensity) tuple
         self.positions_intensities: dict[int, tuple[float, float]] = {}
 
         self._setup_ui()
         self._apply_theme()
 
     def _setup_ui(self):
-        # ========== TOP TOOLBAR ==========
         toolbar = QToolBar("Main Toolbar")
         toolbar.setMovable(False)
         toolbar.setStyleSheet("QToolBar { spacing: 8px; padding: 5px; }")
@@ -337,10 +67,11 @@ class QIUP_APP(QMainWindow):
         toolbar.addWidget(self.disconnect_btn)
 
         toolbar.addSeparator()
-        self.start_btn = QPushButton("Standard")
+        
+        self.start_btn = QPushButton("Single ")
         self.start_btn.setToolTip("Run a single, fixed-frame phase-stepping acquisition sequence.")
         self.start_btn.setEnabled(False)
-        self.start_btn.clicked.connect(self._run_acquisition)
+        self.start_btn.clicked.connect(self._run_single_acquisition)
         toolbar.addWidget(self.start_btn)
 
         self.live_proc_btn = QPushButton("Live")
@@ -958,7 +689,7 @@ class QIUP_APP(QMainWindow):
         self.save_btn.setEnabled(False)
         self.statusBar().showMessage("Hardware disconnected.")
 
-    def _run_acquisition(self):
+    def _run_single_acquisition(self):
         self.start_btn.setEnabled(False)
         self.live_btn.setEnabled(False)
         self.live_proc_btn.setEnabled(False)
@@ -975,12 +706,12 @@ class QIUP_APP(QMainWindow):
 
         self._reset_sliders()
 
-        # DYNAMIC STEP CALCULATION
         n_frames = self.frames_spin.value()
         total_range = self.total_range_spin.value()
         calc_step_um = total_range / n_frames
 
-        self.acq_worker = AcquisitionWorker(
+        # Instantiate the newly named worker
+        self.acq_worker = SingleAcquisitionWorker(
             camera_ctrl=self.camera,
             piezo_ctrl=self.piezo,
             n_frames=n_frames,
@@ -1105,7 +836,7 @@ class QIUP_APP(QMainWindow):
             self.live_btn.setEnabled(True)
             self.live_proc_btn.setEnabled(True)
             self.save_btn.setEnabled(False)
-            self.start_btn.setText("Standard")
+            self.start_btn.setText("Single")
             self.live_btn.setText("Raw Feed")
             self.live_proc_btn.setText("Live")
 
@@ -1227,7 +958,7 @@ class QIUP_APP(QMainWindow):
         self.live_btn.setEnabled(True)
         self.live_proc_btn.setEnabled(True)
         self.save_btn.setEnabled(True)
-        self.start_btn.setText("Standard")
+        self.start_btn.setText("Single")
 
     @staticmethod
     def _cv_to_pixmap(cv_img: np.ndarray) -> QPixmap:

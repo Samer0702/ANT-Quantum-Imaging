@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{quantum_delta}
 {Quantum Delta NL}, ``Quantum delta {NL},'' 2024.
@@ -35,5 +35,35 @@ E.~Pearce, N.~R. Gemmell, J.~Fl{\'o}rez, J.~Ding, R.~F. Oulton, A.~S. Clark,
 M.~Kutas, B.~Haase, J.~Klier, D.~Molter, and G.~von Freymann,
   ``Quantum-inspired terahertz spectroscopy with visible photons,'' {\em
   Optica}, 2021.
+
+\bibitem{ThorlabsKPZ101}
+{Thorlabs, Inc.}, {\em {K-Cube Piezo Controller User Guide}}.
+\newblock Thorlabs, Inc., Newton, NJ, USA, 2022.
+\newblock HA0365T Rev E.
+
+\bibitem{ThorlabsKSG101}
+{Thorlabs, Inc.}, {\em {K-Cube Strain Gauge Reader User Guide}}.
+\newblock Thorlabs, Inc., Newton, NJ, USA, 2022.
+\newblock HA0374T Rev Bk.
+
+\bibitem{TSIDocs}
+{Thorlabs, Inc.}, ``{Thorlabs Scientific Imaging (TSI) Camera Python SDK
+  Documentation},'' 2024.
+
+\bibitem{KinesisInPython}
+{Thorlabs}, ``{Python Automation of a Power Meter and Rotation Mount (Viewer
+  Inspired) | Thorlabs Insights}.'' YouTube video, Jul 2022.
+\newblock Accessed: 2026-05-11.
+
+\bibitem{pyfftw}
+C.~Gohlke, R.~Gowers, {\em et~al.}, ``pyfftw: A python wrapper around {FFTW},''
+  2023.
+
+\bibitem{FFTW_paper}
+M.~Frigo and S.~G. Johnson, ``The design and implementation of {FFTW3},'' {\em
+  Proceedings of the IEEE}, 2005.
+
+\bibitem{FFTWwebsite}
+M.~Frigo and S.~G. Johnson, ``{FFTW} home page,'' 2024.
 
 \end{thebibliography}

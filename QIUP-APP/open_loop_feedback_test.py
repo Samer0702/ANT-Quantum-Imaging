@@ -45,10 +45,6 @@ def run_test():
         if not strain.IsSettingsInitialized(): 
             strain.WaitForSettingsInitialized(5000)
 
-        # --- THE CRITICAL FIX: HARDWARE CONTEXT ---
-        # NOTE: For GetPiezoConfiguration to load correct bounds (e.g., 20um, 75V), 
-        # you MUST have previously opened the Thorlabs Kinesis PC software, 
-        # assigned your specific actuator to this KPZ101, and clicked "Persist Settings to Device".
         piezo_config = piezo.GetPiezoConfiguration(PIEZO_SERIAL)
         strain_config = strain.GetStrainGaugeConfiguration(STRAIN_SERIAL)
         # ------------------------------------------
@@ -60,39 +56,36 @@ def run_test():
         strain.EnableDevice()
         time.sleep(0.5)
 
-        
-        # Command 0 Volts so the piezo is fully retracted and stable
+        # 1. Command 0 Volts so the piezo is fully retracted and stable
         piezo.SetOutputVoltage(System.Convert.ToDecimal(0.0))
         time.sleep(1.0)
-
-        # 2. Zero the Strain Gauge while the Piezo is relaxed
-        print("Zeroing strain gauge... please wait 15 seconds.")
+        
+        # 2. Zero the strain gauge so our reference point is exactly 0.0 µm
+        print("Zeroing Strain Gauge (this takes ~5-10 seconds)...")
         strain.SetZero()
-        time.sleep(15.0)
+        time.sleep(5.0) # Give it time to finish zeroing
 
         # 3. NOW it is safe to engage the PID Loop
         # IMPORTANT: Ensure the SMA cable connects KSG101 'SIG OUT' to KPZ101 'EXT IN', 
         # OR ensure the K-Cube hub routing switches are correctly set on the back of the cubes.
-        print("Setting mode: Closed Loop...")
-        piezo.SetPositionControlMode(PiezoControlModeTypes.CloseLoop)
+        print("Setting mode: Open Loop...")
+        piezo.SetPositionControlMode(PiezoControlModeTypes.OpenLoop)
         time.sleep(1.0)
 
-        # Test Motion Cycle in absolute micrometers
-        test_steps_um = [0.0, 5.0, 10.0, 15.0, 20.0, 0.0]
-        MAX_TRAVEL_UM = 20.0
+        # Test Motion Cycle in absolute Volts (Assuming standard 75V max piezo)
+        test_steps_V = [0.0, 5.0, 10.0, 15.0, 20.0, 75.0 ,]
+        MAX_TRAVEL_UM = 20.0 # Adjust to your specific piezo hardware limit
         
         print("\nStarting Test Cycle (Calibrated):")
-        print(f"{'Target µm':>10} | {'Readback µm':>15} | {'Raw ADC'}")
+        print(f"{'Target V':>10} | {'Readback µm':>15} | {'Raw ADC'}")
         print("-" * 42)
 
-        for step_um in test_steps_um:
-            # 1. Convert micrometers to a percentage (0.0 to 100.0)
-            target_pct = (step_um / MAX_TRAVEL_UM) * 100.0
+        for step_V in test_steps_V:
             
-            # Command the piezo using a percentage to bypass device-unit confusion
-            piezo.SetPercentageTravel(System.Convert.ToDecimal(float(target_pct)))
+            # THE FIX: In Open Loop, you must command Volts directly
+            piezo.SetOutputVoltage(System.Convert.ToDecimal(float(step_V)))
             
-            # Allow time for the piezo PID loop to settle
+            # Allow time for the piezo to physically move
             time.sleep(3.0)
             
             # 2. Get the raw ADC reading from the Strain Gauge
@@ -102,7 +95,7 @@ def run_test():
             # Note: 32767 is the full-scale 16-bit integer for 100% travel
             displacement_um = (raw_reading / 32767.0) * MAX_TRAVEL_UM
             
-            print(f"{step_um:10.1f} | {displacement_um:12.3f} µm    | {raw_reading}")
+            print(f"{step_V:10.1f} | {displacement_um:12.3f} µm    | {raw_reading}")
 
     except Exception as e:
         print(f"\nAn error occurred: {e}")

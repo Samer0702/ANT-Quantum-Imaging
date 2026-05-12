@@ -127,9 +127,11 @@ Additionally, a user-friendly interface was developed to allow researchers and p
     \acro{GUI}{Graphical User Interface}
     \acro{KPZ101}{KCube Piezo Controller}
     \acro{KSG101}{KCube Strain Gauge Meter}
-%    \acro{FFTW}{Fastest Fourier Transform in the West}
-%    \acro{CPU}{Central Processing Unit}
-%    \acro{SIMD}{Single Instruction, Multiple Data}
+    \acro{SDK}{Software Development Kit}
+    \acro{TSI}{Thorlabs Scientific Imaging}
+    \acro{CLR}{Common Language Runtime}
+    \acro{FFTW}{Fastest Fourier Transform in the West}
+    \acro{SIMD}{Single Instruction, Multiple Data}
 \end{acronym}
 
 
@@ -198,8 +200,6 @@ This chapter provides an introduction to the project, explains the background an
         \caption{Old Showcase of the QIUP Setup.}
         \label{fig:old_showcase}
     \end{figure}
-
-    
 
     \subsubsection*{Objectives}
     The main objective of this project is to transform the current laboratory setup into a robust, automated, and user-friendly demonstrator platform for \ac{QIUP} technology demonstration, which can be divided into the following sub-objectives:
@@ -299,9 +299,10 @@ This chapter provides an introduction to the project, explains the background an
     \textbf{Induced Coherence and "Which-Way" Information}\\
         The foundational principle behind \ac{QIUP} is a phenomenon known as ``induced coherence without induced emission'' \cite{NonlinearInterferometry}. 
         Imagine an optical setup configured so that a signal-idler photon pair could be created in a first crystal or a second identical crystal. 
-        The system is precisely aligned so that the path of the idler photon from the first crystal overlaps perfectly with the emission path of the idler from the second crystal.
+        The system is precisely aligned so that the path of the idler photon from the first crystal overlaps perfectly with the emission path of the idler from the second crystal, which in our case is the same crystal where the original light is reflected back to.
         
-    \textbf{Indistinguishability and Interference:} Quantum interference is observed at the camera only if the path taken by the photon is fundamentally unknown \cite{NonlinearInterferometry, lemos2014quantum}. 
+    \textbf{Indistinguishability and Interference}\\
+         Quantum interference is observed at the camera only if the path taken by the photon is fundamentally unknown \cite{NonlinearInterferometry, lemos2014quantum}. 
         In \ac{QIUP}, the alternating fringe pattern extracted via \ac{FFT} exists because the signal photon's origin is undefined.
         By perfectly overlapping the infrared idler and signal beams, the setup intentionally erases the ``which-way'' (or welcher-weg) information regarding where the photon pair was generated \cite{lemos2014quantum, NonlinearInterferometry}. 
         This forced spatial indistinguishability induces coherence between the visible signal photons, enabling them to interfere even though they never interacted with the sample \cite{pearce2023practical, NonlinearInterferometry}. 
@@ -313,42 +314,121 @@ This chapter provides an introduction to the project, explains the background an
                     
     \subsection{Hardware Specifications}
 
-        The demonstrational setup has several programmable hardware components that are essential for the operation of the \ac{QIUP} system.
+        The demonstrational setup has several hardware components that are essential for the operation of the \ac{QIUP} system.
 
-        \subsubsection{Piezoelectric Stage} 
+        \textbf{Piezoelectric Stage} \\ 
         To utlilize the principle of induced coherence, the setup relies on a piezoelectric stage to precisely control the optical path length of the signal beam in µm.
         This is necessary to create the phase shifts required for the interference pattern to emerge and be captured by the camera.
         
         The piezoelectric stage consists of two components:
         \begin{itemize}
-            \item \ac{KPZ101}: \\
-                With the \ac{KPZ101} we are able to control the position of the piezoelectric stage with high precision, allowing for accurate phase scanning and modulation of the interference pattern.
-                This is possible by applying voltage to the piezoelectric actuator, which causes it to expand or contract, thus changing the optical path length of the signal beam.
+            \item Thorlabs \ac{KPZ101}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.45\linewidth]{images/components/KPZ101.jpg}
+                    \caption{Thorlabs \ac{KPZ101} Piezoelectric Controller.}
+                    \label{fig:KPZ101}
+                \end{figure}
 
-            \item \ac{KSG101} \\
-                The \ac{KSG101} is a strain gauge meter that provides feedback on the position of the piezoelectric stage, ensuring precise control and stability during the phase scanning process, which is needed because we need to have exactly one phase cycle otherwise we encounter spectral leakage.
+                With the \ac{KPZ101} we are able to control the position of the piezoelectric stage with high precision, allowing for accurate phase scanning and modulation of the interference pattern.
+                This is possible by applying voltage to the piezoelectric actuator, which causes it to expand or contract, thus changing the optical path length of the signal beam. \cite{ThorlabsKPZ101}
+                The \ac{KPZ101} is visualized in Figure \ref{fig:KPZ101}.
+
+            \item Thorlabs \ac{KSG101}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.45\linewidth]{images/components/KSG101.jpg}
+                    \caption{Thorlabs \ac{KSG101} Strain Gauge Meter.}
+                    \label{fig:KSG101}
+                \end{figure}
+                The \ac{KSG101} is a strain gauge meter that provides feedback on the position of the piezoelectric stage, ensuring precise control and stability during the phase scanning process, which is needed because we need to have exactly one phase cycle otherwise we encounter spectral leakage \cite{ThorlabsKSG101}.
+                The \ac{KSG101} is visualized in Figure \ref{fig:KSG101}. 
         \end{itemize}
 
-        \textbf{Open \& Closed loop mode} \\
+        \subsubsection*{Open \& Closed loop mode}
         The piezoelectric stage can operate in both open-loop and closed-loop modes. 
-        In open-loop mode, the position of the stage is controlled solely by the input voltage, without any feedback. 
-        In closed-loop mode, the system uses feedback from the \ac{KSG101} to adjust the voltage and maintain a precise position, which is crucial for achieving stable and accurate phase modulation in the \ac{QIUP} setup.
+        In open-loop mode, the position of the stage is controlled solely by the input voltage, without any feedback, which leads to less precise control because the displacement for a given voltage can vary since the piezoelectric material's response is not linear \cite{ThorlabsKPZ101}. 
+        In closed-loop mode, the system uses feedback from the \ac{KSG101} to adjust the voltage and maintain a precise position, which is crucial for achieving stable and accurate phase modulation in the \ac{QIUP} setup \cite{ThorlabsKSG101}.
 
-        \subsubsection{CMOS Camera}
-
+        \textbf{CMOS Camera} \\
         The Thorlabs Zelux \ac{CMOS} camera is used as the detector in the \ac{QIUP} setup to capture signal photons, which contain the image information retrieved by the idler photons.
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.45\linewidth]{images/components/CMOS.png}
+            \caption{Thorlabs Zelux CMOS Camera.}
+            \label{fig:CMOS}
+        \end{figure}
     
     \subsection{Software Specifications}
+        To control the hardware components and process the captured images, several software tools and technologies are utilized in this project.
 
         \textbf{Programming Language} \\
+            Python is chosen as the programming language of the application as it provides a wide range of optimized libraries for image processing, hardware control and \ac{GUI} development, making it an ideal choice for this project.
+            Additionally, as Python is widely used in scientific computing and research, it allows for easier collaboration and integration with existing tools and workflows.
+            Furthermore, Python's simplicity and readability enable further development for researchers who may not have extensive programming experience, which is important for the accessibility of the \ac{QIUP} technology.
 
         \textbf{Software Development Kits} \\
-
+            To integrate hardware control seamlessly within the Python environment, two primary \ac{SDK} from Thorlabs are utilized. 
+            First, the \ac{TSI} Camera Python \ac{SDK} serves as the interface for the Zelux CMOS camera. 
+            This SDK acts as a Python-native wrapper around Thorlabs' core C/C++ imaging libraries, granting direct programmatic access to camera parameters such as exposure time and gain. 
+            Most importantly, the \ac{TSI} \ac{SDK} allows the continuous stream of raw sensor data to be ingested directly into Python memory as multidimensional arrays like numpy arrays. 
+            This zero-copy or low-overhead transfer is an essential prerequisite for the low-latency, pixel-wise \ac{FFT} processing required to reconstruct the quantum images in near real-time \cite{TSIDocs}.
+           
+            Second, the precision motion control of the interferometer's piezoelectric stage relies on the Thorlabs Kinesis .NET API. Because the Kinesis framework is inherently designed for Windows .NET environments, a bridge module such as \texttt{pythonnet} (Python for .NET) is used to load the \ac{CLR} directly into the Python backend. 
+            This integration is crucial for integrating both the \ac{KPZ101} Piezo Controller and the \ac{KSG101} Strain Gauge Reader. 
+            Through the Kinesis API, the software can actively monitor the real-time physical displacement feedback from the strain gauge and issue controlled, closed-loop voltage commands to the piezo driver \cite{KinesisInPython}. 
+            Establishing this programmatic link enables precise, µm synchronization between the camera's frame acquisition and the piezo stage's phase-stepping ensuring that exactly one phase cycle is captured per measurement sequence to prevent spectral leakage during FFT analysis.
+       
         \textbf{Libraries} \\
+            Beyond the hardware-specific \ac{SDK}s, the software architecture relies on a stack of highly optimized open-source Python libraries to achieve the project's data processing and visualization objectives. 
+
+            For data handling, NumPy is utilized as the foundational package for scientific computing, providing the high-performance multidimensional array objects necessary for storing and manipulating the raw camera frames. 
+
+            To execute the core image processing algorithm, the PyFFTW library \cite{pyfftw} is used. PyFFTW is a Pythonic wrapper around the \ac{FFTW} C library \cite{FFTW_paper, FFTWwebsite}. 
+            Because the demonstrator aims for near real-time reconstruction of the quantum images during live presentations, standard Python-based FFT implementations are computationally too slow. 
+            PyFFTW solves this by utilizing multi-threading and CPU-specific \ac{SIMD} instructions, ensuring the \ac{FFT} remains smooth and responsive.
+
+            Finally, for the development of the user-friendly interface, a primary objective of this project, the graphical framework PyQT5 is used. 
+            This allows for the creation of an intuitive dashboard where operators can seamlessly view live camera feeds, adjust piezo-stage parameters, and observe the reconstructed visibility, contrast, and phase maps in one unified environment.
 
     \subsection{Requirements}
-        \subsubsection*{User Requirements}
-        \subsubsection*{System Requirements}
+
+    \subsubsection*{User Requirements}
+    User requirements define what the operators (e.g., researchers, students, or presenters) need to achieve when interacting with the QIUP demonstrator platform.
+
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.3}
+        \begin{tabular}{|p{0.1\linewidth}|p{0.65\linewidth}|p{0.15\linewidth}|}
+            \hline
+            \textbf{ID} & \textbf{Requirement Description} & \textbf{Priority} \\ \hline
+            UR-01 & The user must be able to view live, reconstructed visibility, contrast, and phase images through a single \ac{GUI}. & Must \\ \hline
+            UR-02 & The user must be able to initiate an automated phase-scanning sequence with a single interaction. & Must \\ \hline
+            UR-03 & The user should be able to adjust camera parameters (e.g., exposure time, gain) directly from the \ac{GUI}. & Should \\ \hline
+            UR-04 & The user should experience smooth, near real-time image updates suitable for live audience demonstrations. & Should \\ \hline
+            UR-05 & The user could have the ability to save or export the processed data and configuration presets for future experiments. & Could \\ \hline
+        \end{tabular}
+        \caption{User Requirements for the QIUP setup.}
+        \label{tab:user_requirements}
+    \end{table}
+    \subsubsection*{System Requirements}
+    System requirements detail the technical, functional, and performance specifications that the software and hardware integration must fulfill to satisfy the user requirements.
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.3}
+        \begin{tabular}{|p{0.1\linewidth}|p{0.65\linewidth}|p{0.15\linewidth}|}
+            \hline
+            \textbf{ID} & \textbf{Requirement Description} & \textbf{Priority} \\ \hline
+            SR-01 & The system must establish a programmatic connection to the Thorlabs Zelux \ac{CMOS} camera using the Thorlabs \ac{TSI} Python \ac{SDK}. & Must \\ \hline
+            SR-02 & The system must control the \ac{KPZ101} Piezo Controller and read feedback from the \ac{KSG101} Strain Gauge via the Kinesis .NET API in closed-loop mode. & Must \\ \hline
+            SR-03 & The system must synchronize camera frame acquisition with the piezo stage stepping to capture exactly one phase cycle, preventing spectral leakage. & Must \\ \hline
+            SR-04 & The system must ingest raw camera frames as image stacks and perform pixel-wise FFT analysis to extract the interference fringe parameters. & Must \\ \hline
+            SR-05 & The system should utilize the PyFFTW library to leverage multi-threading and \ac{SIMD} instructions, ensuring low-latency image processing. & Should \\ \hline
+        \end{tabular}
+        \caption{System Requirements for the QIUP setup.}
+        \label{tab:system_requirements}
+    \end{table}
 
 \newpage
 \section{Functional Design}
