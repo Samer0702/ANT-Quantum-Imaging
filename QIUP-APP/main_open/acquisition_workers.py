@@ -57,6 +57,14 @@ class SingleAcquisitionWorker(QThread):
             
             time.sleep(self.settling_time)
             
+            # Get displacement reading if available
+            displacement = self.piezo_ctrl.get_displacement()
+            if displacement is None:
+                # If no strain gauge, fall back to voltage
+                display_value = v
+            else:
+                display_value = displacement
+            
             self.camera_ctrl.camera.issue_software_trigger()
             frame = self.camera_ctrl.camera.get_pending_frame_or_null()
             
@@ -70,7 +78,7 @@ class SingleAcquisitionWorker(QThread):
                     img = cv2.blur(img, (k, k))
                 
                 image_stack[frames_acquired] = img
-                self.frame_acquired_signal.emit(img, v, frames_acquired)
+                self.frame_acquired_signal.emit(img, display_value, frames_acquired)
                 frames_acquired += 1
                 self.progress_signal.emit(f"Frame {frames_acquired} / {self.n_frames}")
             else:
@@ -182,6 +190,14 @@ class LiveProcessingWorker(QThread):
                 
                 time.sleep(self.settling_time)
                 
+                # Get displacement reading if available
+                displacement = self.piezo_ctrl.get_displacement()
+                if displacement is None:
+                    # If no strain gauge, fall back to voltage
+                    display_value = current_v
+                else:
+                    display_value = displacement
+                
                 cam.issue_software_trigger()
                 frame = cam.get_pending_frame_or_null()
                 
@@ -194,7 +210,7 @@ class LiveProcessingWorker(QThread):
                         k = k if k % 2 != 0 else k + 1
                         img = cv2.blur(img, (k, k))
                     
-                    self.frame_acquired_signal.emit(img, current_v, total_frames_acquired)
+                    self.frame_acquired_signal.emit(img, display_value, total_frames_acquired)
                     
                     voltage_buffer[step_index] = img
                     total_frames_acquired += 1
@@ -208,4 +224,4 @@ class LiveProcessingWorker(QThread):
             except Exception as exc:
                 if self.is_running:
                     self.error_signal.emit(str(exc))
-                break
+                break            

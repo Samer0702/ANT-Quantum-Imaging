@@ -15,9 +15,6 @@ class CameraController:
     Undetected Photons).
     """
 
-    F1_BIN = 1              
-    AUTO_DETECT_BIN = True 
-
     def __init__(self):
         self.sdk = None
         self.camera = None
@@ -122,19 +119,6 @@ class CameraController:
         )
         self._planned_n_frames = n_frames
 
-    def _get_f1_bin(self, n_frames: int) -> int:
-        if not self.AUTO_DETECT_BIN:
-            return self.F1_BIN
-
-        # Safeguard: For 3 frames, the only valid positive AC bin is bin 1.
-        # This prevents the empty slice error.
-        limit = n_frames // 2
-        if limit <= 1:
-            return 1
-
-        mean_magnitudes = np.abs(self._fft_output[1:limit]).mean(axis=(1, 2))
-        return int(mean_magnitudes.argmax()) + 1  
-
     # ------------------------------------------------------------------
     # Core processing
     # ------------------------------------------------------------------
@@ -143,8 +127,9 @@ class CameraController:
         self, image_stack: np.ndarray, scale_factors: dict = None
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
-        Run FFT, cache physics parameters, calculate absolute true limits, 
-        and scale them according to the GUI slider percentages.
+        Run FFT, cache physics parameters, and calculate absolute true limits.
+        The colormaps are now strictly bound to the exact np.min and np.max 
+        of the current data, ignoring any GUI slider scale_factors.
         """
         n_frames = image_stack.shape[0]
 
@@ -158,7 +143,6 @@ class CameraController:
         self._fft_plan()
 
         F0 = np.abs(self._fft_output[0])  
-        f1_bin = self._get_f1_bin(n_frames)
         F1 = self._fft_output[1]     
 
         visibility = (2.0 * np.abs(F1)) / (F0 + 1e-10)
@@ -169,33 +153,24 @@ class CameraController:
         self.last_contrast = contrast
         self.last_phase = phase
 
-        # Update absolute data limits
-        self.data_limits['v_min'] = float(np.min(visibility))
-        self.data_limits['v_max'] = float(np.max(visibility))
-        self.data_limits['c_min'] = float(np.min(contrast))
-        self.data_limits['c_max'] = float(np.max(contrast))
-        self.data_limits['p_min'] = float(np.min(phase))
-        self.data_limits['p_max'] = float(np.max(phase))
+        # Dynamically retrieve and store absolute true limits
+        v_min, v_max = float(np.min(visibility)), float(np.max(visibility))
+        c_min, c_max = float(np.min(contrast)), float(np.max(contrast))
+        p_min, p_max = float(np.min(phase)), float(np.max(phase))
 
-        # Default scale factors mapping 0->0% and 1000->100%
-        if scale_factors is None:
-            scale_factors = {
-                'v_min_pct': 0.0, 'v_max_pct': 1.0,
-                'c_min_pct': 0.0, 'c_max_pct': 1.0,
-                'p_min_pct': 0.0, 'p_max_pct': 1.0,
-            }
+        self.data_limits['v_min'] = v_min
+        self.data_limits['v_max'] = v_max
+        self.data_limits['c_min'] = c_min
+        self.data_limits['c_max'] = c_max
+        self.data_limits['p_min'] = p_min
+        self.data_limits['p_max'] = p_max
 
-        dl = self.data_limits
-        r_limits = {
-            'v_min': dl['v_min'] + scale_factors['v_min_pct'] * (dl['v_max'] - dl['v_min']),
-            'v_max': dl['v_min'] + scale_factors['v_max_pct'] * (dl['v_max'] - dl['v_min']),
-            'c_min': dl['c_min'] + scale_factors['c_min_pct'] * (dl['c_max'] - dl['c_min']),
-            'c_max': dl['c_min'] + scale_factors['c_max_pct'] * (dl['c_max'] - dl['c_min']),
-            'p_min': dl['p_min'] + scale_factors['p_min_pct'] * (dl['p_max'] - dl['p_min']),
-            'p_max': dl['p_min'] + scale_factors['p_max_pct'] * (dl['p_max'] - dl['p_min']),
-        }
-
-        return self.render_colormaps(**r_limits)
+        # Directly pass the true minimum and maximum values to the renderer
+        return self.render_colormaps(
+            v_min=v_min, v_max=v_max, 
+            c_min=c_min, c_max=c_max, 
+            p_min=p_min, p_max=p_max
+        )
 
     # ------------------------------------------------------------------
     # Scale Bar Addition
@@ -246,7 +221,6 @@ class CameraController:
         
         return image
 
-
     # ------------------------------------------------------------------
     # Colormap rendering (Dynamic)
     # ------------------------------------------------------------------
@@ -283,19 +257,12 @@ class CameraController:
         contrast_color = cv2.cvtColor(contrast_color, cv2.COLOR_BGR2RGB)
         phase_color = cv2.cvtColor(phase_color, cv2.COLOR_BGR2RGB)
 
-        # -------------------------------------------------------------
-        # THE FIX: Apply the Amplitude Masking for Phase
         # This strictly removes background noise below a 10% visibility 
         # threshold, regardless of the GUI slider position.
         vis_threshold = 0.10
         mask_3d = (self.last_visibility > vis_threshold)[..., np.newaxis]
         phase_color = np.where(mask_3d, phase_color, 0).astype(np.uint8)
-        # -------------------------------------------------------------
 
-        # -------------------------------------------------------------
-        # THE SCALE BAR
-        # Adjust 'pixels_for_1_mm' here by trial and error
-        # -------------------------------------------------------------
         pixels_for_1_mm = 110  # <--- HARDCODED TUNING VALUE
         
         vis_color = self._add_scale_bar(vis_color, pixels_for_1_mm)

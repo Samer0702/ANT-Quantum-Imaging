@@ -43,7 +43,8 @@ class QIUP_APP(QMainWindow):
         self.live_worker: LiveFeedWorker | None = None
         self.live_proc_worker: LiveProcessingWorker | None = None
 
-        self.voltages_intensities: dict[float, float] = {}
+        self.displacements_intensities: dict[float, float] = {}
+        self.has_strain_gauge = False  # Track if strain gauge is available
 
         self._setup_ui()
         self._apply_theme()
@@ -242,7 +243,7 @@ class QIUP_APP(QMainWindow):
         preview_group.setLayout(preview_layout)
         left_layout.addWidget(preview_group, stretch=3)
 
-        cycle_group = QGroupBox("ROI Intensity vs Piezo Voltage")
+        cycle_group = QGroupBox("ROI Intensity vs Piezo Displacement")
         cycle_layout = QVBoxLayout()
         cycle_layout.setContentsMargins(10, 20, 10, 10)
 
@@ -292,7 +293,7 @@ class QIUP_APP(QMainWindow):
 
         self.main_splitter.setSizes([600, 1200])
 
-        self.statusBar().showMessage("Ready. Double-click any map to expand it over the UI.")
+        self.statusBar().showMessage("Ready. Connect devices.")
 
     def _toggle_maximize_maps(self):
         """Hides the left panel (preview and graph) to maximize the map view."""
@@ -632,6 +633,9 @@ class QIUP_APP(QMainWindow):
             self.roi_y_spin.setRange(0, h - 1)
             self.roi_x_spin.setValue(w // 2)
             self.roi_y_spin.setValue(h // 2)
+            
+            # Check if strain gauge is available
+            self.has_strain_gauge = self.piezo.has_strain_gauge
 
             self.connect_btn.setEnabled(False)
             self.disconnect_btn.setEnabled(True)
@@ -639,9 +643,9 @@ class QIUP_APP(QMainWindow):
             self.live_btn.setEnabled(True)
             self.live_proc_btn.setEnabled(True)
 
-            self.statusBar().showMessage("Hardware connected successfully.")
+            self.statusBar().showMessage(f"Hardware connected successfully.")
             self._apply_theme()
-            QMessageBox.information(self, "Success", "All hardware connected.")
+            QMessageBox.information(self, "Success", f"All hardware connected.")
         else:
             errors = []
             if not p_ok: errors.append(f"Piezo: {p_msg}")
@@ -679,7 +683,7 @@ class QIUP_APP(QMainWindow):
         self.save_btn.setEnabled(False)
         self.start_btn.setText("Acquiring…")
 
-        self.voltages_intensities.clear()
+        self.displacements_intensities.clear()
         self.ax.clear()
 
         exp_ms = self.exposure_spin.value()
@@ -720,7 +724,7 @@ class QIUP_APP(QMainWindow):
             self.live_proc_btn.setText("Stop")
             self.statusBar().showMessage("Live processing running...")
 
-            self.voltages_intensities.clear()
+            self.displacements_intensities.clear()
             self.ax.clear()
 
             exp_ms = self.exposure_spin.value()
@@ -793,7 +797,7 @@ class QIUP_APP(QMainWindow):
 
         if self.piezo: self.piezo.set_voltage(0.0)
 
-        self.voltages_intensities.clear()
+        self.displacements_intensities.clear()
         self.ax.clear()
         self.canvas.draw()
 
@@ -865,7 +869,11 @@ class QIUP_APP(QMainWindow):
         )
         self.raw_preview.setPixmap(scaled)
 
-    def _update_preview_and_plot(self, gray_img: np.ndarray, v: float, idx: int):
+    def _update_preview_and_plot(self, gray_img: np.ndarray, value: float, idx: int):
+        """
+        Update preview and plot.
+        value is either displacement (µm) if strain gauge is available, or voltage (V) otherwise.
+        """
         self._update_live_preview(gray_img)
 
         x = self.roi_x_spin.value()
@@ -879,16 +887,24 @@ class QIUP_APP(QMainWindow):
         roi_data = gray_img[y_min:y_max, x_min:x_max]
         mean_intensity = float(np.mean(roi_data))
 
-        v_rounded = round(v, 3)
-        self.voltages_intensities[v_rounded] = mean_intensity
+        # FIX: Force the index to wrap around using the modulo operator (%).
+        # If your scan has 8 frames, step_idx will always be 0, 1, 2, 3, 4, 5, 6, 7.
+        # This guarantees old cycles are perfectly overwritten, eliminating duplicate dots.
+        n_frames = max(1, self.frames_spin.value())
+        step_idx = idx % n_frames 
+        
+        self.displacements_intensities[step_idx] = (value, mean_intensity)
 
-        sorted_voltages = sorted(self.voltages_intensities.keys())
-        sorted_intensities = [self.voltages_intensities[v] for v in sorted_voltages]
+        # Extract the tuples and sort them by the displacement/voltage value (the first item in the tuple)
+        # This ensures the line is drawn sequentially from left to right on the x-axis.
+        sorted_items = sorted(self.displacements_intensities.values(), key=lambda item: item[0])
+        sorted_values = [item[0] for item in sorted_items]
+        sorted_intensities = [item[1] for item in sorted_items]
 
         self.ax.clear()
         self.ax.grid(True, color="#2d2d30", linestyle="--", linewidth=0.5, zorder=0)
         self.ax.plot(
-            sorted_voltages, sorted_intensities,
+            sorted_values, sorted_intensities,
             color="#0078d4",
             linestyle="-",
             linewidth=2,
@@ -898,13 +914,20 @@ class QIUP_APP(QMainWindow):
             markeredgewidth=1,
             zorder=2
         )
-        self.ax.set_xlabel("Piezo Voltage (V)", fontsize=10, color="#d4d4d4", fontweight="bold")
+        
+        # Dynamic axis label based on whether strain gauge is available
+        if self.has_strain_gauge:
+            x_label = "Piezo Displacement (µm)"
+        else:
+            x_label = "Piezo Voltage (V)"
+        
+        self.ax.set_xlabel(x_label, fontsize=10, color="#d4d4d4", fontweight="bold")
         self.ax.set_ylabel("ROI Mean Intensity", fontsize=10, color="#d4d4d4", fontweight="bold")
         self.ax.tick_params(colors="#d4d4d4", labelsize=9)
         for spine in self.ax.spines.values():
             spine.set_color("#3f3f46")
         self.canvas.draw()
-
+        
     def _display_maps(self, vis: np.ndarray, contrast: np.ndarray, phase: np.ndarray):
         self.vis_img.setPixmap(self._cv_to_pixmap(vis))
         self.contrast_img.setPixmap(self._cv_to_pixmap(contrast))

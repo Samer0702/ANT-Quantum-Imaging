@@ -24,7 +24,7 @@ from acquisition_workers import SingleAcquisitionWorker, LiveFeedWorker, LivePro
 class QIUP_APP(QMainWindow):
 
     _DEFAULT_START_UM = 0.0
-    _DEFAULT_TOTAL_UM = 0.775   
+    _DEFAULT_TOTAL_UM = 0.5
     _DEFAULT_SETTLING_MS = 10
 
     def __init__(self):
@@ -301,7 +301,7 @@ class QIUP_APP(QMainWindow):
 
         self.main_splitter.setSizes([600, 1200])
 
-        self.statusBar().showMessage("Ready. Double-click any map to expand it over the UI.")
+        self.statusBar().showMessage("Ready. Connect devices.")
 
     def _update_calc_step(self):
         """Calculates and updates the step size label dynamically."""

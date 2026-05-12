@@ -35,20 +35,26 @@ class PiezoController:
         self,
         piezo_serial: str = "29252595",
         strain_serial: str | None = "59500024",
+        max_travel_um: float = 20.0,
     ):
         """
         Args:
             piezo_serial:  Serial number of the KPZ101.
             strain_serial: Serial number of the KSG101.
                            Pass None to run in open loop (no displacement data).
+            max_travel_um: Maximum travel range in micrometers for your piezo.
         """
         self.piezo_serial = piezo_serial
         self.strain_serial = strain_serial
+        self.max_travel_um = max_travel_um
 
         self.piezo = None
         self.strain = None
         self.is_connected = False
         self.has_strain_gauge = strain_serial is not None
+        
+        # Track the zero reference displacement
+        self.zero_displacement = 0.0
 
         self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self._load_dlls()
@@ -124,9 +130,16 @@ class PiezoController:
                 self.strain.EnableDevice()
                 time.sleep(0.5)
 
+                # Zero the piezo at 0V before zeroing the strain gauge
+                self.piezo.SetOutputVoltage(System.Convert.ToDecimal(0.0))
+                time.sleep(1.0)
+                
+                # Store the zero reference
+                self.zero_displacement = self._read_raw_displacement()
+                
                 print(
                     f"KSG101 {self.strain_serial} connected — "
-                    "displacement readback active."
+                    f"displacement readback active (zeroed at {self.zero_displacement:.3f} µm)."
                 )
 
             self.is_connected = True
@@ -172,22 +185,39 @@ class PiezoController:
         except Exception:
             return 0.0
 
+    def _read_raw_displacement(self) -> float:
+        """
+        Internal method to read raw displacement from strain gauge.
+        
+        Returns:
+            Raw displacement in micrometres (µm).
+        """
+        if not self.has_strain_gauge or self.strain is None:
+            return 0.0
+        try:
+            raw_reading = int(str(self.strain.GetReading()))
+            # Convert 16-bit ADC value to micrometers
+            displacement_um = (raw_reading / 32767.0) * self.max_travel_um
+            return displacement_um
+        except Exception as exc:
+            print(f"Strain gauge read error: {exc}")
+            return 0.0
+
     def get_displacement(self) -> float | None:
         """
-        Read the true piezo displacement from the KSG101 strain gauge.
+        Read the true piezo displacement from the KSG101 strain gauge,
+        relative to the zero reference set at connection.
 
         Returns:
-            Displacement in micrometres (µm), or None if the strain gauge
-            is not connected or the read fails.
+            Displacement in micrometres (µm) relative to zero point,
+            or None if the strain gauge is not connected or the read fails.
         """
         if not self.has_strain_gauge or self.strain is None:
             return None
-        try:
-            raw = self.strain.GetReading()
-            return float(str(raw.Reading))
-        except Exception as exc:
-            print(f"Strain gauge read error: {exc}")
-            return None
+        
+        raw_displacement = self._read_raw_displacement()
+        # Return displacement relative to zero reference
+        return raw_displacement - self.zero_displacement
 
     def disconnect(self):
         """Zero the voltage, stop polling, and cleanly close both connections."""

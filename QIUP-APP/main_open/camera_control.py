@@ -257,19 +257,12 @@ class CameraController:
         contrast_color = cv2.cvtColor(contrast_color, cv2.COLOR_BGR2RGB)
         phase_color = cv2.cvtColor(phase_color, cv2.COLOR_BGR2RGB)
 
-        # -------------------------------------------------------------
-        # THE FIX: Apply the Amplitude Masking for Phase
         # This strictly removes background noise below a 10% visibility 
         # threshold, regardless of the GUI slider position.
         vis_threshold = 0.10
         mask_3d = (self.last_visibility > vis_threshold)[..., np.newaxis]
         phase_color = np.where(mask_3d, phase_color, 0).astype(np.uint8)
-        # -------------------------------------------------------------
 
-        # -------------------------------------------------------------
-        # THE SCALE BAR
-        # Adjust 'pixels_for_1_mm' here by trial and error
-        # -------------------------------------------------------------
         pixels_for_1_mm = 110  # <--- HARDCODED TUNING VALUE
         
         vis_color = self._add_scale_bar(vis_color, pixels_for_1_mm)
