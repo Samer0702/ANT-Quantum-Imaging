@@ -11,9 +11,9 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QGroupBox, QFormLayout, QSpinBox, QDoubleSpinBox,
     QToolBar, QSizePolicy, QMessageBox, QCheckBox, QTabWidget, QFileDialog,
-    QSlider, QSplitter, QMenu, QWidgetAction, QToolButton
+    QSlider, QSplitter, QMenu, QWidgetAction, QToolButton, QStyle
 )
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QImage, QPixmap, QIcon
 
 from piezo_control_open import PiezoController
@@ -21,7 +21,9 @@ from camera_control import CameraController
 from ui_components import ClickableLabel, ScalableImageLabel
 from acquisition_workers import SingleAcquisitionWorker, LiveFeedWorker, LiveProcessingWorker
 
+
 class QIUP_APP(QMainWindow):
+    """Main application window for Quantum Imaging with Undetected Photons (QIUP)."""
 
     _DEFAULT_SCAN_V_START = 0.0
     _DEFAULT_SCAN_V_END = 3.9
@@ -34,7 +36,10 @@ class QIUP_APP(QMainWindow):
 
         self.setWindowTitle("NANO: QIUP Dashboard")
         self.setGeometry(50, 50, 1800, 1000)
-        self.setWindowIcon(QIcon(self.logo_path))
+        
+        # Set window icon if file exists
+        if os.path.exists(self.logo_path):
+            self.setWindowIcon(QIcon(self.logo_path))
 
         self.piezo: PiezoController | None = None
         self.camera: CameraController | None = None
@@ -44,70 +49,96 @@ class QIUP_APP(QMainWindow):
         self.live_proc_worker: LiveProcessingWorker | None = None
 
         self.displacements_intensities: dict[float, float] = {}
-        self.has_strain_gauge = False  # Track if strain gauge is available
+        self.has_strain_gauge = False
+        
+        # Prevent rapid button clicking
+        self._acquisition_in_progress = False
 
         self._setup_ui()
         self._apply_theme()
 
     def _setup_ui(self):
-        # ========== TOP TOOLBAR ==========
+        """Initialize the user interface."""
+        # Preload standard icons
+        self.play_icon = self.style().standardIcon(QStyle.SP_MediaPlay)
+        self.stop_icon = self.style().standardIcon(QStyle.SP_MediaStop)
+        self.save_icon = self.style().standardIcon(QStyle.SP_DialogSaveButton)
+        self.load_icon = self.style().standardIcon(QStyle.SP_ArrowUp)
+
+        # Top toolbar
         toolbar = QToolBar("Main Toolbar")
         toolbar.setMovable(False)
         toolbar.setStyleSheet("QToolBar { spacing: 8px; padding: 5px; }")
         self.addToolBar(Qt.TopToolBarArea, toolbar)
 
-        # 2. Connect / Disconnect
+        # Connect/Disconnect buttons
         self.connect_btn = QPushButton("Connect")
-        self.connect_btn.setToolTip("Connect to the Thorlabs camera and Piezo controller hardware.")
+        self.connect_btn.setToolTip("Connect to Thorlabs camera and piezo controller")
         self.connect_btn.clicked.connect(self._connect_hardware)
         toolbar.addWidget(self.connect_btn)
 
         self.disconnect_btn = QPushButton("Disconnect")
-        self.disconnect_btn.setToolTip("Safely disconnect and turn off all hardware.")
+        self.disconnect_btn.setToolTip("Safely disconnect all hardware")
         self.disconnect_btn.setEnabled(False)
         self.disconnect_btn.clicked.connect(self._disconnect_hardware)
         toolbar.addWidget(self.disconnect_btn)
 
         toolbar.addSeparator()
-        # 1. Primary Action Buttons (First)
-        self.start_btn = QPushButton("Single")
-        self.start_btn.setToolTip("Run a single, fixed-frame phase-stepping acquisition sequence.")
+
+        # Primary action buttons
+        self.start_btn = QPushButton(" Single")
+        self.start_btn.setProperty("isAction", True)
+        self.start_btn.setIcon(self.play_icon)
+        self.start_btn.setIconSize(QSize(16, 16))
+        self.start_btn.setToolTip("Run single fixed-frame phase-stepping acquisition")
         self.start_btn.setEnabled(False)
         self.start_btn.clicked.connect(self._run_acquisition)
         toolbar.addWidget(self.start_btn)
 
-        self.live_proc_btn = QPushButton("Live")
-        self.live_proc_btn.setToolTip("Start continuous, real-time quantum phase-stepping and map reconstruction.")
+        self.live_proc_btn = QPushButton(" Live")
+        self.live_proc_btn.setProperty("isAction", True)
+        self.live_proc_btn.setIcon(self.play_icon)
+        self.live_proc_btn.setIconSize(QSize(16, 16))
+        self.live_proc_btn.setToolTip("Start continuous real-time quantum phase-stepping")
         self.live_proc_btn.setEnabled(False)
         self.live_proc_btn.clicked.connect(self._toggle_live_processing)
         toolbar.addWidget(self.live_proc_btn)
 
-        self.live_btn = QPushButton("Raw Feed")
-        self.live_btn.setToolTip("View the live, raw CMOS camera feed (no piezo scanning).")
+        self.live_btn = QPushButton(" Raw Feed")
+        self.live_btn.setProperty("isAction", True) 
+        self.live_btn.setIcon(self.play_icon)
+        self.live_btn.setIconSize(QSize(16, 16))
+        self.live_btn.setToolTip("View live raw CMOS camera feed (no piezo scanning)")
         self.live_btn.setEnabled(False)
         self.live_btn.clicked.connect(self._toggle_live_feed)
         toolbar.addWidget(self.live_btn)
 
         toolbar.addSeparator()
 
-        # 5. Expandable Scan Parameters
+        # Scan parameters dropdown
         scan_menu = QMenu(self)
         scan_widget = QWidget()
         scan_widget.setObjectName("dropdownMenu")
         scan_lay = QFormLayout(scan_widget)
+        
         self.frames_spin = QSpinBox()
         self.frames_spin.setRange(3, 1000)
         self.frames_spin.setValue(8)
+        self.frames_spin.valueChanged.connect(self._validate_scan_params)
+        
         self.scan_end_spin = QDoubleSpinBox()
         self.scan_end_spin.setRange(0.01, PiezoController.MAX_VOLTAGE)
         self.scan_end_spin.setDecimals(2)
         self.scan_end_spin.setSingleStep(0.25)
         self.scan_end_spin.setValue(self._DEFAULT_SCAN_V_END)
         self.scan_end_spin.setSuffix(" V")
+        self.scan_end_spin.valueChanged.connect(self._validate_scan_params)
+        
         self.settling_spin = QSpinBox()
         self.settling_spin.setRange(0, 1000)
         self.settling_spin.setValue(self._DEFAULT_SETTLING_MS)
         self.settling_spin.setSuffix(" ms")
+        
         self.reset_btn = QPushButton("Reset System")
         self.reset_btn.setMinimumHeight(30)
         self.reset_btn.clicked.connect(self._reset_system)
@@ -116,34 +147,39 @@ class QIUP_APP(QMainWindow):
         scan_lay.addRow("Fringe Period:", self.scan_end_spin)
         scan_lay.addRow("Settling time:", self.settling_spin)
         scan_lay.addRow(self.reset_btn)
+        
         scan_action = QWidgetAction(self)
         scan_action.setDefaultWidget(scan_widget)
         scan_menu.addAction(scan_action)
 
         self.scan_btn = QToolButton()
         self.scan_btn.setText("Scan Params")
-        self.scan_btn.setToolTip("Expand to set the number of Frames, Voltage Period, and hardware Settling Time.")
+        self.scan_btn.setToolTip("Configure frames, voltage period, and settling time")
         self.scan_btn.setMenu(scan_menu)
         self.scan_btn.setPopupMode(QToolButton.InstantPopup)
         toolbar.addWidget(self.scan_btn)
 
-        # 3. Expandable CMOS Settings
+        # CMOS settings dropdown
         cmos_menu = QMenu(self)
         cmos_widget = QWidget()
         cmos_widget.setObjectName("dropdownMenu")
         cmos_lay = QFormLayout(cmos_widget)
+        
         self.exposure_spin = QSpinBox()
         self.exposure_spin.setRange(1, 5000)
         self.exposure_spin.setValue(200)
         self.exposure_spin.setSuffix(" ms")
         self.exposure_spin.valueChanged.connect(self._on_exposure_changed)
+        
         self.gain_spin = QSpinBox()
         self.gain_spin.setRange(0, 48)
         self.gain_spin.setValue(35)
         self.gain_spin.setSuffix(" dB")
         self.gain_spin.valueChanged.connect(self._on_gain_changed)
+        
         self.ma_checkbox = QCheckBox("Use Moving Average Filter")
         self.ma_checkbox.toggled.connect(self._on_ma_toggled)
+        
         self.ma_size_spin = QSpinBox()
         self.ma_size_spin.setSingleStep(2)
         self.ma_size_spin.setRange(3, 101)
@@ -156,28 +192,32 @@ class QIUP_APP(QMainWindow):
         cmos_lay.addRow("Gain:", self.gain_spin)
         cmos_lay.addRow(self.ma_checkbox)
         cmos_lay.addRow("Window Size:", self.ma_size_spin)
+        
         cmos_action = QWidgetAction(self)
         cmos_action.setDefaultWidget(cmos_widget)
         cmos_menu.addAction(cmos_action)
 
         self.cmos_btn = QToolButton()
         self.cmos_btn.setText("CMOS Settings")
-        self.cmos_btn.setToolTip("Expand to adjust Camera Exposure, Gain, and processing filters.")
+        self.cmos_btn.setToolTip("Adjust camera exposure, gain, and filters")
         self.cmos_btn.setMenu(cmos_menu)
         self.cmos_btn.setPopupMode(QToolButton.InstantPopup)
         toolbar.addWidget(self.cmos_btn)
 
-        # 4. Expandable ROI Settings
+        # ROI settings dropdown
         roi_menu = QMenu(self)
         roi_widget = QWidget()
         roi_widget.setObjectName("dropdownMenu")
         roi_lay = QFormLayout(roi_widget)
+        
         self.roi_x_spin = QSpinBox()
         self.roi_x_spin.setRange(0, 4000)
         self.roi_x_spin.setValue(0)
+        
         self.roi_y_spin = QSpinBox()
         self.roi_y_spin.setRange(0, 4000)
         self.roi_y_spin.setValue(0)
+        
         self.roi_size_spin = QSpinBox()
         self.roi_size_spin.setRange(1, 1000)
         self.roi_size_spin.setValue(50)
@@ -186,16 +226,18 @@ class QIUP_APP(QMainWindow):
         roi_lay.addRow("Center X:", self.roi_x_spin)
         roi_lay.addRow("Center Y:", self.roi_y_spin)
         roi_lay.addRow("Box Size:", self.roi_size_spin)
+        
         hint_lbl = QLabel("(Click on preview to select ROI)")
         hint_lbl.setStyleSheet("font-size: 10px; color: #888888;")
         roi_lay.addRow(hint_lbl)
+        
         roi_action = QWidgetAction(self)
         roi_action.setDefaultWidget(roi_widget)
         roi_menu.addAction(roi_action)
 
         self.roi_btn = QToolButton()
         self.roi_btn.setText("Plot ROI")
-        self.roi_btn.setToolTip("Expand to configure the Region of Interest used for the intensity plot.")
+        self.roi_btn.setToolTip("Configure region of interest for intensity plot")
         self.roi_btn.setMenu(roi_menu)
         self.roi_btn.setPopupMode(QToolButton.InstantPopup)
         toolbar.addWidget(self.roi_btn)
@@ -214,7 +256,7 @@ class QIUP_APP(QMainWindow):
         self.save_btn.clicked.connect(self._save_data)
         toolbar.addWidget(self.save_btn)
 
-        # ========== CENTRAL LAYOUT ==========
+        # Central layout with splitter
         central = QWidget()
         self.setCentralWidget(central)
         root = QHBoxLayout(central)
@@ -223,7 +265,7 @@ class QIUP_APP(QMainWindow):
         self.main_splitter = QSplitter(Qt.Horizontal)
         root.addWidget(self.main_splitter)
 
-        # ========== LEFT COLUMN: Preview + Graph ==========
+        # Left column: Preview + Graph
         self.left_widget = QWidget()
         left_layout = QVBoxLayout(self.left_widget)
         left_layout.setContentsMargins(0, 0, 0, 0)
@@ -258,7 +300,7 @@ class QIUP_APP(QMainWindow):
 
         self.main_splitter.addWidget(self.left_widget)
 
-        # ========== RIGHT COLUMN: Dynamic Maps & Tabs ==========
+        # Right column: Dynamic maps with tabs
         self.right_widget = QWidget()
         right_layout = QVBoxLayout(self.right_widget)
         right_layout.setContentsMargins(0, 0, 0, 0)
@@ -280,9 +322,15 @@ class QIUP_APP(QMainWindow):
         self.contrast_img.double_clicked.connect(self._toggle_maximize_maps)
         self.phase_img.double_clicked.connect(self._toggle_maximize_maps)
 
-        vis_page, self.vis_min_sl, self.vis_max_sl, self.vis_min_lbl, self.vis_max_lbl = self._create_map_tab("Visibility", self.vis_img)
-        con_page, self.con_min_sl, self.con_max_sl, self.con_min_lbl, self.con_max_lbl = self._create_map_tab("Contrast", self.contrast_img)
-        pha_page, self.pha_min_sl, self.pha_max_sl, self.pha_min_lbl, self.pha_max_lbl = self._create_map_tab("Phase", self.phase_img)
+        vis_page, self.vis_min_sl, self.vis_max_sl, self.vis_min_lbl, self.vis_max_lbl = (
+            self._create_map_tab("Visibility", self.vis_img)
+        )
+        con_page, self.con_min_sl, self.con_max_sl, self.con_min_lbl, self.con_max_lbl = (
+            self._create_map_tab("Contrast", self.contrast_img)
+        )
+        pha_page, self.pha_min_sl, self.pha_max_sl, self.pha_min_lbl, self.pha_max_lbl = (
+            self._create_map_tab("Phase", self.phase_img)
+        )
 
         self.map_tabs.addTab(vis_page, "Visibility")
         self.map_tabs.addTab(con_page, "Contrast")
@@ -295,16 +343,27 @@ class QIUP_APP(QMainWindow):
 
         self.statusBar().showMessage("Ready. Connect devices.")
 
+    def _validate_scan_params(self):
+        """Ensure scan end voltage is greater than scan start."""
+        scan_end = self.scan_end_spin.value()
+        if scan_end <= self._DEFAULT_SCAN_V_START:
+            self.scan_end_spin.setValue(self._DEFAULT_SCAN_V_START + 0.1)
+            QMessageBox.warning(
+                self, "Invalid Range",
+                f"Fringe period must be greater than {self._DEFAULT_SCAN_V_START} V"
+            )
+
     def _toggle_maximize_maps(self):
-        """Hides the left panel (preview and graph) to maximize the map view."""
+        """Toggle between maximized map view and split view."""
         if self.left_widget.isVisible():
             self.left_widget.hide()
-            self.statusBar().showMessage("Map view maximized. Double-click the image again to restore.")
+            self.statusBar().showMessage("Map view maximized. Double-click to restore.")
         else:
             self.left_widget.show()
             self.statusBar().showMessage("Restored default layout.")
 
     def _create_map_tab(self, map_type, image_label):
+        """Create a tab with adjustable colormap scaling."""
         page = QWidget()
         layout = QVBoxLayout(page)
         layout.setContentsMargins(15, 15, 15, 15)
@@ -326,7 +385,9 @@ class QIUP_APP(QMainWindow):
         sliders_layout = QVBoxLayout(sliders_container)
         sliders_layout.setContentsMargins(0, 0, 0, 0)
         
-        min_sl, max_sl, min_lbl, max_lbl = self._create_dual_slider(sliders_layout, f"{map_type} Scale Adjustment")
+        min_sl, max_sl, min_lbl, max_lbl = self._create_dual_slider(
+            sliders_layout, f"{map_type} Scale Adjustment"
+        )
         sliders_container.setVisible(False)
         
         settings_btn.toggled.connect(sliders_container.setVisible)
@@ -337,6 +398,7 @@ class QIUP_APP(QMainWindow):
         return page, min_sl, max_sl, min_lbl, max_lbl
 
     def _create_dual_slider(self, layout, title):
+        """Create min/max slider pair for colormap adjustment."""
         group = QGroupBox(title)
         lyt = QVBoxLayout()
         lyt.setContentsMargins(10, 15, 10, 10)
@@ -369,6 +431,7 @@ class QIUP_APP(QMainWindow):
         return min_slider, max_slider, min_lbl, max_lbl
 
     def get_scale_factors(self):
+        """Extract current slider positions as scale factors."""
         return {
             'v_min_pct': self.vis_min_sl.value() / 1000.0,
             'v_max_pct': self.vis_max_sl.value() / 1000.0,
@@ -379,29 +442,24 @@ class QIUP_APP(QMainWindow):
         }
 
     def _reset_sliders(self):
-        self.vis_min_sl.blockSignals(True)
-        self.vis_max_sl.blockSignals(True)
-        self.con_min_sl.blockSignals(True)
-        self.con_max_sl.blockSignals(True)
-        self.pha_min_sl.blockSignals(True)
-        self.pha_max_sl.blockSignals(True)
+        """Reset all colormap sliders to full range."""
+        for slider in [self.vis_min_sl, self.vis_max_sl, self.con_min_sl, 
+                      self.con_max_sl, self.pha_min_sl, self.pha_max_sl]:
+            slider.blockSignals(True)
 
         self.vis_min_sl.setValue(0)
         self.con_min_sl.setValue(0)
         self.pha_min_sl.setValue(0)
-
         self.vis_max_sl.setValue(1000)
         self.con_max_sl.setValue(1000)
         self.pha_max_sl.setValue(1000)
 
-        self.vis_min_sl.blockSignals(False)
-        self.vis_max_sl.blockSignals(False)
-        self.con_min_sl.blockSignals(False)
-        self.con_max_sl.blockSignals(False)
-        self.pha_min_sl.blockSignals(False)
-        self.pha_max_sl.blockSignals(False)
+        for slider in [self.vis_min_sl, self.vis_max_sl, self.con_min_sl, 
+                      self.con_max_sl, self.pha_min_sl, self.pha_max_sl]:
+            slider.blockSignals(False)
 
     def _update_labels(self):
+        """Update slider labels to reflect current data ranges."""
         if not self.camera or not hasattr(self.camera, 'data_limits'):
             return
             
@@ -423,35 +481,28 @@ class QIUP_APP(QMainWindow):
         self.pha_max_lbl.setText(f"Max: {p_max:.2f}")
 
     def _update_image_scales(self):
-        self.vis_min_sl.blockSignals(True)
-        self.vis_max_sl.blockSignals(True)
-        if self.vis_min_sl.value() >= self.vis_max_sl.value():
-            self.vis_min_sl.setValue(max(0, self.vis_max_sl.value() - 1))
-        self.vis_min_sl.blockSignals(False)
-        self.vis_max_sl.blockSignals(False)
-
-        self.con_min_sl.blockSignals(True)
-        self.con_max_sl.blockSignals(True)
-        if self.con_min_sl.value() >= self.con_max_sl.value():
-            self.con_min_sl.setValue(max(0, self.con_max_sl.value() - 1))
-        self.con_min_sl.blockSignals(False)
-        self.con_max_sl.blockSignals(False)
-
-        self.pha_min_sl.blockSignals(True)
-        self.pha_max_sl.blockSignals(True)
-        if self.pha_min_sl.value() >= self.pha_max_sl.value():
-            self.pha_min_sl.setValue(max(0, self.pha_max_sl.value() - 1))
-        self.pha_min_sl.blockSignals(False)
-        self.pha_max_sl.blockSignals(False)
+        """Recalculate and redraw images when sliders change."""
+        # Ensure min < max for each pair
+        for min_sl, max_sl in [(self.vis_min_sl, self.vis_max_sl),
+                               (self.con_min_sl, self.con_max_sl),
+                               (self.pha_min_sl, self.pha_max_sl)]:
+            min_sl.blockSignals(True)
+            max_sl.blockSignals(True)
+            if min_sl.value() >= max_sl.value():
+                min_sl.setValue(max(0, max_sl.value() - 1))
+            min_sl.blockSignals(False)
+            max_sl.blockSignals(False)
 
         sf = self.get_scale_factors()
 
+        # Update worker scale factors if running
         if self.acq_worker is not None:
             self.acq_worker.scale_factors = sf
         if self.live_proc_worker is not None:
             self.live_proc_worker.scale_factors = sf
 
-        if self.camera is not None and getattr(self.camera, 'last_visibility', None) is not None:
+        # Re-render maps if data exists
+        if self.camera and getattr(self.camera, 'last_visibility', None) is not None:
             dl = self.camera.data_limits
             
             v_min = dl['v_min'] + sf['v_min_pct'] * (dl['v_max'] - dl['v_min'])
@@ -468,6 +519,7 @@ class QIUP_APP(QMainWindow):
                 self._display_maps(vis_img, con_img, pha_img)
 
     def _load_settings(self):
+        """Load acquisition parameters from JSON file."""
         file_path, _ = QFileDialog.getOpenFileName(
             self, "Load Settings", self.base_dir, "JSON Files (*.json);;All Files (*)"
         )
@@ -499,14 +551,15 @@ class QIUP_APP(QMainWindow):
             if "ma_kernel_size" in settings:
                 self.ma_size_spin.setValue(settings["ma_kernel_size"])
 
-            self.statusBar().showMessage(f"Loaded parameters from {file_path}")
+            self.statusBar().showMessage(f"Loaded parameters from {os.path.basename(file_path)}")
 
         except json.JSONDecodeError:
-            QMessageBox.critical(self, "Load Error", "The selected file is not a valid JSON document.")
+            QMessageBox.critical(self, "Load Error", "Invalid JSON file.")
         except Exception as e:
             QMessageBox.critical(self, "Load Error", f"Failed to load settings:\n{str(e)}")
 
     def _save_data(self):
+        """Save acquisition results and settings to a timestamped folder."""
         date_str = datetime.date.today().strftime("%d_%m_%Y")
         file_path, _ = QFileDialog.getSaveFileName(self)
         
@@ -523,6 +576,7 @@ class QIUP_APP(QMainWindow):
             
         full_path = os.path.join(base_dir, folder_name)
 
+        # Auto-increment folder name if exists
         counter = 1
         final_path = full_path
         while os.path.exists(final_path):
@@ -532,6 +586,7 @@ class QIUP_APP(QMainWindow):
         try:
             os.makedirs(final_path, exist_ok=True)
 
+            # Save acquisition settings
             settings = {
                 "exposure_ms": self.exposure_spin.value(),
                 "gain_db": self.gain_spin.value(),
@@ -549,6 +604,7 @@ class QIUP_APP(QMainWindow):
             with open(os.path.join(final_path, "settings.json"), "w") as f:
                 json.dump(settings, f, indent=4)
 
+            # Save processed maps
             save_map = {
                 "visibility_map.png": self.vis_img,
                 "contrast_map.png": self.contrast_img,
@@ -559,34 +615,39 @@ class QIUP_APP(QMainWindow):
                 if pm and not pm.isNull():
                     pm.save(os.path.join(final_path, filename), "PNG")
 
+            # Save raw preview
             pm = self.raw_preview.pixmap()
             if pm and not pm.isNull():
                 pm.save(os.path.join(final_path, "last_raw_frame.png"), "PNG")
 
+            # Save intensity plot
             self.fig.savefig(os.path.join(final_path, "intensity_plot.png"))
 
-            self.statusBar().showMessage(f"Data saved successfully to {final_path}")
-            QMessageBox.information(self, "Data Saved", f"Successfully saved to:\n{final_path}")
+            self.statusBar().showMessage(f"Data saved to {os.path.basename(final_path)}")
+            QMessageBox.information(self, "Data Saved", f"Saved to:\n{final_path}")
 
         except Exception as e:
             QMessageBox.critical(self, "Save Error", f"Failed to save data: {str(e)}")
     
     def _on_exposure_changed(self, val_ms: int):
-        if self.camera is not None and self.camera.camera is not None:
+        """Update camera exposure in real-time."""
+        if self.camera and self.camera.camera:
             try:
                 self.camera.camera.exposure_time_us = val_ms * 1000
                 self.camera.camera.image_poll_timeout_ms = val_ms + 100
             except Exception as e:
-                self.statusBar().showMessage(f"Warning: Failed to update exposure live ({e})")
+                self.statusBar().showMessage(f"Warning: Failed to update exposure ({e})")
 
     def _on_gain_changed(self, val_db: int):
-        if self.camera is not None and self.camera.camera is not None:
+        """Update camera gain in real-time."""
+        if self.camera and self.camera.camera:
             try:
                 self.camera.camera.gain = val_db * 10
             except Exception as e:
-                self.statusBar().showMessage(f"Warning: Failed to update gain live ({e})")
+                self.statusBar().showMessage(f"Warning: Failed to update gain ({e})")
 
     def _on_preview_clicked(self, label_x: int, label_y: int):
+        """Set ROI center by clicking on the preview image."""
         if not self.camera or not self.raw_preview.pixmap():
             return
 
@@ -594,15 +655,18 @@ class QIUP_APP(QMainWindow):
         pm_w, pm_h = pm.width(), pm.height()
         label_w, label_h = self.raw_preview.width(), self.raw_preview.height()
 
+        # Calculate offset for centered image
         offset_x = (label_w - pm_w) / 2.0
         offset_y = (label_h - pm_h) / 2.0
 
         pixmap_x = label_x - offset_x
         pixmap_y = label_y - offset_y
 
+        # Check if click is within image bounds
         if pixmap_x < 0 or pixmap_x > pm_w or pixmap_y < 0 or pixmap_y > pm_h:
             return
 
+        # Map pixmap coordinates to camera coordinates
         cam_w = self.camera.image_width
         cam_h = self.camera.image_height
 
@@ -613,6 +677,11 @@ class QIUP_APP(QMainWindow):
         self.roi_y_spin.setValue(cam_y)
 
     def _connect_hardware(self):
+        """Initialize and connect to camera and piezo controller."""
+        if self._acquisition_in_progress:
+            QMessageBox.warning(self, "Busy", "Wait for current operation to complete.")
+            return
+            
         self.statusBar().showMessage("Connecting to hardware…")
 
         self.piezo = PiezoController()
@@ -622,19 +691,20 @@ class QIUP_APP(QMainWindow):
             p_ok, p_msg = self.piezo.connect()
             c_ok = self.camera.connect()
         except Exception as exc:
-            QMessageBox.critical(self, "Hardware Error", f"Unexpected error during setup:\n{exc}")
-            self.statusBar().showMessage("Hardware connection error.")
+            QMessageBox.critical(self, "Hardware Error", f"Connection error:\n{exc}")
+            self.statusBar().showMessage("Hardware connection failed.")
             return
 
         if p_ok and c_ok:
             w = self.camera.image_width
             h = self.camera.image_height
+            
+            # Configure ROI spinboxes based on camera resolution
             self.roi_x_spin.setRange(0, w - 1)
             self.roi_y_spin.setRange(0, h - 1)
             self.roi_x_spin.setValue(w // 2)
             self.roi_y_spin.setValue(h // 2)
             
-            # Check if strain gauge is available
             self.has_strain_gauge = self.piezo.has_strain_gauge
 
             self.connect_btn.setEnabled(False)
@@ -643,17 +713,20 @@ class QIUP_APP(QMainWindow):
             self.live_btn.setEnabled(True)
             self.live_proc_btn.setEnabled(True)
 
-            self.statusBar().showMessage(f"Hardware connected successfully.")
+            self.statusBar().showMessage("Hardware connected successfully")
             self._apply_theme()
-            QMessageBox.information(self, "Success", f"All hardware connected.")
+            QMessageBox.information(self, "Success", "All hardware connected.")
         else:
             errors = []
-            if not p_ok: errors.append(f"Piezo: {p_msg}")
-            if not c_ok: errors.append("Camera: failed to initialise.")
+            if not p_ok: 
+                errors.append(f"Piezo: {p_msg}")
+            if not c_ok: 
+                errors.append("Camera: failed to initialize")
             QMessageBox.critical(self, "Connection Error", "Failed to connect:\n" + "\n".join(errors))
             self.statusBar().showMessage("Hardware connection failed.")
 
     def _disconnect_hardware(self):
+        """Safely disconnect all hardware."""
         reply = QMessageBox.question(
             self, "Confirm Disconnect", "Disconnect all hardware?",
             QMessageBox.Yes | QMessageBox.No, QMessageBox.No,
@@ -661,12 +734,15 @@ class QIUP_APP(QMainWindow):
         if reply != QMessageBox.Yes:
             return
 
+        # Stop all workers before disconnecting
         self._stop_live_worker()
         self._stop_live_proc_worker()
         self._stop_worker()
 
-        if self.camera: self.camera.disconnect()
-        if self.piezo: self.piezo.disconnect()
+        if self.camera: 
+            self.camera.disconnect()
+        if self.piezo: 
+            self.piezo.disconnect()
 
         self.connect_btn.setEnabled(True)
         self.disconnect_btn.setEnabled(False)
@@ -677,15 +753,21 @@ class QIUP_APP(QMainWindow):
         self.statusBar().showMessage("Hardware disconnected.")
 
     def _run_acquisition(self):
+        """Start a single-shot acquisition sequence."""
+        if self._acquisition_in_progress:
+            return
+            
+        self._acquisition_in_progress = True
         self.start_btn.setEnabled(False)
         self.live_btn.setEnabled(False)
         self.live_proc_btn.setEnabled(False)
         self.save_btn.setEnabled(False)
-        self.start_btn.setText("Acquiring…")
+        self.start_btn.setText(" Acquiring…")
 
         self.displacements_intensities.clear()
         self.ax.clear()
 
+        # Configure camera
         exp_ms = self.exposure_spin.value()
         self.camera.camera.exposure_time_us = exp_ms * 1000
         self.camera.camera.gain = self.gain_spin.value() * 10
@@ -711,18 +793,21 @@ class QIUP_APP(QMainWindow):
         self.acq_worker.start()
 
     def _toggle_live_processing(self):
-        if self.live_proc_worker is not None and self.live_proc_worker.isRunning():
+        """Toggle continuous live processing mode."""
+        if self.live_proc_worker and self.live_proc_worker.isRunning():
             self._stop_live_proc_worker()
-            self.live_proc_btn.setText("Live")
+            self.live_proc_btn.setText(" Live")
+            self.live_proc_btn.setIcon(self.play_icon)
             self.start_btn.setEnabled(True)
             self.live_btn.setEnabled(True)
-            self.statusBar().showMessage("Live processing stopped. Idle.")
+            self.statusBar().showMessage("Live processing stopped.")
         else:
             self.start_btn.setEnabled(False)
             self.live_btn.setEnabled(False)
             self.save_btn.setEnabled(False)
-            self.live_proc_btn.setText("Stop")
-            self.statusBar().showMessage("Live processing running...")
+            self.live_proc_btn.setText(" Stop")
+            self.live_proc_btn.setIcon(self.stop_icon)
+            self.statusBar().showMessage("Live processing running…")
 
             self.displacements_intensities.clear()
             self.ax.clear()
@@ -751,18 +836,21 @@ class QIUP_APP(QMainWindow):
             self.live_proc_worker.start()
 
     def _toggle_live_feed(self):
-        if self.live_worker is not None and self.live_worker.isRunning():
+        """Toggle raw camera feed mode."""
+        if self.live_worker and self.live_worker.isRunning():
             self._stop_live_worker()
-            self.live_btn.setText("Raw Feed")
+            self.live_btn.setText(" Raw Feed")
+            self.live_btn.setIcon(self.play_icon)
             self.start_btn.setEnabled(True)
             self.live_proc_btn.setEnabled(True)
-            self.statusBar().showMessage("Raw feed stopped. Idle.")
+            self.statusBar().showMessage("Raw feed stopped.")
         else:
             self.start_btn.setEnabled(False)
             self.live_proc_btn.setEnabled(False)
             self.save_btn.setEnabled(False)
-            self.live_btn.setText("Stop")
-            self.statusBar().showMessage("Raw feed running...")
+            self.live_btn.setText(" Stop")
+            self.live_btn.setIcon(self.stop_icon)
+            self.statusBar().showMessage("Raw feed running…")
 
             exp_ms = self.exposure_spin.value()
             self.camera.camera.exposure_time_us = exp_ms * 1000
@@ -777,25 +865,32 @@ class QIUP_APP(QMainWindow):
             self.live_worker.start()
 
     def _on_error(self, msg: str):
+        """Handle errors from worker threads."""
         self._stop_live_worker()
         self._stop_live_proc_worker()
 
-        self.live_btn.setText("Raw Feed")
-        self.live_proc_btn.setText("Live")
-        self.start_btn.setText("Single")
+        self.live_btn.setText(" Raw Feed")
+        self.live_btn.setIcon(self.play_icon)
+        self.live_proc_btn.setText(" Live")
+        self.live_proc_btn.setIcon(self.play_icon)
+        self.start_btn.setText(" Single")
 
         self.start_btn.setEnabled(True)
         self.live_btn.setEnabled(True)
         self.live_proc_btn.setEnabled(True)
         
+        self._acquisition_in_progress = False
+        
         QMessageBox.warning(self, "Hardware Error", msg)
 
     def _reset_system(self):
+        """Reset all acquisition state and return piezo to zero."""
         self._stop_live_worker()
         self._stop_live_proc_worker()
         self._stop_worker()
 
-        if self.piezo: self.piezo.set_voltage(0.0)
+        if self.piezo: 
+            self.piezo.set_voltage(0.0)
 
         self.displacements_intensities.clear()
         self.ax.clear()
@@ -809,52 +904,66 @@ class QIUP_APP(QMainWindow):
             widget.setText("No Data")
 
         self.statusBar().showMessage("System reset.")
+        
+        self._acquisition_in_progress = False
 
-        if self.piezo is not None and self.camera is not None:
+        if self.piezo and self.camera:
             self.start_btn.setEnabled(True)
             self.live_btn.setEnabled(True)
             self.live_proc_btn.setEnabled(True)
             self.save_btn.setEnabled(False)
-            self.start_btn.setText("Single")
-            self.live_btn.setText("Raw Feed")
-            self.live_proc_btn.setText("Live")
+            self.start_btn.setText(" Single")
+            self.live_btn.setText(" Raw Feed")
+            self.live_btn.setIcon(self.play_icon)
+            self.live_proc_btn.setText(" Live")
+            self.live_proc_btn.setIcon(self.play_icon)
 
     def _stop_worker(self):
+        """Stop the single acquisition worker."""
         if self.acq_worker and self.acq_worker.isRunning():
             self.acq_worker.is_running = False
             self.acq_worker.wait()
 
     def _stop_live_worker(self):
+        """Stop the live feed worker and restore single-frame mode."""
         if self.live_worker and self.live_worker.isRunning():
             self.live_worker.is_running = False
             self.live_worker.wait()
             self.live_worker = None
-            if self.camera: self.camera.set_single_frame_mode()
+            
+        # Only change camera mode if no other workers are running
+        if self.camera and not (self.live_proc_worker and self.live_proc_worker.isRunning()):
+            self.camera.set_single_frame_mode()
 
     def _stop_live_proc_worker(self):
+        """Stop the live processing worker."""
         if self.live_proc_worker and self.live_proc_worker.isRunning():
             self.live_proc_worker.is_running = False
             self.live_proc_worker.wait()
             self.live_proc_worker = None
 
     def _on_ma_toggled(self, checked: bool):
+        """Enable/disable moving average filter."""
         self.ma_size_spin.setEnabled(checked)
-        if self.camera is not None:
+        if self.camera:
             self.camera.use_moving_average = checked
 
     def _on_ma_size_changed(self, val: int):
+        """Ensure moving average kernel size is odd."""
         if val % 2 == 0:
             val += 1
             self.ma_size_spin.blockSignals(True)
             self.ma_size_spin.setValue(val)
             self.ma_size_spin.blockSignals(False)
-        if self.camera is not None:
+        if self.camera:
             self.camera.ma_kernel_size = val
 
     def _update_live_preview(self, gray_img: np.ndarray):
+        """Update the raw frame preview with ROI overlay."""
         norm = cv2.normalize(gray_img, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
         rgb = cv2.cvtColor(norm, cv2.COLOR_GRAY2RGB)
 
+        # Draw ROI rectangle
         x = self.roi_x_spin.value()
         y = self.roi_y_spin.value()
         s = self.roi_size_spin.value() // 2
@@ -870,12 +979,10 @@ class QIUP_APP(QMainWindow):
         self.raw_preview.setPixmap(scaled)
 
     def _update_preview_and_plot(self, gray_img: np.ndarray, value: float, idx: int):
-        """
-        Update preview and plot.
-        value is either displacement (µm) if strain gauge is available, or voltage (V) otherwise.
-        """
+        """Update preview and intensity plot during acquisition."""
         self._update_live_preview(gray_img)
 
+        # Extract ROI intensity
         x = self.roi_x_spin.value()
         y = self.roi_y_spin.value()
         s = self.roi_size_spin.value() // 2
@@ -887,16 +994,12 @@ class QIUP_APP(QMainWindow):
         roi_data = gray_img[y_min:y_max, x_min:x_max]
         mean_intensity = float(np.mean(roi_data))
 
-        # FIX: Force the index to wrap around using the modulo operator (%).
-        # If your scan has 8 frames, step_idx will always be 0, 1, 2, 3, 4, 5, 6, 7.
-        # This guarantees old cycles are perfectly overwritten, eliminating duplicate dots.
         n_frames = max(1, self.frames_spin.value())
         step_idx = idx % n_frames 
         
         self.displacements_intensities[step_idx] = (value, mean_intensity)
 
-        # Extract the tuples and sort them by the displacement/voltage value (the first item in the tuple)
-        # This ensures the line is drawn sequentially from left to right on the x-axis.
+        # Plot sorted by displacement/voltage
         sorted_items = sorted(self.displacements_intensities.values(), key=lambda item: item[0])
         sorted_values = [item[0] for item in sorted_items]
         sorted_intensities = [item[1] for item in sorted_items]
@@ -915,11 +1018,7 @@ class QIUP_APP(QMainWindow):
             zorder=2
         )
         
-        # Dynamic axis label based on whether strain gauge is available
-        if self.has_strain_gauge:
-            x_label = "Piezo Displacement (µm)"
-        else:
-            x_label = "Piezo Voltage (V)"
+        x_label = "Piezo Displacement (µm)" if self.has_strain_gauge else "Piezo Voltage (V)"
         
         self.ax.set_xlabel(x_label, fontsize=10, color="#d4d4d4", fontweight="bold")
         self.ax.set_ylabel("ROI Mean Intensity", fontsize=10, color="#d4d4d4", fontweight="bold")
@@ -929,12 +1028,14 @@ class QIUP_APP(QMainWindow):
         self.canvas.draw()
         
     def _display_maps(self, vis: np.ndarray, contrast: np.ndarray, phase: np.ndarray):
+        """Display the processed visibility, contrast, and phase maps."""
         self.vis_img.setPixmap(self._cv_to_pixmap(vis))
         self.contrast_img.setPixmap(self._cv_to_pixmap(contrast))
         self.phase_img.setPixmap(self._cv_to_pixmap(phase))
         self._update_labels()
 
     def _on_acquisition_complete(self):
+        """Handle completion of single acquisition."""
         proc_time = getattr(self.acq_worker, "last_proc_time", 0.0)
         msg = f"Acquisition complete. Processing time: {proc_time:.4f} s"
 
@@ -944,15 +1045,19 @@ class QIUP_APP(QMainWindow):
         self.live_btn.setEnabled(True)
         self.live_proc_btn.setEnabled(True)
         self.save_btn.setEnabled(True)
-        self.start_btn.setText("Single")
+        self.start_btn.setText(" Single")
+        
+        self._acquisition_in_progress = False
 
     @staticmethod
     def _cv_to_pixmap(cv_img: np.ndarray) -> QPixmap:
+        """Convert OpenCV RGB image to Qt QPixmap."""
         h, w, ch = cv_img.shape
         qimg = QImage(cv_img.data, w, h, ch * w, QImage.Format_RGB888)
         return QPixmap.fromImage(qimg)
 
     def _apply_theme(self):
+        """Apply dark theme stylesheet."""
         bg, fg, border, img_bg = "#1e1e1e", "#d4d4d4", "#3f3f46", "#121212"
         btn_bg, bar_bg = "#333337", "#2d2d30"
         accent = "#0078d4"
@@ -967,7 +1072,7 @@ class QIUP_APP(QMainWindow):
             QToolBar {{
                 background-color: {bar_bg};
                 border-bottom: 1px solid {border}; 
-                padding: 6px;
+                padding: 8px;
             }}
             QGroupBox {{
                 border: 1px solid {border}; 
@@ -990,15 +1095,27 @@ class QIUP_APP(QMainWindow):
                 font-weight: 600;
             }}
             QPushButton:hover {{
-                background-color: {accent}; 
+                background-color: #3e3e42; 
             }}
-            QPushButton:checked {{
-                background-color: {accent};
+            QPushButton:pressed {{
+                background-color: #2d2d30;
+            }}
+            QPushButton[isAction="true"] {{
+                background-color: {accent}; 
                 border: 1px solid #005a9e;
             }}
-            QPushButton:disabled {{
-                background-color: #444; 
+            QPushButton[isAction="true"]:hover {{
+                background-color: #005a9e; 
+                border: 1px solid #004578;
+            }}
+            QPushButton[isAction="true"]:disabled {{
+                background-color: #2d2d30; 
                 color: #888; 
+                border: 1px solid {border};
+            }}
+            QPushButton#iconBtn {{
+                padding: 6px;
+                border-radius: 4px;
             }}
             QToolButton {{
                 background-color: {btn_bg}; 
@@ -1009,7 +1126,7 @@ class QIUP_APP(QMainWindow):
                 font-weight: 600;
             }}
             QToolButton:hover {{
-                background-color: {accent}; 
+                background-color: #3e3e42; 
             }}
             QToolButton::menu-indicator {{ 
                 image: none; 
@@ -1104,6 +1221,7 @@ class QIUP_APP(QMainWindow):
         self.canvas.draw()
 
     def closeEvent(self, event):
+        """Handle application close event with cleanup."""
         if self.camera is None and self.piezo is None:
             event.accept()
             return
@@ -1118,33 +1236,44 @@ class QIUP_APP(QMainWindow):
             return
 
         self.statusBar().showMessage("Shutting down…")
+        
+        # Stop all workers
         self._stop_live_worker()
         self._stop_live_proc_worker()
         self._stop_worker()
 
+        # Disconnect hardware
         try:
-            if self.camera: self.camera.disconnect()
-            if self.piezo: self.piezo.disconnect()
+            if self.camera: 
+                self.camera.disconnect()
+            if self.piezo: 
+                self.piezo.disconnect()
         except Exception as exc:
             print(f"Error during shutdown: {exc}")
+
+        # Clean up matplotlib resources
+        try:
+            plt.close(self.fig)
+        except Exception:
+            pass
 
         event.accept()
 
 
-# ---------------------------------------------------------------------------
-# Application Entry Point
-# ---------------------------------------------------------------------------
-
 if __name__ == "__main__":
+    # Set Windows taskbar icon (Windows-only, fails gracefully on other platforms)
     try:
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
-            "nano_qiup.app.2_0"
-        )
-    except AttributeError:
+        if sys.platform == 'win32':
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("nano_qiup.app.2_0")
+    except (AttributeError, OSError):
         pass
 
     app = QApplication(sys.argv)
     window = QIUP_APP()
-    app.setWindowIcon(QIcon(window.logo_path))
+    
+    # Set app icon if logo exists
+    if os.path.exists(window.logo_path):
+        app.setWindowIcon(QIcon(window.logo_path))
+        
     window.show()
     sys.exit(app.exec_())

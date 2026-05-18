@@ -70,14 +70,8 @@ class SingleAcquisitionWorker(QThread):
             # Issue ONE trigger
             self.camera_ctrl.camera.issue_software_trigger()
             
-            # SPEED & ACCURACY: Tight polling loop (1ms) to grab the frame the instant the exposure finishes
-            frame = None
-            wait_start = time.time()
-            while frame is None and self.is_running and (time.time() - wait_start) < 5.0:
-                frame = self.camera_ctrl.camera.get_pending_frame_or_null()
-                if frame is None:
-                    time.sleep(0.001)  # 1ms tight loop for maximum speed
-            
+            frame = self.camera_ctrl.camera.get_pending_frame_or_null()
+
             if frame is not None:
                 img = np.copy(frame.image_buffer).reshape(h, w)
                 img = cv2.flip(img, 0)
@@ -88,9 +82,6 @@ class SingleAcquisitionWorker(QThread):
                     img = cv2.blur(img, (k, k))
                 
                 image_stack[frames_acquired] = img
-                
-                # Fetch actual displacement for hardware logging (Speed)
-                actual_um = self.piezo_ctrl.get_displacement()
                 
                 # GUARANTEE EQUAL DISTANCES: Always use the exact target step for FFT processing (Accuracy)
                 pos_to_record = target_um
@@ -218,12 +209,7 @@ class LiveProcessingWorker(QThread):
                 cam.issue_software_trigger()
                 
                 # SPEED & ACCURACY: Tight polling loop (1ms)
-                frame = None
-                wait_start = time.time()
-                while frame is None and self.is_running and (time.time() - wait_start) < 5.0:
-                    frame = cam.get_pending_frame_or_null()
-                    if frame is None:
-                        time.sleep(0.001)
+                frame = cam.get_pending_frame_or_null()
                 
                 if frame is not None:
                     img = np.copy(frame.image_buffer).reshape(h, w)
@@ -233,10 +219,7 @@ class LiveProcessingWorker(QThread):
                         k = self.camera_ctrl.ma_kernel_size
                         k = k if k % 2 != 0 else k + 1
                         img = cv2.blur(img, (k, k))
-                    
-                    # Fetch actual displacement for potential tracking (Speed)
-                    actual_um = self.piezo_ctrl.get_displacement()
-                    
+                                        
                     # GUARANTEE EQUAL DISTANCES: Always use the exact target step for FFT processing (Accuracy)
                     pos_to_record = target_um
                     
