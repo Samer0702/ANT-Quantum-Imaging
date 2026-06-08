@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  16 APR 2026 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  1 JUN 2026 16:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -398,7 +398,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.88 \newpage
-              [1] [2] [3] (learning_report.aux)
+              [1] [2] [3] [4] [5] [6] (learning_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -407,17 +407,17 @@ Package rerunfilecheck Info: File `learning_report.out' has not changed.
 (rerunfilecheck)             Checksum: 07FFC5B9BC610D7E9BC6731E5CC231D0;1241.
  ) 
 Here is how much of TeX's memory you used:
- 15394 strings out of 467866
- 270460 string characters out of 5418325
- 689012 words of memory out of 5000000
- 44102 multiletter control sequences out of 15000+600000
- 633196 words of font info for 58 fonts, out of 8000000 for 9000
+ 15402 strings out of 467866
+ 270572 string characters out of 5418325
+ 692012 words of memory out of 5000000
+ 44106 multiletter control sequences out of 15000+600000
+ 633533 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,6n,131p,608b,539s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on learning_report.pdf (4 pages, 51074 bytes).
+ 83i,6n,131p,952b,539s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\samer\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on learning_report.pdf (7 pages, 71408 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 12 named destinations out of 1000 (max. 500000)
+ 95 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

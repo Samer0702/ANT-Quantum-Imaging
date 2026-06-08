@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  11 MAY 2026 13:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.1) (preloaded format=pdflatex 2026.2.13)  8 JUN 2026 15:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -291,30 +291,102 @@ Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count307
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count308
+) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip70
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks27
+\ex@=\dimen190
+)) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen191
+) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count309
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count310
+\leftroot@=\count311
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count312
+\DOTSCASE@=\count313
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box59
+\strutbox@=\box60
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen192
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count314
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count315
+\dotsspace@=\muskip18
+\c@parentequation=\count316
+\dspbrk@lvl=\count317
+\tag@help=\toks28
+\row@=\count318
+\column@=\count319
+\maxfields@=\count320
+\andhelp@=\toks29
+\eqnshift@=\dimen193
+\alignsep@=\dimen194
+\tagshift@=\dimen195
+\tagwidth@=\dimen196
+\totwidth@=\dimen197
+\lineht@=\dimen198
+\@envbody=\toks30
+\multlinegap=\skip71
+\multlinetaggap=\skip72
+\mathdisplay@stack=\toks31
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/apacite\apacite.sty
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count321
+\bibleftmargin=\skip73
+\bibindent=\skip74
+\bibparsep=\skip75
+\bibitemsep=\skip76
+\biblabelsep=\skip77
 ) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count309
+\l__color_backend_stack_int=\count322
 ) (Thesis.aux)
 \openout1 = `Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -352,66 +424,59 @@ LaTeX Font Info:    ... okay on input line 54.
 
 (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count310
-\scratchdimen=\dimen190
-\scratchbox=\box59
-\nofMPsegments=\count311
-\nofMParguments=\count312
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count313
-\MPscratchDim=\dimen191
-\MPnumerator=\count314
-\makeMPintoPDFobject=\count315
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count323
+\scratchdimen=\dimen199
+\scratchbox=\box61
+\nofMPsegments=\count324
+\nofMParguments=\count325
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count326
+\MPscratchDim=\dimen256
+\MPnumerator=\count327
+\makeMPintoPDFobject=\count328
+\everyMPtoPDFconversion=\toks33
 ) (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 54.
+Package hyperref Info: Link coloring OFF on input line 56.
  (Thesis.out) (Thesis.out)
 \@outlinefile=\write3
 \openout3 = `Thesis.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 69.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 69.
- [1
+\c@maskedRefs=\count329
+ (C:\Users\samer\AppData\Local\Programs\MiKTeX\tex/latex/apacite\english.apc
+File: english.apc 2013/07/21 v6.03 apacite language file
+LaTeX Info: Redefining \BPBI on input line 129.
+LaTeX Info: Redefining \BHBI on input line 130.
+) [1
 
 {C:/Users/samer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Package acronym Info: Label `acro:QIUP' newly defined as it shall be overridden
-although it is yet undefined on input line 100.
+although it is yet undefined on input line 101.
 Package acronym Info: Label `acro:ANT' newly defined as it shall be overridden
-although it is yet undefined on input line 102.
+although it is yet undefined on input line 103.
+Package acronym Info: Label `acro:FFT' newly defined as it shall be overridden
+although it is yet undefined on input line 103.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.104 \newpage
-               [1]
-Package acronym Info: Label `acro:FFT' newly defined as it shall be overridden
-although it is yet undefined on input line 107.
- [2] (Thesis.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
-)
+l.105 \newpage
+               [1] [2] (Thesis.toc [3] [4])
 \tf@toc=\write4
 \openout4 = `Thesis.toc'.
 
- [3] [4] (Thesis.lof
+ [5] [6] [7] (Thesis.lof
 Package acronym Info: Label `acro:KPZ101' newly defined as it shall be overridden
 although it is yet undefined on input line 3.
 Package acronym Info: Label `acro:KSG101' newly defined as it shall be overridden
 although it is yet undefined on input line 4.
-)
+ [8])
 \tf@lof=\write5
 \openout5 = `Thesis.lof'.
 
@@ -419,86 +484,304 @@ although it is yet undefined on input line 4.
 \tf@lot=\write6
 \openout6 = `Thesis.lot'.
 
- [5]
+ [9]
 Package acronym Info: Label `acro:TLC' newly defined as it shall be overridden
-although it is yet undefined on input line 145.
+although it is yet undefined on input line 148.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:151: Use of \@year@ doesn't match its definition.
+\Y@quantum_delta ->\@year@ 0
+                            
+l.151 ...quantum technologies \cite{quantum_delta}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
 Package acronym Info: Label `acro:PPLN' newly defined as it shall be overridden
-although it is yet undefined on input line 160.
+although it is yet undefined on input line 162.
 Package acronym Info: Label `acro:CMOS' newly defined as it shall be overridden
-although it is yet undefined on input line 163.
-Package acronym Info: Label `acro:SPDC' newly defined as it shall be overridden
-although it is yet undefined on input line 166.
-<images/setup/demonstrator_setup.jpeg, id=226, 1032.85875pt x 662.475pt>
+although it is yet undefined on input line 165.
+<images/setup/demonstrator_setup.jpeg, id=625, 1032.85875pt x 662.475pt>
 File: images/setup/demonstrator_setup.jpeg Graphic file (type jpg)
 <use images/setup/demonstrator_setup.jpeg>
 Package pdftex.def Info: images/setup/demonstrator_setup.jpeg  used on input line 171.
 (pdftex.def)             Requested size: 452.9679pt x 290.52959pt.
-<images/setup/setup_schematic.png, id=227, 685.05937pt x 240.14719pt>
+<images/setup/setup_schematic.png, id=626, 685.05937pt x 240.14719pt>
 File: images/setup/setup_schematic.png Graphic file (type png)
 <use images/setup/setup_schematic.png>
 Package pdftex.def Info: images/setup/setup_schematic.png  used on input line 175.
 (pdftex.def)             Requested size: 452.9679pt x 158.79076pt.
- [6]
-Package acronym Info: Label `acro:CCD' newly defined as it shall be overridden
-although it is yet undefined on input line 185.
- [7 <./images/setup/demonstrator_setup.jpeg> <./images/setup/setup_schematic.png>]
-<images/old_showcase.png, id=255, 1155.1155pt x 489.027pt>
+[10]
+Package acronym Info: Label `acro:SPDC' newly defined as it shall be overridden
+although it is yet undefined on input line 184.
+ [11 <./images/setup/demonstrator_setup.jpeg> <./images/setup/setup_schematic.png>]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:197: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsThorCam ->\@year@ 0
+                              
+l.197 ...he images: Thorcam \cite{ThorlabsThorCam}
+                                                   (left part of Figure \ref...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:197: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKinesis ->\@year@ 0
+                              
+l.197 ...case}) and Kinesis \cite{ThorlabsKinesis}
+                                                   (right part of Figure \re...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+<images/old_showcase.png, id=656, 1155.1155pt x 489.027pt>
 File: images/old_showcase.png Graphic file (type png)
 <use images/old_showcase.png>
-Package pdftex.def Info: images/old_showcase.png  used on input line 199.
-(pdftex.def)             Requested size: 452.9679pt x 191.76442pt.
- [8 <./images/old_showcase.png>]
+Package pdftex.def Info: images/old_showcase.png  used on input line 203.
+(pdftex.def)             Requested size: 362.37569pt x 153.41005pt.
+[12 <./images/old_showcase.png>]
 Package acronym Info: Label `acro:GUI' newly defined as it shall be overridden
-although it is yet undefined on input line 223.
- [9] [10] [11] [12] [13]
-<images/components/KPZ101.jpg, id=339, 782.925pt x 782.925pt>
+although it is yet undefined on input line 227.
+ [13]
+Overfull \hbox (36.36017pt too wide) in paragraph at lines 254--255
+[]\OT1/cmr/bx/n/12 Hardware Con-trol: \OT1/cmr/m/n/12 In-te-gra-tion with the Thor-labs piezo-elec-tric stage (KPZ101/KSG101)
+ []
+
+[14] [15]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:279: Use of \@year@ doesn't match its definition.
+\Y@NonlinearInterferometry ->\@year@ 0
+                                      
+l.279 ...oton pairs \cite{NonlinearInterferometry}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:282: Use of \@year@ doesn't match its definition.
+\Y@lemos2014quantum ->\@year@ 0
+                               
+l.282 ...stem is \ac{SPDC} \cite{lemos2014quantum}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:283: Use of \@year@ doesn't match its definition.
+\Y@NonlinearInterferometry ->\@year@ 0
+                                      
+l.283 ...gy photons \cite{NonlinearInterferometry}
+                                                  . These newly created phot...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:286: Use of \@year@ doesn't match its definition.
+\Y@lemos2014quantum ->\@year@ 0
+                               
+l.286 ...emos2014quantum, NonlinearInterferometry}
+                                                  . The optical setup is con...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:286: Use of \@year@ doesn't match its definition.
+\Y@NonlinearInterferometry ->\@year@ 0
+                                      
+l.286 ...emos2014quantum, NonlinearInterferometry}
+                                                  . The optical setup is con...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:289: Use of \@year@ doesn't match its definition.
+\Y@NonlinearInterferometry ->\@year@ 0
+                                      
+l.289 ...onlinearInterferometry, lemos2014quantum}
+                                                  . By overlapping the infra...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:289: Use of \@year@ doesn't match its definition.
+\Y@lemos2014quantum ->\@year@ 0
+                               
+l.289 ...onlinearInterferometry, lemos2014quantum}
+                                                  . By overlapping the infra...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:289: Use of \@year@ doesn't match its definition.
+\Y@lemos2014quantum ->\@year@ 0
+                               
+l.289 ...ton pair's origin \cite{lemos2014quantum}
+                                                  . This spatial indistingui...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:289: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.289 ...ce2023practical, NonlinearInterferometry}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:289: Use of \@year@ doesn't match its definition.
+\Y@NonlinearInterferometry ->\@year@ 0
+                                      
+l.289 ...ce2023practical, NonlinearInterferometry}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[16]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:292: Use of \@year@ doesn't match its definition.
+\Y@lemos2014quantum ->\@year@ 0
+                               
+l.292 ...aching a detector \cite{lemos2014quantum}
+                                                  . Meanwhile, the visible s...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:292: Use of \@year@ doesn't match its definition.
+\Y@kutas2021quantum ->\@year@ 0
+                               
+l.292 ...te{kutas2021quantum, pearce2023practical}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:292: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.292 ...te{kutas2021quantum, pearce2023practical}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:296: Use of \@year@ doesn't match its definition.
+\Y@SpectralLeakageEssentials ->\@year@ 0
+                                        
+l.296 ... quality \cite{SpectralLeakageEssentials}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:299: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.299 ...m the \ac{FFT} \cite{pearce2023practical}
+                                                  . The parameters are calcu...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:302: Use of \@year@ doesn't match its definition.
+\Y@lemos2014quantum ->\@year@ 0
+                               
+l.302 ...emos2014quantum, NonlinearInterferometry}
+                                                  . Visibility $V$ is calcul...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:302: Use of \@year@ doesn't match its definition.
+\Y@NonlinearInterferometry ->\@year@ 0
+                                      
+l.302 ...emos2014quantum, NonlinearInterferometry}
+                                                  . Visibility $V$ is calcul...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[17]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:307: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.307 ...ixel intensity \cite{pearce2023practical}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:314: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.314 ...cite{pearce2023practical, xie2018surface}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:314: Use of \@year@ doesn't match its definition.
+\Y@xie2018surface ->\@year@ 0
+                             
+l.314 ...cite{pearce2023practical, xie2018surface}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:321: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.321 ...ight detection \cite{pearce2023practical}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[18]
+<images/components/KPZ101.jpg, id=777, 782.925pt x 782.925pt>
 File: images/components/KPZ101.jpg Graphic file (type jpg)
 <use images/components/KPZ101.jpg>
-Package pdftex.def Info: images/components/KPZ101.jpg  used on input line 328.
+Package pdftex.def Info: images/components/KPZ101.jpg  used on input line 334.
 (pdftex.def)             Requested size: 203.83417pt x 203.83046pt.
- [14 <./images/components/KPZ101.jpg>]
-<images/components/KSG101.jpg, id=353, 782.925pt x 782.925pt>
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:338: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKPZ101 ->\@year@ 0
+                             
+l.338 ... interference sweep \cite{ThorlabsKPZ101}
+                                                  . The \ac{KPZ101} is visua...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+<images/components/KSG101.jpg, id=786, 782.925pt x 782.925pt>
 File: images/components/KSG101.jpg Graphic file (type jpg)
 <use images/components/KSG101.jpg>
-Package pdftex.def Info: images/components/KSG101.jpg  used on input line 340.
+Package pdftex.def Info: images/components/KSG101.jpg  used on input line 343.
 (pdftex.def)             Requested size: 203.83417pt x 203.83046pt.
-<images/components/CMOS.png, id=366, 329.43076pt x 317.38576pt>
-File: images/components/CMOS.png Graphic file (type png)
-<use images/components/CMOS.png>
-Package pdftex.def Info: images/components/CMOS.png  used on input line 358.
-(pdftex.def)             Requested size: 203.83417pt x 196.38486pt.
- [15 <./images/components/KSG101.jpg>]
-Package acronym Info: Label `acro:SDK' newly defined as it shall be overridden
-although it is yet undefined on input line 372.
-Package acronym Info: Label `acro:TSI' newly defined as it shall be overridden
-although it is yet undefined on input line 373.
-Package acronym Info: Label `acro:CLR' newly defined as it shall be overridden
-although it is yet undefined on input line 378.
- [16 <./images/components/CMOS.png>]
-Package acronym Info: Label `acro:FFTW' newly defined as it shall be overridden
-although it is yet undefined on input line 388.
-Package acronym Info: Label `acro:SIMD' newly defined as it shall be overridden
-although it is yet undefined on input line 390.
- [17] [18] [19] [20] [21] [22] [23] [24] (Thesis.bbl) [25] [26] (Thesis.aux)
- ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-01-19>
- ***********
-Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 63BE46E8A6C66046F446DFDF970F8ED6;2827.
- ) 
-Here is how much of TeX's memory you used:
- 15750 strings out of 467866
- 276312 string characters out of 5418325
- 698396 words of memory out of 5000000
- 44348 multiletter control sequences out of 15000+600000
- 634349 words of font info for 62 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 83i,12n,131p,604b,607s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\samer\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/samer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Thesis.pdf (27 pages, 2571590 bytes).
-PDF statistics:
- 509 PDF objects out of 1000 (max. 8388607)
- 110 named destinations out of 1000 (max. 500000)
- 183 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:347: Use of \@year@ doesn't match its definitio

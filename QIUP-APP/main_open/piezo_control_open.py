@@ -13,6 +13,7 @@ for the strain gauge readings to reflect the actual piezo displacement.
 """
 
 import os
+import sys
 import clr
 import time
 import System
@@ -56,7 +57,13 @@ class PiezoController:
         # Track the zero reference displacement
         self.zero_displacement = 0.0
 
-        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if getattr(sys, 'frozen', False):
+            # Running as a PyInstaller executable
+            self.base_dir = sys._MEIPASS
+        else:
+            # Running as a standard python script
+            self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            
         self._load_dlls()
 
     # ------------------------------------------------------------------
@@ -133,7 +140,8 @@ class PiezoController:
                 # Zero the piezo at 0V before zeroing the strain gauge
                 self.piezo.SetOutputVoltage(System.Convert.ToDecimal(0.0))
                 time.sleep(1.0)
-                
+
+                self.strain.SetZero()  # Set current position as zero reference
                 # Store the zero reference
                 self.zero_displacement = self._read_raw_displacement()
                 

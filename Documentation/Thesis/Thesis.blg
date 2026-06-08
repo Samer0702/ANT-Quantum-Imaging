@@ -1,48 +1,60 @@
 This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Thesis.aux
-Reallocating 'name_of_file' (item size: 1) to 7 items.
-The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apacite.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: references.bib
-You've used 15 entries,
-            1876 wiz_defined-function locations,
-            551 strings with 5476 characters,
-and the built_in function-call counts, 2329 in all, are:
-= -- 190
-> -- 140
-< -- 0
-+ -- 54
-- -- 39
-* -- 138
-:= -- 387
-add.period$ -- 22
-call.type$ -- 15
-change.case$ -- 13
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--`others' not consistent with 6th ed. of the APA Manual
+You've used 18 entries,
+            6951 wiz_defined-function locations,
+            1366 strings with 14079 characters,
+and the built_in function-call counts, 30805 in all, are:
+= -- 3790
+> -- 219
+< -- 1384
++ -- 1368
+- -- 36
+* -- 1908
+:= -- 5345
+add.period$ -- 70
+call.type$ -- 18
+change.case$ -- 302
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 96
-empty$ -- 259
-format.name$ -- 39
-if$ -- 548
+cite$ -- 36
+duplicate$ -- 818
+empty$ -- 1465
+format.name$ -- 395
+if$ -- 6078
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 6
-newline$ -- 55
-num.names$ -- 15
-pop$ -- 76
+int.to.str$ -- 54
+missing$ -- 0
+newline$ -- 418
+num.names$ -- 96
+pop$ -- 1120
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 68
 quote$ -- 0
-skip$ -- 34
+skip$ -- 1644
 stack$ -- 0
-substring$ -- 0
-swap$ -- 10
-text.length$ -- 0
+substring$ -- 1457
+swap$ -- 418
+text.length$ -- 44
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 15
-width$ -- 17
-write$ -- 130
+top$ -- 1
+type$ -- 1578
+warning$ -- 1
+while$ -- 148
+width$ -- 0
+write$ -- 525
+(There was 1 warning)

@@ -73,10 +73,10 @@ def run_test():
         time.sleep(1.0)
 
         # Test Motion Cycle in absolute Volts (Assuming standard 75V max piezo)
-        test_steps_V = [0.0, 5.0, 10.0, 15.0, 20.0, 75.0 ,]
+        test_steps_V = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5] # Adjust as needed for finer steps
         MAX_TRAVEL_UM = 20.0 # Adjust to your specific piezo hardware limit
         
-        print("\nStarting Test Cycle (Calibrated):")
+        print("\nStarting Test Cycle:")
         print(f"{'Target V':>10} | {'Readback µm':>15} | {'Raw ADC'}")
         print("-" * 42)
 

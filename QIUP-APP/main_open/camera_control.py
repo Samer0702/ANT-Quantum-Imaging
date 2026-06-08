@@ -119,6 +119,19 @@ class CameraController:
         )
         self._planned_n_frames = n_frames
 
+
+    def _get_f1_bin(self, n_frames: int) -> int:
+        """
+        Return the FFT bin index that holds the interference fringe signal.
+        """
+
+        limit = n_frames // 2
+        if limit <= 1:
+            return 1
+
+        mean_magnitudes = np.abs(self._fft_output[1:limit]).mean(axis=(1, 2))
+        return int(mean_magnitudes.argmax()) + 1
+    
     # ------------------------------------------------------------------
     # Core processing
     # ------------------------------------------------------------------
@@ -141,8 +154,9 @@ class CameraController:
         self._fft_input[:] = image_stack
         self._fft_plan()
 
-        F0 = np.abs(self._fft_output[0])  
-        F1 = self._fft_output[1]     
+        F0 = np.abs(self._fft_output[0])
+        F1_bin = self._get_f1_bin(n_frames)
+        F1 = self._fft_output[F1_bin]
 
         # Calculate raw maps
         visibility = (2.0 * np.abs(F1)) / (F0 + 1e-10)
@@ -260,7 +274,7 @@ class CameraController:
 
         # This strictly removes background noise below a 10% visibility 
         # threshold, regardless of the GUI slider position.
-        vis_threshold = 0.05
+        vis_threshold = 0.07
         mask_3d = (self.last_visibility > vis_threshold)[..., np.newaxis]
         phase_color = np.where(mask_3d, phase_color, 0).astype(np.uint8)
 

@@ -46,9 +46,6 @@ def run_test():
             strain.WaitForSettingsInitialized(5000)
 
         # --- THE CRITICAL FIX: HARDWARE CONTEXT ---
-        # NOTE: For GetPiezoConfiguration to load correct bounds (e.g., 20um, 75V), 
-        # you MUST have previously opened the Thorlabs Kinesis PC software, 
-        # assigned your specific actuator to this KPZ101, and clicked "Persist Settings to Device".
         piezo_config = piezo.GetPiezoConfiguration(PIEZO_SERIAL)
         strain_config = strain.GetStrainGaugeConfiguration(STRAIN_SERIAL)
         # ------------------------------------------
@@ -66,19 +63,20 @@ def run_test():
         time.sleep(15.0)
 
         # 3. NOW it is safe to engage the PID Loop
-        # IMPORTANT: Ensure the SMA cable connects KSG101 'SIG OUT' to KPZ101 'EXT IN', 
-        # OR ensure the K-Cube hub routing switches are correctly set on the back of the cubes.
         print("Setting mode: Closed Loop...")
         piezo.SetPositionControlMode(PiezoControlModeTypes.CloseLoop)
         time.sleep(1.0)
 
         # Test Motion Cycle in absolute micrometers
-        test_steps_um = [0.0, 5.0, 10.0, 15.0, 20.0, 0.0]
+        test_steps_um = [0.0, 5.0, 10.0]
         MAX_TRAVEL_UM = 20.0
         
-        print("\nStarting Test Cycle (Calibrated):")
-        print(f"{'Target µm':>10} | {'Readback µm':>15} | {'Raw ADC'}")
+        print("\nStarting Test Cycle (Relative to first reading):")
+        print(f"{'Target µm':>10} | {'Relative µm':>15} | {'Raw ADC'}")
         print("-" * 42)
+
+        # Initialize our software offset
+        initial_offset_um = None
 
         for step_um in test_steps_um:
             # 1. Convert micrometers to a percentage (0.0 to 100.0)
@@ -88,16 +86,21 @@ def run_test():
             piezo.SetPercentageTravel(System.Convert.ToDecimal(float(target_pct)))
             
             # Allow time for the piezo PID loop to settle
-            time.sleep(3.0)
+            time.sleep(10.0)
             
             # 2. Get the raw ADC reading from the Strain Gauge
             raw_reading = int(str(strain.GetReading()))
             
-            # 3. Convert the raw +/- 32767 value back into Micrometers
-            # Note: 32767 is the full-scale 16-bit integer for 100% travel
-            displacement_um = (raw_reading / 32767.0) * MAX_TRAVEL_UM
+            # 3. Convert the raw +/- 32767 value back into absolute Micrometers
+            absolute_displacement_um = (raw_reading / 32767.0) * MAX_TRAVEL_UM
             
-            print(f"{step_um:10.1f} | {displacement_um:12.3f} µm    | {raw_reading}")
+            # 4. Set baseline if this is the first reading, then calculate relative position
+            if initial_offset_um is None:
+                initial_offset_um = absolute_displacement_um
+                
+            relative_displacement_um = absolute_displacement_um - initial_offset_um
+            
+            print(f"{step_um:10.1f} | {relative_displacement_um:12.3f} µm    | {raw_reading}")
 
     except Exception as e:
         print(f"\nAn error occurred: {e}")

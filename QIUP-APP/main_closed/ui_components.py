@@ -4,11 +4,17 @@ from PyQt5.QtGui import QPixmap
 
 class ClickableLabel(QLabel):
     clicked = pyqtSignal(int, int)
+    double_clicked = pyqtSignal()
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.clicked.emit(event.pos().x(), event.pos().y())
         super().mousePressEvent(event)
+    
+    def mouseDoubleClickEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.double_clicked.emit()
+        super().mouseDoubleClickEvent(event)
 
 
 class ScalableImageLabel(QLabel):

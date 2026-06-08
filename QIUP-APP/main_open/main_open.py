@@ -26,7 +26,7 @@ class QIUP_APP(QMainWindow):
     """Main application window for Quantum Imaging with Undetected Photons (QIUP)."""
 
     _DEFAULT_SCAN_V_START = 0.0
-    _DEFAULT_SCAN_V_END = 3.9
+    _DEFAULT_SCAN_V_END = 4.5
     _DEFAULT_SETTLING_MS = 10
 
     def __init__(self):
@@ -50,6 +50,10 @@ class QIUP_APP(QMainWindow):
 
         self.displacements_intensities: dict[float, float] = {}
         self.has_strain_gauge = False
+        
+        # Hidden variables for ROI center (replaces spinboxes)
+        self.roi_x = 0
+        self.roi_y = 0
         
         # Prevent rapid button clicking
         self._acquisition_in_progress = False
@@ -159,92 +163,9 @@ class QIUP_APP(QMainWindow):
         self.scan_btn.setPopupMode(QToolButton.InstantPopup)
         toolbar.addWidget(self.scan_btn)
 
-        # CMOS settings dropdown
-        cmos_menu = QMenu(self)
-        cmos_widget = QWidget()
-        cmos_widget.setObjectName("dropdownMenu")
-        cmos_lay = QFormLayout(cmos_widget)
-        
-        self.exposure_spin = QSpinBox()
-        self.exposure_spin.setRange(1, 5000)
-        self.exposure_spin.setValue(200)
-        self.exposure_spin.setSuffix(" ms")
-        self.exposure_spin.valueChanged.connect(self._on_exposure_changed)
-        
-        self.gain_spin = QSpinBox()
-        self.gain_spin.setRange(0, 48)
-        self.gain_spin.setValue(35)
-        self.gain_spin.setSuffix(" dB")
-        self.gain_spin.valueChanged.connect(self._on_gain_changed)
-        
-        self.ma_checkbox = QCheckBox("Use Moving Average Filter")
-        self.ma_checkbox.toggled.connect(self._on_ma_toggled)
-        
-        self.ma_size_spin = QSpinBox()
-        self.ma_size_spin.setSingleStep(2)
-        self.ma_size_spin.setRange(3, 101)
-        self.ma_size_spin.setValue(3)
-        self.ma_size_spin.setSuffix(" px")
-        self.ma_size_spin.setEnabled(False)
-        self.ma_size_spin.valueChanged.connect(self._on_ma_size_changed)
-        
-        cmos_lay.addRow("Exposure:", self.exposure_spin)
-        cmos_lay.addRow("Gain:", self.gain_spin)
-        cmos_lay.addRow(self.ma_checkbox)
-        cmos_lay.addRow("Window Size:", self.ma_size_spin)
-        
-        cmos_action = QWidgetAction(self)
-        cmos_action.setDefaultWidget(cmos_widget)
-        cmos_menu.addAction(cmos_action)
-
-        self.cmos_btn = QToolButton()
-        self.cmos_btn.setText("CMOS Settings")
-        self.cmos_btn.setToolTip("Adjust camera exposure, gain, and filters")
-        self.cmos_btn.setMenu(cmos_menu)
-        self.cmos_btn.setPopupMode(QToolButton.InstantPopup)
-        toolbar.addWidget(self.cmos_btn)
-
-        # ROI settings dropdown
-        roi_menu = QMenu(self)
-        roi_widget = QWidget()
-        roi_widget.setObjectName("dropdownMenu")
-        roi_lay = QFormLayout(roi_widget)
-        
-        self.roi_x_spin = QSpinBox()
-        self.roi_x_spin.setRange(0, 4000)
-        self.roi_x_spin.setValue(0)
-        
-        self.roi_y_spin = QSpinBox()
-        self.roi_y_spin.setRange(0, 4000)
-        self.roi_y_spin.setValue(0)
-        
-        self.roi_size_spin = QSpinBox()
-        self.roi_size_spin.setRange(1, 1000)
-        self.roi_size_spin.setValue(50)
-        self.roi_size_spin.setSuffix(" px")
-        
-        roi_lay.addRow("Center X:", self.roi_x_spin)
-        roi_lay.addRow("Center Y:", self.roi_y_spin)
-        roi_lay.addRow("Box Size:", self.roi_size_spin)
-        
-        hint_lbl = QLabel("(Click on preview to select ROI)")
-        hint_lbl.setStyleSheet("font-size: 10px; color: #888888;")
-        roi_lay.addRow(hint_lbl)
-        
-        roi_action = QWidgetAction(self)
-        roi_action.setDefaultWidget(roi_widget)
-        roi_menu.addAction(roi_action)
-
-        self.roi_btn = QToolButton()
-        self.roi_btn.setText("Plot ROI")
-        self.roi_btn.setToolTip("Configure region of interest for intensity plot")
-        self.roi_btn.setMenu(roi_menu)
-        self.roi_btn.setPopupMode(QToolButton.InstantPopup)
-        toolbar.addWidget(self.roi_btn)
-
         toolbar.addSeparator()
 
-        # 6. Separate Load / Save Buttons
+        # Separate Load / Save Buttons
         self.load_btn = QPushButton("Load")
         self.load_btn.setToolTip("Load previous settings.")
         self.load_btn.clicked.connect(self._load_settings)
@@ -275,17 +196,127 @@ class QIUP_APP(QMainWindow):
         preview_layout = QVBoxLayout()
         preview_layout.setContentsMargins(10, 20, 10, 10)
 
+        # --- CONSOLIDATED PREVIEW SETTINGS MENU ---
+        preview_top_bar = QHBoxLayout()
+        preview_top_bar.addStretch()
+        
+        preview_menu = QMenu(self)
+        preview_settings_widget = QWidget()
+        preview_settings_widget.setObjectName("dropdownMenu")
+        preview_settings_lay = QVBoxLayout(preview_settings_widget)
+        preview_settings_lay.setSpacing(15)
+
+        # 1. CMOS Settings Group
+        cmos_group = QGroupBox("CMOS Settings")
+        cmos_lay = QFormLayout(cmos_group)
+        
+        self.exposure_spin = QSpinBox()
+        self.exposure_spin.setRange(1, 5000)
+        self.exposure_spin.setValue(200)
+        self.exposure_spin.setSuffix(" ms")
+        self.exposure_spin.valueChanged.connect(self._on_exposure_changed)
+        
+        self.gain_spin = QSpinBox()
+        self.gain_spin.setRange(0, 48)
+        self.gain_spin.setValue(35)
+        self.gain_spin.setSuffix(" dB")
+        self.gain_spin.valueChanged.connect(self._on_gain_changed)
+        
+        self.ma_checkbox = QCheckBox("Use Moving Average Filter")
+        self.ma_checkbox.toggled.connect(self._on_ma_toggled)
+        
+        self.ma_size_spin = QSpinBox()
+        self.ma_size_spin.setSingleStep(2)
+        self.ma_size_spin.setRange(3, 101)
+        self.ma_size_spin.setValue(3)
+        self.ma_size_spin.setSuffix(" px")
+        self.ma_size_spin.setEnabled(False)
+        self.ma_size_spin.valueChanged.connect(self._on_ma_size_changed)
+
+        cmos_lay.addRow("Exposure:", self.exposure_spin)
+        cmos_lay.addRow("Gain:", self.gain_spin)
+        cmos_lay.addRow(self.ma_checkbox)
+        cmos_lay.addRow("Window Size:", self.ma_size_spin)
+        
+        # 2. Raw Intensity Group
+        intensity_group = QGroupBox("Raw Display Intensity (0 - 1023)")
+        intensity_lay = QVBoxLayout(intensity_group)
+        
+        self.raw_auto_cb = QCheckBox("Auto Scale to Frame Min/Max")
+        self.raw_auto_cb.setChecked(True)
+        intensity_lay.addWidget(self.raw_auto_cb)
+
+        lbl_layout = QHBoxLayout()
+        self.raw_min_lbl = QLabel("Min: 0")
+        self.raw_max_lbl = QLabel("Max: 1023")
+        self.raw_max_lbl.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        lbl_layout.addWidget(self.raw_min_lbl)
+        lbl_layout.addWidget(self.raw_max_lbl)
+        intensity_lay.addLayout(lbl_layout)
+
+        self.raw_min_sl = QSlider(Qt.Horizontal)
+        self.raw_min_sl.setRange(0, 1023)
+        self.raw_min_sl.setValue(0)
+        self.raw_min_sl.setEnabled(False)
+        
+        self.raw_max_sl = QSlider(Qt.Horizontal)
+        self.raw_max_sl.setRange(0, 1023)
+        self.raw_max_sl.setValue(1023)
+        self.raw_max_sl.setEnabled(False)
+
+        intensity_lay.addWidget(self.raw_min_sl)
+        intensity_lay.addWidget(self.raw_max_sl)
+
+        self.raw_auto_cb.toggled.connect(self._on_raw_auto_toggled)
+        self.raw_min_sl.valueChanged.connect(self._on_raw_slider_changed)
+        self.raw_max_sl.valueChanged.connect(self._on_raw_slider_changed)
+
+        # 3. ROI Settings Group
+        roi_group = QGroupBox("ROI Plot Settings")
+        roi_lay = QFormLayout(roi_group)
+        
+        self.roi_size_spin = QSpinBox()
+        self.roi_size_spin.setRange(1, 1000)
+        self.roi_size_spin.setValue(50)
+        self.roi_size_spin.setSuffix(" px")
+        
+        roi_lay.addRow("Box Size:", self.roi_size_spin)
+        hint_lbl = QLabel("(Click on preview image to center ROI)")
+        hint_lbl.setStyleSheet("font-size: 10px; color: #888888;")
+        roi_lay.addRow(hint_lbl)
+
+        # Add all to settings widget
+        preview_settings_lay.addWidget(cmos_group)
+        preview_settings_lay.addWidget(intensity_group)
+        preview_settings_lay.addWidget(roi_group)
+
+        preview_action = QWidgetAction(self)
+        preview_action.setDefaultWidget(preview_settings_widget)
+        preview_menu.addAction(preview_action)
+
+        self.raw_settings_btn = QPushButton(" ⚙ Settings ")
+        self.raw_settings_btn.setMenu(preview_menu)
+        self.raw_settings_btn.setStyleSheet("""
+            QPushButton::menu-indicator { image: none; }
+            QPushButton { background-color: #2d2d30; border: 1px solid #3f3f46; padding: 5px 15px; }
+        """)
+        preview_top_bar.addWidget(self.raw_settings_btn)
+        preview_layout.addLayout(preview_top_bar)
+        # ------------------------------------------
+
         self.raw_preview = ClickableLabel("Waiting for trigger…")
         self.raw_preview.setMinimumSize(400, 400)
         self.raw_preview.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.raw_preview.setAlignment(Qt.AlignCenter)
         self.raw_preview.setProperty("is_image", True)
         self.raw_preview.clicked.connect(self._on_preview_clicked)
+        self.raw_preview.double_clicked.connect(self._toggle_maximize_preview)   
+
         preview_layout.addWidget(self.raw_preview, stretch=1)
         preview_group.setLayout(preview_layout)
         left_layout.addWidget(preview_group, stretch=3)
 
-        cycle_group = QGroupBox("ROI Intensity vs Piezo Displacement")
+        self.cycle_group = QGroupBox("ROI Intensity vs Piezo Displacement")
         cycle_layout = QVBoxLayout()
         cycle_layout.setContentsMargins(10, 20, 10, 10)
 
@@ -295,8 +326,8 @@ class QIUP_APP(QMainWindow):
         self.canvas.setMinimumHeight(250)
         self.canvas.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         cycle_layout.addWidget(self.canvas)
-        cycle_group.setLayout(cycle_layout)
-        left_layout.addWidget(cycle_group, stretch=2)
+        self.cycle_group.setLayout(cycle_layout)
+        left_layout.addWidget(self.cycle_group, stretch=2)
 
         self.main_splitter.addWidget(self.left_widget)
 
@@ -343,6 +374,25 @@ class QIUP_APP(QMainWindow):
 
         self.statusBar().showMessage("Ready. Connect devices.")
 
+    def _on_raw_auto_toggled(self, checked: bool):
+        """Enable or disable manual slider control for raw image."""
+        self.raw_min_sl.setEnabled(not checked)
+        self.raw_max_sl.setEnabled(not checked)
+
+    def _on_raw_slider_changed(self):
+        """Handle raw preview slider updates and prevent crossing."""
+        self.raw_min_sl.blockSignals(True)
+        self.raw_max_sl.blockSignals(True)
+        
+        if self.raw_min_sl.value() >= self.raw_max_sl.value():
+            self.raw_min_sl.setValue(max(0, self.raw_max_sl.value() - 1))
+            
+        self.raw_min_sl.blockSignals(False)
+        self.raw_max_sl.blockSignals(False)
+
+        self.raw_min_lbl.setText(f"Min: {self.raw_min_sl.value()}")
+        self.raw_max_lbl.setText(f"Max: {self.raw_max_sl.value()}")
+
     def _validate_scan_params(self):
         """Ensure scan end voltage is greater than scan start."""
         scan_end = self.scan_end_spin.value()
@@ -360,6 +410,17 @@ class QIUP_APP(QMainWindow):
             self.statusBar().showMessage("Map view maximized. Double-click to restore.")
         else:
             self.left_widget.show()
+            self.statusBar().showMessage("Restored default layout.")
+
+    def _toggle_maximize_preview(self):
+        """Toggle between maximized raw preview view and split view."""
+        if self.right_widget.isVisible():
+            self.right_widget.hide()  # Hide the maps side
+            self.cycle_group.hide()   # Hide the intensity plot
+            self.statusBar().showMessage("Preview maximized. Double-click to restore.")
+        else:
+            self.right_widget.show()  # Show the maps side
+            self.cycle_group.show()   # Show the intensity plot
             self.statusBar().showMessage("Restored default layout.")
 
     def _create_map_tab(self, map_type, image_label):
@@ -541,9 +602,9 @@ class QIUP_APP(QMainWindow):
             if "settling_ms" in settings:
                 self.settling_spin.setValue(settings["settling_ms"])
             if "roi_center_x" in settings:
-                self.roi_x_spin.setValue(settings["roi_center_x"])
+                self.roi_x = settings["roi_center_x"]
             if "roi_center_y" in settings:
-                self.roi_y_spin.setValue(settings["roi_center_y"])
+                self.roi_y = settings["roi_center_y"]
             if "roi_box_size" in settings:
                 self.roi_size_spin.setValue(settings["roi_box_size"])
             if "moving_average" in settings:
@@ -593,8 +654,8 @@ class QIUP_APP(QMainWindow):
                 "n_frames": self.frames_spin.value(),
                 "fringe_period_v": self.scan_end_spin.value(),
                 "settling_ms": self.settling_spin.value(),
-                "roi_center_x": self.roi_x_spin.value(),
-                "roi_center_y": self.roi_y_spin.value(),
+                "roi_center_x": self.roi_x,
+                "roi_center_y": self.roi_y,
                 "roi_box_size": self.roi_size_spin.value(),
                 "processing_time_s": getattr(self.acq_worker, "last_proc_time", 0.0),
                 "moving_average": self.ma_checkbox.isChecked(),
@@ -673,8 +734,9 @@ class QIUP_APP(QMainWindow):
         cam_x = int((pixmap_x / pm_w) * cam_w)
         cam_y = int((pixmap_y / pm_h) * cam_h)
 
-        self.roi_x_spin.setValue(cam_x)
-        self.roi_y_spin.setValue(cam_y)
+        # Store invisibly instead of spinboxes
+        self.roi_x = cam_x
+        self.roi_y = cam_y
 
     def _connect_hardware(self):
         """Initialize and connect to camera and piezo controller."""
@@ -684,10 +746,10 @@ class QIUP_APP(QMainWindow):
             
         self.statusBar().showMessage("Connecting to hardware…")
 
-        self.piezo = PiezoController()
-        self.camera = CameraController()
-
         try:
+            self.piezo = PiezoController()
+            self.camera = CameraController()
+            
             p_ok, p_msg = self.piezo.connect()
             c_ok = self.camera.connect()
         except Exception as exc:
@@ -699,11 +761,9 @@ class QIUP_APP(QMainWindow):
             w = self.camera.image_width
             h = self.camera.image_height
             
-            # Configure ROI spinboxes based on camera resolution
-            self.roi_x_spin.setRange(0, w - 1)
-            self.roi_y_spin.setRange(0, h - 1)
-            self.roi_x_spin.setValue(w // 2)
-            self.roi_y_spin.setValue(h // 2)
+            # Default ROI to center of camera
+            self.roi_x = w // 2
+            self.roi_y = h // 2
             
             self.has_strain_gauge = self.piezo.has_strain_gauge
 
@@ -960,12 +1020,27 @@ class QIUP_APP(QMainWindow):
 
     def _update_live_preview(self, gray_img: np.ndarray):
         """Update the raw frame preview with ROI overlay."""
-        norm = cv2.normalize(gray_img, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+        
+        # Check if we should use raw auto scaling or calculate custom thresholds
+        if self.raw_auto_cb.isChecked():
+            norm = cv2.normalize(gray_img, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+        else:
+            # Use raw absolute values (0 - 1023)
+            v_min = self.raw_min_sl.value()
+            v_max = self.raw_max_sl.value()
+            
+            if v_min >= v_max:
+                v_max = v_min + 1e-5
+
+            clipped = np.clip(gray_img, v_min, v_max)
+            scaled = (clipped - v_min) / (v_max - v_min) * 255.0
+            norm = scaled.astype(np.uint8)
+
         rgb = cv2.cvtColor(norm, cv2.COLOR_GRAY2RGB)
 
-        # Draw ROI rectangle
-        x = self.roi_x_spin.value()
-        y = self.roi_y_spin.value()
+        # Draw ROI rectangle using hidden internal coordinates
+        x = self.roi_x
+        y = self.roi_y
         s = self.roi_size_spin.value() // 2
         cv2.rectangle(rgb, (x - s, y - s), (x + s, y + s), (255, 0, 0), 4)
 
@@ -982,9 +1057,9 @@ class QIUP_APP(QMainWindow):
         """Update preview and intensity plot during acquisition."""
         self._update_live_preview(gray_img)
 
-        # Extract ROI intensity
-        x = self.roi_x_spin.value()
-        y = self.roi_y_spin.value()
+        # Extract ROI intensity using hidden internal coordinates
+        x = self.roi_x
+        y = self.roi_y
         s = self.roi_size_spin.value() // 2
         h_img, w_img = gray_img.shape
 
@@ -998,6 +1073,15 @@ class QIUP_APP(QMainWindow):
         step_idx = idx % n_frames 
         
         self.displacements_intensities[step_idx] = (value, mean_intensity)
+
+        if step_idx == 0 or not hasattr(self, '_reference_value'):
+            self._reference_value = value
+            
+        # Calculate the relative position/voltage
+        relative_value = value - self._reference_value
+
+        # Store the relative value instead of the absolute 'value'
+        self.displacements_intensities[step_idx] = (relative_value, mean_intensity)
 
         # Plot sorted by displacement/voltage
         sorted_items = sorted(self.displacements_intensities.values(), key=lambda item: item[0])

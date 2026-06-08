@@ -247,11 +247,12 @@ class QIUP_APP(QMainWindow):
         self.raw_preview.setAlignment(Qt.AlignCenter)
         self.raw_preview.setProperty("is_image", True)
         self.raw_preview.clicked.connect(self._on_preview_clicked)
+        self.raw_preview.double_clicked.connect(self._toggle_maximize_preview)
         preview_layout.addWidget(self.raw_preview, stretch=1)
         preview_group.setLayout(preview_layout)
         left_layout.addWidget(preview_group, stretch=3)
 
-        cycle_group = QGroupBox("ROI Intensity vs Piezo Position")
+        self.cycle_group = QGroupBox("ROI Intensity vs Piezo Position")
         cycle_layout = QVBoxLayout()
         cycle_layout.setContentsMargins(10, 20, 10, 10)
 
@@ -261,8 +262,8 @@ class QIUP_APP(QMainWindow):
         self.canvas.setMinimumHeight(250)
         self.canvas.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         cycle_layout.addWidget(self.canvas)
-        cycle_group.setLayout(cycle_layout)
-        left_layout.addWidget(cycle_group, stretch=2)
+        self.cycle_group.setLayout(cycle_layout)
+        left_layout.addWidget(self.cycle_group, stretch=2)
 
         self.main_splitter.addWidget(self.left_widget)
 
@@ -318,6 +319,17 @@ class QIUP_APP(QMainWindow):
             self.statusBar().showMessage("Map view maximized. Double-click the image again to restore.")
         else:
             self.left_widget.show()
+            self.statusBar().showMessage("Restored default layout.")
+            
+    def _toggle_maximize_preview(self):
+        """Toggle between maximized raw preview view and split view."""
+        if self.right_widget.isVisible():
+            self.right_widget.hide()  # Hide the maps side
+            self.cycle_group.hide()   # Hide the intensity plot
+            self.statusBar().showMessage("Preview maximized. Double-click to restore.")
+        else:
+            self.right_widget.show()  # Show the maps side
+            self.cycle_group.show()   # Show the intensity plot
             self.statusBar().showMessage("Restored default layout.")
 
     def _create_map_tab(self, map_type, image_label):

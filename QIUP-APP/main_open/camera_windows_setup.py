@@ -6,15 +6,17 @@ def configure_path():
     # os.path.join handles the slashes correctly for Windows/Linux
     relative_path_to_dlls = os.path.join('thorlabs_lib', 'camera', 'dlls', '64_lib')
 
-# Get the directory where this script is located
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    
-    # Step back one level to the main QIUP-APP directory
-    parent_directory = os.path.dirname(current_directory)
+    if getattr(sys, 'frozen', False):
+        # Running as a PyInstaller executable
+        base_dir = sys._MEIPASS
+    else:
+        # Running as a standard python script
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        base_dir = os.path.dirname(current_directory)
     
     # Create the absolute path to the Thorlabs DLLs in the parent directory
-    absolute_path_to_dlls = os.path.abspath(os.path.join(parent_directory, relative_path_to_dlls))
-
+    absolute_path_to_dlls = os.path.abspath(os.path.join(base_dir, relative_path_to_dlls))
+    
     # Verify the path exists to avoid silent failures during hardware initialization
     if not os.path.exists(absolute_path_to_dlls):
         print(f"Warning: DLL directory not found at {absolute_path_to_dlls}")

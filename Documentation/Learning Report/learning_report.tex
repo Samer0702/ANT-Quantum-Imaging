@@ -88,40 +88,67 @@ Internship period: 02.02.2026 -- 03.07.2026\\
 \newpage
 
 \section{Reflection on used methodology}
-Reflecting on my workflow so far, using Scrum has been the right choice for building this demonstrator. 
-Since the setup relies heavily on quantum interference, the technical requirements often shift as I learn more about how the physical hardware behaves. 
-The iterative nature of Scrum has been incredibly useful here. 
-Working in weekly sprints allows me to tackle the project in manageable pieces, giving me dedicated time to sit down, evaluate the current problems, and adjust our direction.
-This flexible approach means the project isn't forced to stick to a rigid first draft, instead, I remain free to adapt to new approaches and insights as the experiment evolves.
+
+Reflecting on my workflow at the conclusion of this project, implementing the Scrum framework was undeniably the correct decision for building this demonstrator. Because the setup relies heavily on the sensitive nature of quantum interference, the technical requirements constantly shifted as I learned more about the hardware's practical behavior. Working in weekly sprints allowed me to tackle the complex integration in manageable pieces, giving me dedicated time to evaluate bottlenecks and adapt my approach rather than rigidly sticking to an initial plan.
 
 \section{Self-evaluation on X competences}
 
     \subsection{Physical Aspects}
-        \subsubsection*{Non-linear Interferometry}
-        
         \subsubsection*{Quantum Imaging with Undetected Photons}
-    
+        The main concept of this project is quantum imaging with undetected photons, which relies on the phenomenon of quantum interference and quantum entanglement.
+        There are many different physical aspects to this project, which combined make this technology available for practical applications like mid-infrared imaging.
+        I was able to dive into the physics despite my background being in computer science, and was able to get a good understanding of the underlying principles that make this technology work such as:
+        \begin{itemize}
+            \item Nonlinear Interferometry
+            \item Spontaneous Parametric Down-Conversion (SPDC)
+            \item Induced Coherence
+            \item Quantum Interference
+            \item Coherence Length
+        \end{itemize}
+        Learning about these concepts did not only help me understand which physical phenomena are happening, but also how to apply them in practice and build a robust cohesive system which required another way of thinking about the problem and how to approach it.
+
     \subsection{Software Skills}
 
         \subsubsection*{Python}
-        \subsubsection*{Github}
-        \subsubsection*{Image Processing}
-        \subsubsection*{Fast Fourier Transform}
-        \subsubsection*{Thorlabs Hardware Control}
+        Coming into this project, my programming background was mostly rooted in C, C++, and C\#. While I had some basic experience with Python, this internship really pushed me to become proficient in using it for scientific computing and hardware control. I had to quickly adapt to the "Pythonic" way of writing code and learn how to leverage its extensive ecosystem for data analysis, image processing, and device interfacing. This shift didn't just improve my Python skills, it made me a much more versatile programmer overall, giving me the confidence to pick the right language for a specific engineering problem.
 
-    \subsection{Soft Skills}
-        \subsubsection*{Communication}
-        \subsubsection*{Teamwork}
-        \subsubsection*{Project Management}
-        \subsubsection*{Time Management}
+        \subsubsection*{Image Processing}
+        Although I had some background in Digital Signal Processing (DSP) from my studies, computer vision and image processing were completely new territory for me. Throughout the project, I learned how to process and analyze raw interferometric images using techniques like spatial filtering, edge detection, and feature extraction. By implementing these workflows from scratch using OpenCV, I went from having no prior experience to feeling highly comfortable manipulating optical data and extracting meaningful, quantitative information from complex images.
+
+        \subsubsection*{Fast Fourier Transform}
+        Working with image processing meant I also had to dive much deeper into the Fast Fourier Transform (FFT). I knew the basics, but I had to learn how to specifically apply it to quantum imaging to analyze interference patterns and extract phase information. I used a pixel-wise FFT approach, calculating the frequency response for each individual pixel over time. Because running an FFT on every single pixel is incredibly computationally heavy, it initially was very time-consuming, making live demonstrations practically impossible without severely dropping frame rates or image quality. To solve this, I integrated the FFTW (Fastest Fourier Transform in the West) library, which optimized the processing speed to make real-time fringe analysis feasible.
+
+        \subsubsection*{Thorlabs Hardware Control}
+        One of the toughest software challenges of the entire project was figuring out how to control the Thorlabs hardware. The documentation for the specific components we needed was quite limited, and their provided C-based SDK wasn't exactly user-friendly. I spent a significant amount of time essentially reverse-engineering the SDK to understand how to interface it with our Python control architecture. Figuring out how to properly handle strict data types, pointers, and memory allocation between C and Python was a steep learning curve, but it massively improved my low-level hardware integration skills.
+    
+\subsection{Soft Skills}
+
+\subsubsection*{Communication}
+Working in a fast-paced applied physics environment meant that programming and experimenting in isolation wasn't an option, I had to actively and clearly communicate my thought process. By adopting a Scrum framework, I worked in weekly sprints that established a constant, iterative feedback loop between myself and my supervisors. Translating complex technical roadblocks, like optimizing pixel-wise FFTs or debugging Thorlabs SDKs, into clear, actionable updates significantly improved my technical communication. I learned how to convey my ideas concisely, ask the right questions, and integrate feedback continuously rather than waiting for major project milestones.
+
+\subsubsection*{Teamwork}
+While my core task was an individual project focused on the quantum imaging setup, I made sure not to work in a silo. Beyond my own research, we held bi-weekly meetings with other employees and researchers where everyone shared the challenges they were facing. I actively participated in these sessions, brainstorming solutions for others' problems and taking in their advice for my own setup.
+
+\subsubsection*{Project Management}
+Building a functional application that seamlessly interfaces with complex optical hardware requires good planning. I managed the project's evolution using Agile methodologies, specifically structuring my workload into weekly Scrum sprints. During our weekly check-ins, we set concrete goals for the upcoming sprint and critically reviewed the previous week’s progress. We constantly discussed what features to pivot, improve, or add to the system. This highly iterative approach prevented me from going down technical rabbit holes and ensured that everything contributed to the final, working application.
+
+\subsubsection*{Time Management}
+Balancing low-level hardware integration, and physical lab experiments required strict time management. By breaking down massive objectives into bite-sized weekly tasks, I was able to maintain steady momentum throughout the internship. I learned how to efficiently divide my time between deep-focus programming, hands-on lab testing, and collaborative team meetings without letting any single problem completely consume my week. Knowing when to push through a bug and when to step back and ask the team for help was a crucial takeaway that kept the entire project on schedule.
 
 
     \subsection{Professional Skills}
         \subsubsection*{Research Paper Analysis}
-
+        Diving into this project, the initial challenge wasn't the code, it was the profound complexity of the physical phenomena driving the system. Before I could design the software architecture or interface with the instrumentation, I spent significant time analyzing advanced research papers on quantum optics, specifically focusing on spontaneous parametric down-conversion (SPDC) and nonlinear interferometry. Deciphering the theoretical mechanics of induced coherence without induced emission to understand what the hardware was actually doing and how the raw data should behave. This deep dive into academic literature sharpened my ability to extract practical engineering requirements from dense theoretical physics, allowing me to translate abstract quantum mechanics into concrete programmatic logic and system designs.
+\subsubsection*{Technical Problem Solving \& Debugging}
+Working with advanced, proprietary optical hardware often means operating without the safety net of comprehensive documentation. During the integration of the Thorlabs instrumentation, I frequently encountered completely undocumented hardware APIs and an opaque, C-based SDK. Rather than viewing this as a hard roadblock, I approached it as a reverse-engineering challenge. By systematically probing the hardware's responses and applying logical deduction, I was able to map out the necessary control functions. This experience fundamentally strengthened my resilience and analytical problem-solving capabilities, proving my ability to stay composed and engineer a functional solution even when standard manuals fail.
 
 \section{Self-analysis}
 
+Looking back at this project, I was thrown right into the deep end of Quantum Optics and Applied Nanotechnology. My main challenge was mastering the experimental data acquisition and complex signal analysis required for Quantum Imaging with Undetected Photons (QIUP).
+
+Despite the steep learning curve, I gained incredible hands-on experience orchestrating a highly synchronized setup. I learned to integrate a CMOS camera and program a piezoelectric stage to scan interference fringes, diving deep into Thorlabs APIs to automate the hardware loop. On the software side, I taught myself how to process raw, phase-shifted image stacks using advanced Fourier transform techniques for phase retrieval.
+
+I truly poured my absolute best effort into mastering these physical and programmatic challenges. Pushing myself past my initial limits paid off immensely, and it is incredibly rewarding to see that dedication reflected in a final, robust system that completely exceeded my supervisor's expectations.
 \section{Personal development plan}
 
 \end{document}
