@@ -784,4 +784,614 @@ File: images/components/KSG101.jpg Graphic file (type jpg)
 <use images/components/KSG101.jpg>
 Package pdftex.def Info: images/components/KSG101.jpg  used on input line 343.
 (pdftex.def)             Requested size: 203.83417pt x 203.83046pt.
-c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:347: Use of \@year@ doesn't match its definitio
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:347: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKSG101 ->\@year@ 0
+                             
+l.347 ...g \ac{FFT} analysis \cite{ThorlabsKSG101}
+                                                  . The \ac{KSG101} is visua...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[19 <./images/components/KPZ101.jpg> <./images/components/KSG101.jpg>]
+<images/components/CMOS.png, id=803, 329.43076pt x 317.38576pt>
+File: images/components/CMOS.png Graphic file (type png)
+<use images/components/CMOS.png>
+Package pdftex.def Info: images/components/CMOS.png  used on input line 355.
+(pdftex.def)             Requested size: 203.83417pt x 196.38486pt.
+Package acronym Info: Label `acro:SDK' newly defined as it shall be overridden
+although it is yet undefined on input line 364.
+Package acronym Info: Label `acro:TSI' newly defined as it shall be overridden
+although it is yet undefined on input line 365.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:365: Use of \@year@ doesn't match its definition.
+\Y@TSIDocs ->\@year@ 0
+                      
+l.365 ...tidimensional NumPy arrays \cite{TSIDocs}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+Package acronym Info: Label `acro:CLR' newly defined as it shall be overridden
+although it is yet undefined on input line 367.
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:367: Use of \@year@ doesn't match its definition.
+\Y@KinesisInPython ->\@year@ 0
+                              
+l.367 ...c{KSG101} feedback \cite{KinesisInPython}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[20 <./images/components/CMOS.png>]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:370: Use of \@year@ doesn't match its definition.
+\Y@xie2018surface ->\@year@ 0
+                             
+l.370 ...nterference fringes \cite{xie2018surface}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[21] [22]
+<images/graphs/QIUP System Overview.png, id=851, 453.8556pt x 721.2546pt>
+File: images/graphs/QIUP System Overview.png Graphic file (type png)
+<use images/graphs/QIUP System Overview.png>
+Package pdftex.def Info: images/graphs/QIUP System Overview.png  used on input line 434.
+(pdftex.def)             Requested size: 407.66833pt x 647.86852pt.
+ [23] [24 <./images/graphs/QIUP System Overview.png>]
+<images/graphs/Piezo Functionality.png, id=866, 211.0284pt x 617.1858pt>
+File: images/graphs/Piezo Functionality.png Graphic file (type png)
+<use images/graphs/Piezo Functionality.png>
+Package pdftex.def Info: images/graphs/Piezo Functionality.png  used on input line 446.
+(pdftex.def)             Requested size: 203.83417pt x 596.17387pt.
+ [25] [26 <./images/graphs/Piezo Functionality.png>]
+Package acronym Info: Label `acro:SNR' newly defined as it shall be overridden
+although it is yet undefined on input line 454.
+<images/graphs/Acquisitions functionality.png, id=883, 303.0522pt x 670.4247pt>
+File: images/graphs/Acquisitions functionality.png Graphic file (type png)
+<use images/graphs/Acquisitions functionality.png>
+Package pdftex.def Info: images/graphs/Acquisitions functionality.png  used on input line 472.
+(pdftex.def)             Requested size: 294.42636pt x 651.3853pt.
+ [27] [28 <./images/graphs/Acquisitions functionality.png>]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:487: Use of \@year@ doesn't match its definition.
+\Y@kim2025beyond ->\@year@ 0
+                            
+l.487 ...tect deepfake videos \cite{kim2025beyond}
+                                                  . Just as \ac{QIUP} utiliz...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[29]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:498: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKinesis ->\@year@ 0
+                              
+l.498 ...vironment \cite{ThorlabsKinesis, TSIDocs}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:498: Use of \@year@ doesn't match its definition.
+\Y@TSIDocs ->\@year@ 0
+                      
+l.498 ...vironment \cite{ThorlabsKinesis, TSIDocs}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:501: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKPZ101 ->\@year@ 0
+                             
+l.501 ...horlabs \ac{KPZ101} \cite{ThorlabsKPZ101}
+                                                  . Because the native Kines...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:501: Use of \@year@ doesn't match its definition.
+\Y@KinesisInPython ->\@year@ 0
+                              
+l.501 ... with the C\# DLLs \cite{KinesisInPython}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 517.
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:517: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKPZ101 ->\@year@ 0
+                             
+l.517 ...ect remains minimal \cite{ThorlabsKPZ101}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[30]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:518: Use of \@year@ doesn't match its definition.
+\Y@SpectralLeakageEssentials ->\@year@ 0
+                                        
+l.518 ...truction \cite{SpectralLeakageEssentials}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:522: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKSG101 ->\@year@ 0
+                             
+l.522 ...1} via an SMA cable \cite{ThorlabsKSG101}
+                                                  . Programmatically, it is ...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:528: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKSG101 ->\@year@ 0
+                             
+l.528 ...s using the formula \cite{ThorlabsKSG101}
+                                                  :
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:532: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsKSG101 ->\@year@ 0
+                             
+l.532 ...M} is 20.0\,$\mu$m. \cite{ThorlabsKSG101}
+                                                  
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:535: Use of \@year@ doesn't match its definition.
+\Y@ThorlabsCMOS ->\@year@ 0
+                           
+l.535 ...hon \ac{SDK} \cite{ThorlabsCMOS, TSIDocs}
+                                                  . This provides a Python-n...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:535: Use of \@year@ doesn't match its definition.
+\Y@TSIDocs ->\@year@ 0
+                      
+l.535 ...hon \ac{SDK} \cite{ThorlabsCMOS, TSIDocs}
+                                                  . This provides a Python-n...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:538: Use of \@year@ doesn't match its definition.
+\Y@TSIGIT ->\@year@ 0
+                     
+l.538 ...t{os.add\_dll\_directory()} \cite{TSIGIT}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+Overfull \hbox (19.79663pt too wide) in paragraph at lines 537--539
+\OT1/cmr/m/n/12 The [][] [][] re-quires ex-plicit pathing to its C-based drivers. The \OT1/cmtt/m/n/12 camera[]windows[]setup.py
+ []
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:541: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.541 ...c{SPDC} signal \cite{pearce2023practical}
+                                                  . Hardware gain is digital...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[31]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:547: Use of \@year@ doesn't match its definition.
+\Y@SpectralLeakageEssentials ->\@year@ 0
+                                        
+l.547 ... leakage \cite{SpectralLeakageEssentials}
+                                                  , the synchronization stra...
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 549--550
+
+ []
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:558: Use of \@year@ doesn't match its definition.
+\Y@TSIDocs ->\@year@ 0
+                      
+l.558 ...pture discrete phase steps \cite{TSIDocs}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+Overfull \hbox (23.15134pt too wide) in paragraph at lines 558--559
+[]\OT1/cmr/bx/n/12 Single Ac-qui-si-tion Mode: \OT1/cmr/m/n/12 Con-fig-ured via \OT1/cmtt/m/n/12 frames[]per[]trigger[]zero[]for[]unlimited
+ []
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:559: Use of \@year@ doesn't match its definition.
+\Y@TSIGIT ->\@year@ 0
+                     
+l.559 ...eal for live demonstrations \cite{TSIGIT}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:560: Use of \@year@ doesn't match its definition.
+\Y@TSIGIT ->\@year@ 0
+                     
+l.560 ... feed for optical alignment \cite{TSIGIT}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+[32] [33]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:597: Use of \@year@ doesn't match its definition.
+\Y@pyfftw ->\@year@ 0
+                     
+l.597 ... employs the pyFFTW library \cite{pyfftw}
+                                                   to achieve high performance.
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+Package acronym Info: Label `acro:SIMD' newly defined as it shall be overridden
+although it is yet undefined on input line 602.
+Package acronym Info: Label `acro:FFTW' newly defined as it shall be overridden
+although it is yet undefined on input line 602.
+
+Overfull \hbox (11.93286pt too wide) in paragraph at lines 602--603
+[][][][]\OT1/cmr/bx/n/12 Single In-struc-tion, Mul-ti-ple Data ([])[] In-struc-tion Op-ti-miza-tion: [][][]\OT1/cmr/m/n/12 Fastest
+ []
+
+[34]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:632: Use of \@year@ doesn't match its definition.
+\Y@pearce2023practical ->\@year@ 0
+                                  
+l.632 ...ging equations \cite{pearce2023practical}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+Overfull \hbox (22.50734pt too wide) in paragraph at lines 655--655
+[]            \OT1/cmtt/m/n/12 # Calculate mean magnitude across all spatial pixels for each bin[] 
+ []
+
+
+Overfull \hbox (47.20735pt too wide) in paragraph at lines 655--655
+[]            \OT1/cmtt/m/n/12 mean_magnitudes = np.abs(self._fft_output[1:limit]).mean(axis=(1, 2))[] 
+ []
+
+
+Overfull \hbox (22.50734pt too wide) in paragraph at lines 655--655
+[]            \OT1/cmtt/m/n/12 # Return the index of the bin with the highest energy (+1 offset)[] 
+ []
+
+[35] [36] [37]
+<images/QIUP-tests/Versions/Final_version_app_screenshots/start_screen.png, id=1023, 1155.1155pt x 689.57625pt>
+File: images/QIUP-tests/Versions/Final_version_app_screenshots/start_screen.png Graphic file (type png)
+<use images/QIUP-tests/Versions/Final_version_app_screenshots/start_screen.png>
+Package pdftex.def Info: images/QIUP-tests/Versions/Final_version_app_screenshots/start_screen.png  used on input line 712.
+(pdftex.def)             Requested size: 452.9679pt x 270.40674pt.
+Package acronym Info: Label `acro:ROI' newly defined as it shall be overridden
+although it is yet undefined on input line 718.
+ [38 <./images/QIUP-tests/Versions/Final_version_app_screenshots/start_screen.png>]
+Overfull \hbox (31.8546pt too wide) in paragraph at lines 738--739
+\OT1/cmr/m/n/12 nect but-ton, man-ual slid-ers, or trig-ger-ing sec-ondary scans) are dis-abled via \OT1/cmtt/m/n/12 setEnabled(False)\OT1/cmr/m/n/12 .
+ []
+
+[39]
+c:/Users/samer/Desktop/NANO/ANT-Quantum-Imaging/Documentation/Thesis/Thesis.tex:750: Use of \@year@ doesn't match its definition.
+\Y@Fablabwiki ->\@year@ 0
+                         
+l.750 ... determine where to cut \cite{Fablabwiki}
+                                                  .
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+<images/components/samples/cat_cutout.png, id=1050, 263.7855pt x 268.6035pt>
+File: images/components/samples/cat_cutout.png Graphic file (type png)
+<use images/components/samples/cat_cutout.png>
+Package pdftex.def Info: images/components/samples/cat_cutout.png  used on input line 762.
+(pdftex.def)             Requested size: 203.83417pt x 207.55898pt.
+<images/components/samples/psi_cutout.png, id=1051, 269.808pt x 266.79675pt>
+File: images/components/samples/psi_cutout.png Graphic file (type png)
+<use images/components/samples/psi_cutout.png>
+Package pdftex.def Info: images/components/samples/psi_cutout.png  used on input line 769.
+(pdftex.def)             Requested size: 203.83417pt x 201.56668pt.
+<images/components/samples/Cat.jpeg, id=1052, 1727.45375pt x 1835.85875pt>
+File: images/components/samples/Cat.jpeg Graphic file (type jpg)
+<use images/components/samples/Cat.jpeg>
+Package pdftex.def Info: images/components/samples/Cat.jpeg  used on input line 779.
+(pdftex.def)             Requested size: 203.83417pt x 216.62386pt.
+<images/components/samples/psi.jpeg, id=1053, 1684.2925pt x 2007.5pt>
+File: images/components/samples/psi.jpeg Graphic file (type jpg)
+<use images/components/samples/psi.jpeg>
+Package pdftex.def Info: images/components/samples/psi.jpeg  used on input line 786.
+(pdftex.def)             Requested size: 203.83417pt x 242.94194pt.
+[40] [41 <./images/components/samples/cat_cutout.png> <./images/components/samples/psi_cutout.png> <./images/components/samples/Cat.jpeg> <./images/components/samples/psi.jpeg>]
+Overfull \hbox (2.59682pt too wide) in paragraph at lines 802--803
+\OT1/cmr/m/n/12 Implementing all nec-es-sary hard-ware con-trol, syn-chro-niza-tion and im-age pro-cess-ing within
+ []
+
+[42] [43]
+Overfull \hbox (50.8216pt too wide) in paragraph at lines 830--831
+[]\OT1/cmtt/m/n/12 acquisition[]worker.py\OT1/cmr/m/n/12 : Con-tains the \OT1/cmtt/m/n/12 SingleAcquisitionWorker\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 LiveProcessingWorker
+ []
+
+
+Overfull \hbox (49.55293pt too wide) in paragraph at lines 831--832
+[]\OT1/cmtt/m/n/12 ui[]components.py\OT1/cmr/m/n/12 : Con-tains the cus-tom PyQt5 wid-get classes, such as \OT1/cmtt/m/n/12 ScalableImageLabel
+ []
+
+
+Overfull \hbox (157.5389pt too wide) in paragraph at lines 843--844
+\OT1/cmr/m/n/12 cal ac-cu-racy. It en-gages the hard-ware PID servo via \OT1/cmtt/m/n/12 SetPositionControlMode(PiezoControlModeTypes.ClosedLoop)\OT1/cmr/m/n/12 .
+ []
+
+[44]
+Overfull \hbox (59.1396pt too wide) in paragraph at lines 850--851
+[]\OT1/cmr/m/n/12 Flush the cam-era's in-ter-nal mem-ory buffer by re-peat-edly call-ing \OT1/cmtt/m/n/12 get[]pending[]frame[]or[]null()
+ []
+
+
+Overfull \hbox (3.85231pt too wide) in paragraph at lines 856--857
+\OT1/cmr/m/n/12 It im-ple-ments a spe-cific plan-caching logic: the pyFFTW ex-e-cu-tion plan (\OT1/cmtt/m/n/12 self.[]fft[]plan\OT1/cmr/m/n/12 )
+ []
+
+[45]
+<images/QIUP-tests/Versions/Version1/v1_qiup.png, id=1108, 709.4505pt x 440.24475pt>
+File: images/QIUP-tests/Versions/Version1/v1_qiup.png Graphic file (type png)
+<use images/QIUP-tests/Versions/Version1/v1_qiup.png>
+Package pdftex.def Info: images/QIUP-tests/Versions/Version1/v1_qiup.png  used on input line 866.
+(pdftex.def)             Requested size: 452.9679pt x 281.09064pt.
+ [46 <./images/QIUP-tests/Versions/Version1/v1_qiup.png>]
+<images/QIUP-tests/real representation/without_ma.png, id=1119, 722.7pt x 433.62pt>
+File: images/QIUP-tests/real representation/without_ma.png Graphic file (type png)
+<use images/QIUP-tests/real representation/without_ma.png>
+Package pdftex.def Info: images/QIUP-tests/real representation/without_ma.png  used on input line 885.
+(pdftex.def)             Requested size: 217.42265pt x 130.45091pt.
+<images/QIUP-tests/real representation/with_ma.png, id=1120, 722.7pt x 433.62pt>
+File: images/QIUP-tests/real representation/with_ma.png Graphic file (type png)
+<use images/QIUP-tests/real representation/with_ma.png>
+Package pdftex.def Info: images/QIUP-tests/real representation/with_ma.png  used on input line 893.
+(pdftex.def)             Requested size: 217.42265pt x 130.45091pt.
+ [47 <./images/QIUP-tests/real representation/without_ma.png> <./images/QIUP-tests/real representation/with_ma.png>]
+<images/QIUP-tests/Piezo/Open/open_loop_feedback_1.png, id=1133, 242.70676pt x 118.041pt>
+File: images/QIUP-tests/Piezo/Open/open_loop_feedback_1.png Graphic file (type png)
+<use images/QIUP-tests/Piezo/Open/open_loop_feedback_1.png>
+Package pdftex.def Info: images/QIUP-tests/Piezo/Open/open_loop_feedback_1.png  used on input line 914.
+(pdftex.def)             Requested size: 144.95303pt x 70.49731pt.
+<images/QIUP-tests/Piezo/Open/open_loop_feedback_2.png, id=1134, 230.0595pt x 112.62074pt>
+File: images/QIUP-tests/Piezo/Open/open_loop_feedback_2.png Graphic file (type png)
+<use images/QIUP-tests/Piezo/Open/open_loop_feedback_2.png>
+Package pdftex.def Info: images/QIUP-tests/Piezo/Open/open_loop_feedback_2.png  used on input line 922.
+(pdftex.def)             Requested size: 144.95303pt x 70.96173pt.
+<images/QIUP-tests/Piezo/Open/open_loop_feedback_3.png, id=1135, 240.9pt x 118.64325pt>
+File: images/QIUP-tests/Piezo/Open/open_loop_feedback_3.png Graphic file (type png)
+<use images/QIUP-tests/Piezo/Open/open_loop_feedback_3.png>
+Package pdftex.def Info: images/QIUP-tests/Piezo/Open/open_loop_feedback_3.png  used on input line 930.
+(pdftex.def)             Requested size: 144.95303pt x 71.39105pt.
+<images/QIUP-tests/Piezo/0to4/open_loop_45_1.png, id=1137, 225.84375pt x 182.48175pt>
+File: images/QIUP-tests/Piezo/0to4/open_loop_45_1.png Graphic file (type png)
+<use images/QIUP-tests/Piezo/0to4/open_loop_45_1.png>
+Package pdftex.def Info: images/QIUP-tests/Piezo/0to4/open_loop_45_1.png  used on input line 948.
+(pdftex.def)             Requested size: 181.18439pt x 146.40604pt.
+<images/QIUP-tests/Piezo/0to4/open_loop_45_2.png, id=1138, 230.0595pt x 184.89075pt>
+File: images/QIUP-tests/Piezo/0to4/open_loop_45_2.png Graphic file (type png)
+<use images/QIUP-tests/Piezo/0to4/open_loop_45_2.png>
+Package pdftex.def Info: images/QIUP-tests/Piezo/0to4/open_loop_45_2.png  used on input line 956.
+(pdftex.def)             Requested size: 181.18439pt x 145.61914pt.
+<images/QIUP-tests/Piezo/0to4/open_loop_45_3.png, id=1139, 238.491pt x 184.89075pt>
+File: images/QIUP-tests/Piezo/0to4/open_loop_45_3.png Graphic file (type png)
+<use images/QIUP-tests/Piezo/0to4/open_loop_45_3.png>
+Package pdftex.def Info: images/QIUP-tests/Piezo/0to4/open_loop_45_3.png  used on input line 964.
+(pdftex.def)             Requested size: 181.18439pt x 140.4648pt.
+ [48 <./images/QIUP-tests/Piezo/Open/open_loop_feedback_1.png> <./images/QIUP-tests/Piezo/Open/open_loop_feedback_2.png> <./images/QIUP-tests/Piezo/Open/open_loop_feedback_3.png>]
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png, id=1153, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 986.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png, id=1154, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 993.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png, id=1155, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1000.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png, id=1156, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 1012.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png, id=1157, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 1019.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png, id=1158, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1026.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png, id=1159, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 1038.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png, id=1160, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 1045.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png, id=1161, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1052.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/visibility_map.png, id=1162, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 1064.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/contrast_map.png, id=1163, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 1071.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/phase_map.png, id=1164, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1078.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+ [49 <./images/QIUP-tests/Piezo/0to4/open_loop_45_1.png> <./images/QIUP-tests/Piezo/0to4/open_loop_45_2.png> <./images/QIUP-tests/Piezo/0to4/open_loop_45_3.png>]
+<images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/visibility_map.png, id=1174, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/visibility_map.png  used on input line 1097.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/contrast_map.png, id=1175, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/contrast_map.png  used on input line 1104.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/phase_map.png, id=1176, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/3_frames_ma_Acquisition_08_06_2026/phase_map.png  used on input line 1111.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/visibility_map.png, id=1177, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/visibility_map.png  used on input line 1123.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/contrast_map.png, id=1178, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/contrast_map.png  used on input line 1130.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/phase_map.png, id=1179, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/8_frames_ma_Acquisition_08_06_2026/phase_map.png  used on input line 1137.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/visibility_map.png, id=1180, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/visibility_map.png  used on input line 1149.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/contrast_map.png, id=1181, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/contrast_map.png  used on input line 1156.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/phase_map.png, id=1182, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/16_frames_ma_Acquisition_08_06_2026/phase_map.png  used on input line 1163.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/visibility_map.png, id=1183, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/visibility_map.png  used on input line 1175.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/contrast_map.png, id=1184, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/contrast_map.png  used on input line 1182.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/phase_map.png, id=1185, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/CAT/ma/32_frames_ma_Acquisition_08_06_2026/phase_map.png  used on input line 1189.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+ [50 <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/visibility_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/contrast_map.png> <./images/QIUP-tests/open loop acquisitions/CAT/no_ma/32_frames_Acquisition_08_06_2026/phase_map.png>]
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png, id=1204, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 1207.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png, id=1205, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 1214.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png, id=1206, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/3_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1221.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png, id=1207, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 1233.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png, id=1208, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 1240.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png, id=1209, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/8_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1247.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png, id=1210, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/visibility_map.png  used on input line 1259.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png, id=1211, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/contrast_map.png  used on input line 1266.
+(pdftex.def)             Requested size: 144.95303pt x 99.71396pt.
+<images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png, id=1212, 945.5325pt x 650.43pt>
+File: images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png Graphic file (type png)
+<use images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png>
+Package pdftex.def Info: images/QIUP-tests/open loop acquisitions/PSI/no_ma/16_frames_Acquisition_08_06_2026/phase_map.png  used on input line 1273.
+(pdftex.def)             Requested size: 144.95
