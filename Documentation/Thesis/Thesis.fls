@@ -145,8 +145,6 @@ INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsgen.sty
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsbsy.sty
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsbsy.sty
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT .\Thesis.aux
@@ -158,14 +156,19 @@ INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pd
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\grfext\grfext.sty
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\grfext\grfext.sty
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-OUTPUT Thesis.out
+INPUT .\Thesis.out
+INPUT .\Thesis.out
+INPUT Thesis.out
+INPUT Thesis.out
 OUTPUT Thesis.pdf
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\apacite\english.apc
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\apacite\english.apc
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\tex\latex\apacite\english.apc
+INPUT .\Thesis.out
+INPUT .\Thesis.out
+OUTPUT Thesis.out
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
@@ -177,10 +180,32 @@ INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tf
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\samer\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
+INPUT .\Thesis.toc
+INPUT .\Thesis.toc
+INPUT Thesis.toc
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
 OUTPUT Thesis.toc
+INPUT .\Thesis.lof
+INPUT .\Thesis.lof
+INPUT Thesis.lof
 OUTPUT Thesis.lof
+INPUT .\Thesis.lot
+INPUT .\Thesis.lot
+INPUT Thesis.lot
 OUTPUT Thesis.lot
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1200.tfm
 INPUT .\images\setup\demonstrator_setup.jpeg
@@ -205,17 +230,6 @@ INPUT .\images\old_showcase.png
 INPUT .\images\old_showcase.png
 INPUT .\images\old_showcase.png
 INPUT .\images\old_showcase.png
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
-INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT .\images\components\KPZ101.jpg
 INPUT .\images\components\KPZ101.jpg
 INPUT .\images\components\KPZ101.jpg
@@ -237,294 +251,133 @@ INPUT .\images\components\CMOS.png
 INPUT .\images\components\CMOS.png
 INPUT .\images\components\CMOS.png
 INPUT .\images\components\CMOS.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\QIUP System Overview.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Piezo Functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\graphs\Acquisitions functionality.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\cat_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\psi_cutout.png
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\Cat.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\components\samples\psi.jpeg
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\without_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\real representation\with_ma.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
+INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\QIUP System Overview.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Piezo Functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\graphs\Acquisitions functionality.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\QIUP-tests\Versions\Final_version_app_screenshots\start_screen.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\cat_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\psi_cutout.png
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\Cat.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\components\samples\psi.jpeg
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\Versions\Version1\v1_qiup.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\without_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\real representation\with_ma.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_1.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_2.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\Open\open_loop_feedback_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_1.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_2.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\Piezo\0to4\open_loop_45_3.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\open loop acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
+INPUT .\images\QIUP-tests\fft_time_taken\numpy_vs_fftw.png
 INPUT .\images\QIUP-tests\open loop acquisitions\PSI\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
 INPUT .\images\QIUP-tests\open loop acquisitions\PSI\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
 INPUT .\images\QIUP-tests\open loop acquisitions\PSI\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
@@ -693,174 +546,6 @@ INPUT .\images\QIUP-tests\open loop acquisitions\PSI\ma\32_frames_ma_Acquisition
 INPUT .\images\QIUP-tests\open loop acquisitions\PSI\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
 INPUT .\images\QIUP-tests\open loop acquisitions\PSI\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
 INPUT .\images\QIUP-tests\open loop acquisitions\PSI\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\3_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\8_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\16_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\no_ma\32_frames_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\3_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\8_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\16_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\visibility_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\contrast_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
-INPUT .\images\QIUP-tests\closed loop Acquisitions\CAT\ma\32_frames_ma_Acquisition_08_06_2026\phase_map.png
 INPUT .\images\QIUP-tests\closed loop Acquisitions\PSI\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
 INPUT .\images\QIUP-tests\closed loop Acquisitions\PSI\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
 INPUT .\images\QIUP-tests\closed loop Acquisitions\PSI\no_ma\3_frames_Acquisition_08_06_2026\visibility_map.png
@@ -1060,6 +745,8 @@ INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\samer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt12.pfb

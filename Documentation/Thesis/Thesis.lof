@@ -1,0 +1,20 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Demonstrational Setup and Schematic.}}{11}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Old Showcase of the QIUP Setup.}}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Thorlabs \ac {KPZ101} Piezoelectric Controller.}}{19}{figure.caption.14}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Thorlabs \ac {KSG101} Strain Gauge Meter.}}{19}{figure.caption.15}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Thorlabs Zelux CMOS Camera.}}{20}{figure.caption.16}%
+\contentsline {figure}{\numberline {6}{\ignorespaces High-level overview of the \ac {QIUP} system architecture and operational workflow.}}{24}{figure.caption.22}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Functional diagram detailing the operational workflow for the piezoelectric stage.}}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Functional diagram detailing the operational workflow for the acquisition methods.}}{28}{figure.caption.25}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Layout and design of the custom PyQT5 GUI.}}{38}{figure.caption.28}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Design and cutout of the newly designed samples}}{41}{figure.caption.30}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Layout of the old design and custom PyQT5 GUI.}}{46}{figure.caption.31}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Comparative analysis of the interference signal quality, demonstrating the noise reduction achieved through spatial \ac {MA} filtering.}}{47}{figure.caption.32}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Analysis of open-loop piezoelectric hysteresis across three consecutive test runs (0-75 V), demonstrating the repeatability and characteristics of the actuator.}}{48}{figure.caption.33}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Analysis of open-loop piezoelectric hysteresis across three consecutive test runs (0-4.5 V), demonstrating the repeatability and characteristics of the actuator.}}{49}{figure.caption.34}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Comparison of execution times between \texttt {numpy.fft} and \texttt {pyFFTW}.}}{49}{figure.caption.35}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Comparison of Visibility, Contrast, and Phase reconstructions for the PSI sample using an open-loop phase scan without spatial \ac {MA} (no \ac {MA}) filtering. The rows demonstrate the raw effect of increasing the number of phase-shifted frames ($N=3, 8, 16, 32$) on the \ac {FFT} signal-to-noise ratio.}}{51}{figure.caption.36}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Comparison of Visibility, Contrast, and Phase reconstructions for the PSI sample using an open-loop phase scan with \ac {MA} filtering. The rows demonstrate the effect of increasing the number of phase-shifted frames ($N=3, 8, 16, 32$) on the \ac {FFT} signal-to-noise ratio and image fidelity.}}{52}{figure.caption.37}%
+\contentsline {figure}{\numberline {18}{\ignorespaces PSI sample: Closed-loop phase scan without spatial \ac {MA} (no \ac {MA}) filtering ($N=3, 8, 16, 32$).}}{54}{figure.caption.38}%
+\contentsline {figure}{\numberline {19}{\ignorespaces PSI sample: Closed-loop phase scan with \ac {MA} filtering ($N=3, 8, 16, 32$).}}{55}{figure.caption.39}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Gantt chart summarizing the sprint structure and key milestones of the development process.}}{65}{figure.caption.40}%

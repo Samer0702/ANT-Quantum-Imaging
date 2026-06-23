@@ -1,8 +1,12 @@
 \contentsline {section}{\numberline {1}Reflection on used methodology}{2}{section.1}%
-\contentsline {section}{\numberline {2}Self-evaluation on X competences}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Physical Aspects}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Software Skills}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Soft Skills}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Professional Skills}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {2}Self-evaluation on X competences}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Analyse}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Design}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Realize}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Control}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Manage}{4}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Advise}{4}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Research}{4}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Professionalize}{5}{subsection.2.8}%
 \contentsline {section}{\numberline {3}Self-analysis}{6}{section.3}%
-\contentsline {section}{\numberline {4}Personal development plan}{6}{section.4}%
+\contentsline {section}{\numberline {4}Personal development plan}{7}{section.4}%

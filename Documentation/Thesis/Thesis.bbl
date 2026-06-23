@@ -1,470 +1,73 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 
-\bibitem [\protect \citeauthoryear {%
-\APACcitebtitle {{Camera Examples: Python Scientific Imaging SDK}}}{%
-\APACcitebtitle {{Camera Examples: Python Scientific Imaging SDK}}}{%
-{\protect \APACyear {2024}}%
-}]{%
-TSIGIT}
-\APACinsertmetastar {%
-TSIGIT}%
-\APACrefbtitle {{Camera Examples: Python Scientific Imaging SDK}.} {{Camera
-  Examples: Python Scientific Imaging SDK}.}
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\APACaddressPublisher{}{GitHub}.
-\newblock
-\begin{APACrefURL}
-  \url{https://github.com/Thorlabs/Camera_Examples/tree/main/Python}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{quantum_delta}
+{Quantum Delta NL}, ``Quantum delta {NL},'' 2024.
 
-\bibitem [\protect \citeauthoryear {%
-{Electrical Engineering Essentials}%
-}{%
-{Electrical Engineering Essentials}%
-}{%
-{\protect \APACyear {2025}}%
-}]{%
-SpectralLeakageEssentials}
-\APACinsertmetastar {%
-SpectralLeakageEssentials}%
-\begin{APACrefauthors}%
-{Electrical Engineering Essentials}.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2025}{}{}.
-\newblock
-\APACrefbtitle {{What Is Spectral Leakage In FFT Analysis?}} {{What Is Spectral
-  Leakage In FFT Analysis?}}
-\newblock
-\APAChowpublished {YouTube video}.
-\newblock
-\begin{APACrefURL} \url{https://www.youtube.com/watch?v=XaZty6kGn74}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{ThorlabsThorCam}
+``{ThorCam™ Software User Guide},'' 2024.
 
-\bibitem [\protect \citeauthoryear {%
-Fablab%
-}{%
-Fablab%
-}{%
-{\protect \APACyear {2024}}%
-}]{%
-Fablabwiki}
-\APACinsertmetastar {%
-Fablabwiki}%
-\begin{APACrefauthors}%
-Fablab.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\APACrefbtitle {Print and Cut wiki page.} {Print and cut wiki page.}
-\newblock
-\begin{APACrefURL} \url{https://wiki.fablabenschede.nl/Print%26Cut}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{ThorlabsKinesis}
+``{Kinesis\textregistered{} Software and API},'' 2024.
 
-\bibitem [\protect \citeauthoryear {%
-Fuenzalida%
-, Giese%
-\BCBL {}\ \BBA {} Gr\"{a}fe%
-}{%
-Fuenzalida%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2024}}%
-}]{%
-NonlinearInterferometry}
-\APACinsertmetastar {%
-NonlinearInterferometry}%
-\begin{APACrefauthors}%
-Fuenzalida, J.%
-, Giese, E.%
-\BCBL {}\ \BBA {} Gr\"{a}fe, M.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Nonlinear Interferometry: A New Approach for Imaging and
-  Sensing} {Nonlinear interferometry: A new approach for imaging and
-  sensing}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Advanced Quantum Technologies}{}{}{}.
-\newblock
-\begin{APACrefURL}
-  \url{https://onlinelibrary.wiley.com/doi/10.1002/qute.202300353}
-  \end{APACrefURL}
-\newblock
-\begin{APACrefDOI} \doi{10.1002/qute.202300353} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
+\bibitem{NonlinearInterferometry}
+J.~Fuenzalida, E.~Giese, and M.~Gr\"{a}fe, ``Nonlinear interferometry: A new
+  approach for imaging and sensing,'' {\em Advanced Quantum Technologies},
+  2024.
 
-\bibitem [\protect \citeauthoryear {%
-Gohlke%
-, Gowers%
-\BCBL {}\ \protect \BOthers {.}}{%
-Gohlke%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2023}}%
-}]{%
-pyfftw}
-\APACinsertmetastar {%
-pyfftw}%
-\begin{APACrefauthors}%
-Gohlke, C.%
-, Gowers, R.%
-\BCBL {}\ \BOthersPeriod {.}\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2023}{}{}.
-\newblock
-\APACrefbtitle {pyFFTW: A python wrapper around {FFTW}.} {pyfftw: A python
-  wrapper around {FFTW}.}
-\newblock
-\APACaddressPublisher{}{GitHub}.
-\newblock
-\begin{APACrefURL} \url{https://github.com/pyFFTW/pyFFTW} \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{lemos2014quantum}
+G.~B. Lemos, V.~Borish, G.~D. Cole, S.~Ramelow, R.~Lapkiewicz, and
+  A.~Zeilinger, ``Quantum imaging and metrology with undetected photons,'' {\em
+  Nature}, 2014.
 
-\bibitem [\protect \citeauthoryear {%
-\APACciteatitle {{K-Cube Strain Gauge Reader User Guide}}}{%
-\APACciteatitle {{K-Cube Strain Gauge Reader User Guide}}}{%
-{\protect \APACyear {2022}}%
-}]{%
-ThorlabsKSG101}
-\APACinsertmetastar {%
-ThorlabsKSG101}%
-{\BBOQ}\APACrefatitle {{K-Cube Strain Gauge Reader User Guide}} {{K-Cube Strain
-  Gauge Reader User Guide}}{\BBCQ}\ [\bibcomputersoftwaremanual].
-\newblock
-\APACrefYearMonthDay{2022}{}{}.
-\newblock
-\begin{APACrefURL}
-  \url{https://www.thorlabs.com/drawings/82436f568603612d-7469B569-E5C3-7E81-E10A74567ED8B648/KSG101-Manual.pdf}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{pearce2023practical}
+E.~Pearce, N.~R. Gemmell, J.~Fl{\'o}rez, J.~Ding, R.~F. Oulton, A.~S. Clark,
+  and C.~C. Phillips, ``Practical quantum imaging with undetected photons,''
+  {\em Optics Continuum}, 2023.
 
-\bibitem [\protect \citeauthoryear {%
-Kim%
-\ \protect \BOthers {.}}{%
-Kim%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2025}}%
-}]{%
-kim2025beyond}
-\APACinsertmetastar {%
-kim2025beyond}%
-\begin{APACrefauthors}%
-Kim, T.%
-, Choi, J.%
-, Jeong, Y.%
-, Noh, H.%
-, Yoo, J.%
-, Baek, S.%
-\BCBL {}\ \BBA {} Choi, J.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2025}{}{}.
-\newblock
-\APACrefbtitle {Beyond Spatial Frequency: Pixel-wise Temporal Frequency-based
-  Deepfake Video Detection.} {Beyond spatial frequency: Pixel-wise temporal
-  frequency-based deepfake video detection.}
-\newblock
-\begin{APACrefURL}
-  \url{https://openaccess.thecvf.com/content/ICCV2025/html/Kim_Beyond_Spatial_Frequency_ICCV_2025_paper.html}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{kutas2021quantum}
+M.~Kutas, B.~Haase, J.~Klier, D.~Molter, and G.~von Freymann,
+  ``Quantum-inspired terahertz spectroscopy with visible photons,'' {\em
+  Optica}, 2021.
 
-\bibitem [\protect \citeauthoryear {%
-\APACcitebtitle {{Kinesis\textregistered{} Software and API}}}{%
-\APACcitebtitle {{Kinesis\textregistered{} Software and API}}}{%
-{\protect \APACyear {2024}}%
-}]{%
-ThorlabsKinesis}
-\APACinsertmetastar {%
-ThorlabsKinesis}%
-\APACrefbtitle {{Kinesis\textregistered{} Software and API}.}
-  {{Kinesis\textregistered{} Software and API}.}
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\APACaddressPublisher{Newton, NJ, USA}{}.
-\newblock
-\begin{APACrefURL}
-  \url{https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=Motion_Control}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{SpectralLeakageEssentials}
+{Electrical Engineering Essentials}, ``{What Is Spectral Leakage In FFT
+  Analysis?}.'' YouTube video, 2025.
 
-\bibitem [\protect \citeauthoryear {%
-Kutas%
-, Haase%
-, Klier%
-, Molter%
-\BCBL {}\ \BBA {} von Freymann%
-}{%
-Kutas%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2021}}%
-}]{%
-kutas2021quantum}
-\APACinsertmetastar {%
-kutas2021quantum}%
-\begin{APACrefauthors}%
-Kutas, M.%
-, Haase, B.%
-, Klier, J.%
-, Molter, D.%
-\BCBL {}\ \BBA {} von Freymann, G.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2021}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Quantum-inspired terahertz spectroscopy with visible
-  photons} {Quantum-inspired terahertz spectroscopy with visible
-  photons}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Optica}{}{}{}.
-\newblock
-\begin{APACrefURL}
-  \url{https://opg.optica.org/optica/fulltext.cfm?uri=optica-8-4-438}
-  \end{APACrefURL}
-\newblock
-\begin{APACrefDOI} \doi{10.1364/OPTICA.415627} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
+\bibitem{xie2018surface}
+Z.~Xie, Y.~Tang, Y.~Zhou, and Q.~Deng, ``Surface and thickness measurement of
+  transparent thin-film layers utilizing modulation-based
+  structured-illumination microscopy,'' {\em Optics Express}, 2018.
 
-\bibitem [\protect \citeauthoryear {%
-Lemos%
-\ \protect \BOthers {.}}{%
-Lemos%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2014}}%
-}]{%
-lemos2014quantum}
-\APACinsertmetastar {%
-lemos2014quantum}%
-\begin{APACrefauthors}%
-Lemos, G\BPBI B.%
-, Borish, V.%
-, Cole, G\BPBI D.%
-, Ramelow, S.%
-, Lapkiewicz, R.%
-\BCBL {}\ \BBA {} Zeilinger, A.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2014}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Quantum imaging and metrology with undetected Photons}
-  {Quantum imaging and metrology with undetected photons}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Nature}{}{}{}.
-\newblock
-\begin{APACrefURL}
-  \url{https://opg.optica.org/josab/fulltext.cfm?uri=josab-39-8-2200https://www.nature.com/articles/nature13586}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{ThorlabsKPZ101}
+{Thorlabs, Inc.}, {\em {K-Cube Piezo Controller User Guide}}.
+\newblock Thorlabs, Inc., 2022.
 
-\bibitem [\protect \citeauthoryear {%
-Pearce%
-\ \protect \BOthers {.}}{%
-Pearce%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2023}}%
-}]{%
-pearce2023practical}
-\APACinsertmetastar {%
-pearce2023practical}%
-\begin{APACrefauthors}%
-Pearce, E.%
-, Gemmell, N\BPBI R.%
-, Fl{\'o}rez, J.%
-, Ding, J.%
-, Oulton, R\BPBI F.%
-, Clark, A\BPBI S.%
-\BCBL {}\ \BBA {} Phillips, C\BPBI C.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2023}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Practical quantum imaging with undetected photons}
-  {Practical quantum imaging with undetected photons}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Optics Continuum}{}{}{}.
-\PrintBackRefs{\CurrentBib}
+\bibitem{ThorlabsKSG101}
+Thorlabs, Inc., {\em {K-Cube Strain Gauge Reader User Guide}}, 2022.
 
-\bibitem [\protect \citeauthoryear {%
-\APACcitebtitle {{Python Automation of a Power Meter and Rotation Mount (Viewer
-  Inspired) | Thorlabs Insights}}}{%
-\APACcitebtitle {{Python Automation of a Power Meter and Rotation Mount (Viewer
-  Inspired) | Thorlabs Insights}}}{%
-{\protect \APACyear {2022}}%
-}]{%
-KinesisInPython}
-\APACinsertmetastar {%
-KinesisInPython}%
-\APACrefbtitle {{Python Automation of a Power Meter and Rotation Mount (Viewer
-  Inspired) | Thorlabs Insights}.} {{Python Automation of a Power Meter and
-  Rotation Mount (Viewer Inspired) | Thorlabs Insights}.}
-\newblock
-\APACrefYearMonthDay{2022}{Jul}{}.
-\newblock
-\APAChowpublished {YouTube video}.
-\newblock
-\begin{APACrefURL} \url{https://www.youtube.com/watch?v=VbcCDI6Z6go}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{TSIDocs}
+``{Thorlabs Scientific Imaging (TSI) Camera Python SDK Documentation},'' 2024.
 
-\bibitem [\protect \citeauthoryear {%
-{Quantum Delta NL}%
-}{%
-{Quantum Delta NL}%
-}{%
-{\protect \APACyear {2024}}%
-}]{%
-quantum_delta}
-\APACinsertmetastar {%
-quantum_delta}%
-\begin{APACrefauthors}%
-{Quantum Delta NL}.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\APACrefbtitle {Quantum Delta {NL}.} {Quantum delta {NL}.}
-\newblock
-\begin{APACrefURL} \url{https://qdnlamsterdam.nl} \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{KinesisInPython}
+``{Python Automation of a Power Meter and Rotation Mount (Viewer Inspired) |
+  Thorlabs Insights}.'' YouTube video, 2022.
 
-\bibitem [\protect \citeauthoryear {%
-\APACcitebtitle {{ThorCam™ Software User Guide}}}{%
-\APACcitebtitle {{ThorCam™ Software User Guide}}}{%
-{\protect \APACyear {2024}}%
-}]{%
-ThorlabsThorCam}
-\APACinsertmetastar {%
-ThorlabsThorCam}%
-\APACrefbtitle {{ThorCam™ Software User Guide}.} {{ThorCam™ Software User
-  Guide}.}
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\begin{APACrefURL} \url{https://www.thorlabs.com/software-pages/thorcam}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{kim2025beyond}
+T.~Kim, J.~Choi, Y.~Jeong, H.~Noh, J.~Yoo, S.~Baek, and J.~Choi, ``Beyond
+  spatial frequency: Pixel-wise temporal frequency-based deepfake video
+  detection,'' 2025.
 
-\bibitem [\protect \citeauthoryear {%
-{Thorlabs, Inc.}%
-}{%
-{Thorlabs, Inc.}%
-}{%
-{\protect \APACyear {2022}}%
-}]{%
-ThorlabsKPZ101}
-\APACinsertmetastar {%
-ThorlabsKPZ101}%
-\begin{APACrefauthors}%
-{Thorlabs, Inc.}%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2022}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {{K-Cube Piezo Controller User Guide}} {{K-Cube Piezo
-  Controller User Guide}}{\BBCQ}\ [\bibcomputersoftwaremanual].
-\newblock
-\begin{APACrefURL}
-  \url{https://www.thorlabs.com/drawings/09193be581e649ce-B10170FA-0A86-B943-46B44F8E52D08E77/KPZ101-Manual.pdf}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{ThorlabsCMOS}
+{Thorlabs, Inc.}, ``{1.6 MP CMOS Compact Scientific Cameras},'' 2024.
 
-\bibitem [\protect \citeauthoryear {%
-{Thorlabs, Inc.}%
-}{%
-{Thorlabs, Inc.}%
-}{%
-{\protect \APACyear {2024}}%
-}]{%
-ThorlabsCMOS}
-\APACinsertmetastar {%
-ThorlabsCMOS}%
-\begin{APACrefauthors}%
-{Thorlabs, Inc.}%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\APACrefbtitle {{1.6 MP CMOS Compact Scientific Cameras}.} {{1.6 MP CMOS
-  Compact Scientific Cameras}.}
-\newblock
-\begin{APACrefURL}
-  \url{https://www.thorlabs.com/1.6-mp-cmos-compact-scientific-cameras?tabName=Overview}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{TSIGIT}
+``{Camera Examples: Python Scientific Imaging SDK},'' 2024.
 
-\bibitem [\protect \citeauthoryear {%
-\APACcitebtitle {{Thorlabs Scientific Imaging (TSI) Camera Python SDK
-  Documentation}}}{%
-\APACcitebtitle {{Thorlabs Scientific Imaging (TSI) Camera Python SDK
-  Documentation}}}{%
-{\protect \APACyear {2024}}%
-}]{%
-TSIDocs}
-\APACinsertmetastar {%
-TSIDocs}%
-\APACrefbtitle {{Thorlabs Scientific Imaging (TSI) Camera Python SDK
-  Documentation}.} {{Thorlabs Scientific Imaging (TSI) Camera Python SDK
-  Documentation}.}
-\newblock
-\APACrefYearMonthDay{2024}{}{}.
-\newblock
-\begin{APACrefURL} \url{https://tsicam.readthedocs.io/en/latest/}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
+\bibitem{pyfftw}
+C.~Gohlke, R.~Gowers, {\em et~al.}, ``pyfftw: A python wrapper around {FFTW},''
+  2023.
 
-\bibitem [\protect \citeauthoryear {%
-Xie%
-, Tang%
-, Zhou%
-\BCBL {}\ \BBA {} Deng%
-}{%
-Xie%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2018}}%
-}]{%
-xie2018surface}
-\APACinsertmetastar {%
-xie2018surface}%
-\begin{APACrefauthors}%
-Xie, Z.%
-, Tang, Y.%
-, Zhou, Y.%
-\BCBL {}\ \BBA {} Deng, Q.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2018}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Surface and thickness measurement of transparent
-  thin-film layers utilizing modulation-based structured-illumination
-  microscopy} {Surface and thickness measurement of transparent thin-film
-  layers utilizing modulation-based structured-illumination microscopy}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Optics Express}{}{}{}.
-\newblock
-\begin{APACrefURL}
-  \url{https://opg.optica.org/oe/fulltext.cfm?uri=oe-26-2-1547}
-  \end{APACrefURL}
-\newblock
-\begin{APACrefDOI} \doi{10.1364/OE.26.001547} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
+\bibitem{Fablabwiki}
+Fablab, ``Print and cut wiki page,'' 2024.
 
 \end{thebibliography}
