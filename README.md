@@ -77,7 +77,7 @@ With the venv activated (you should see `(.venv)` in the prompt), install
 everything the app needs:
 
 ```
-pip install -r depndencies.txt
+pip install -r dependencies.txt
 ```
 
 This will take a few minutes — pip is downloading and installing about 40
