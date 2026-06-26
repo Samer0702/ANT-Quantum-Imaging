@@ -110,23 +110,6 @@ cd QIUP-APP\main_open
 python main_open.py
 ```
 
----
-
-## Troubleshooting
-
-- **"python is not recognized..."** — Python wasn't added to PATH during
-  install. Reinstall Python and make sure to tick "Add python.exe to PATH."
-- **"Thorlabs TSI SDK not found"** printed in the terminal — see the SDK
-  install note in Step 4.
-- **Camera or piezo not detected** — make sure the hardware is plugged in,
-  powered on, and that Thorlabs' Kinesis software/drivers are installed (this
-  app relies on those drivers, it doesn't install them itself).
-- **Nothing happens when double-clicking `main.py`** — this app must be run
-  from the terminal with the venv activated (Step 5), not by double-clicking
-  the file directly.
-
----
-
 ## Project structure (for reference)
 
 - `QIUP-APP/main_open/main_open.py` — main application entry point (run this one)
