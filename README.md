@@ -14,7 +14,7 @@ results in real time.
 ## What you need before starting
 
 - A Windows PC (Windows 10 or 11)
-- **Python 3.12** installed
+- **Python 3.14** installed
   - Download it from [python.org/downloads](https://www.python.org/downloads/)
   - During installation, **tick the box that says "Add python.exe to PATH"**
     — this matters, don't skip it.
@@ -114,8 +114,8 @@ python main_open.py
 
 - `QIUP-APP/main_open/main_open.py` — main application entry point (run this one)
 - `QIUP-APP/main_open/camera_control.py` — camera control + FFT-based image analysis
-- `QIUP-APP/main_open/piezo_control.py` — piezo stage / strain gauge control
+- `QIUP-APP/main_open/piezo_control_open.py` — piezo stage / strain gauge control in open loop
+- `acquisition_workers.py` — Single and Live Acquisition workers + Raw camera feed
 - `QIUP-APP/main_open/`, `QIUP-APP/main_closed/` — open-loop / closed-loop
   acquisition variants
-- `Documentation/` — project plan, learning report, and thesis (PDF/LaTeX)
 - `depndencies.txt` — list of required Python packages
